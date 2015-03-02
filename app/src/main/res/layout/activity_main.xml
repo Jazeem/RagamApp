@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/bg_app">
+
+
+    <ImageView
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="@dimen/logo_heigth"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/logo_marginTop"
+        android:src="@drawable/logo"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="@dimen/textview_width"
+        android:layout_height="@dimen/line_thickness"
+        android:background="@android:color/white"
+        android:layout_below="@id/imageView"
+        android:layout_marginTop="@dimen/logo_marginBottom"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:layout_marginTop="@dimen/textview_marginTop"
+        android:layout_width="@dimen/textview_width"
+        android:layout_height="@dimen/textview_height"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum dui, gravida ac metus eu, rutrum rutrum est. Curabitur non lorem mauris. Donec sodales imperdiet ante, in efficitur augue"
+        android:id="@+id/textView"
+        android:textColor="#ffffff"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/line"
+        android:layout_centerHorizontal="true"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2015"
+        android:textSize="25dp"
+        android:layout_marginBottom="@dimen/logo_marginTop"
+        android:textColor="@android:color/white"
+        android:id="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
