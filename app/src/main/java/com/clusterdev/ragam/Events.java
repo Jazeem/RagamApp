@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,9 +27,22 @@ public class Events extends ActionBarActivity {
 
         eventsList = (ListView) findViewById(R.id.events);
         categoriesList = (ListView) findViewById(R.id.categories);
+  
+        categoriesList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
-        String[] events = new String[]{"event1", "event2", "event3"};
-        String[] categories = new String[]{"category1", "category2", "category3"};
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView textView = (TextView) view;
+                for (int j = 0; j < parent.getChildCount(); j++)
+                    setSelected((TextView)parent.getChildAt(j),false);
+                setSelected(textView,true);
+            }
+        });
+
+
+        String[] events = new String[]{"event1", "event2", "event3","event4", "event5", "event6","event7", "event8", "event9"};
+        String[] categories = new String[]{"category1", "category2", "category3","category4", "category5", "category6"};
 
         final ArrayList<String> listEvent = new ArrayList<String>();
         final ArrayList<String> listCategory = new ArrayList<String>();
@@ -47,6 +61,17 @@ public class Events extends ActionBarActivity {
         eventsList.setAdapter(eventsAdapter);
         categoriesList.setAdapter(categoriesAdapter);
 
+    }
+
+    private void setSelected(TextView view,boolean selected){
+        if(selected){
+            view.setBackgroundColor(getResources().getColor(R.color.events_color));
+            view.setTextColor(getResources().getColor(R.color.white));
+        }
+        else{
+            view.setBackgroundColor(getResources().getColor(R.color.white));
+            view.setTextColor(getResources().getColor(R.color.events_color));
+        }
     }
 
     public class MySimpleArrayAdapter extends ArrayAdapter<String> {

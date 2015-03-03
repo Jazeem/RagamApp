@@ -11,6 +11,6 @@
     <dimen name="logo_marginBottom">55dp</dimen>
     <dimen name="textview_marginTop">5dp</dimen>
     <dimen name="line_thickness">2dp</dimen>
-    <dimen name="events_padding">4dp</dimen>
+    <dimen name="events_padding">6dp</dimen>
     <dimen name="events_font_size">25dp</dimen>
 </resources>
