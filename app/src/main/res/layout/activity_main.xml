@@ -19,8 +19,7 @@
         android:layout_width="@dimen/textview_width"
         android:layout_height="@dimen/line_thickness"
         android:background="@android:color/white"
-        android:layout_below="@id/imageView"
-        android:layout_marginTop="@dimen/logo_marginBottom"
+        android:layout_marginTop="@dimen/events_line_padding_top"
         android:layout_centerHorizontal="true"/>
     <TextView
         android:layout_marginTop="@dimen/textview_marginTop"

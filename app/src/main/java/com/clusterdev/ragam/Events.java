@@ -27,7 +27,7 @@ public class Events extends ActionBarActivity {
 
         eventsList = (ListView) findViewById(R.id.events);
         categoriesList = (ListView) findViewById(R.id.categories);
-  
+
         categoriesList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
 
@@ -60,6 +60,9 @@ public class Events extends ActionBarActivity {
 
         eventsList.setAdapter(eventsAdapter);
         categoriesList.setAdapter(categoriesAdapter);
+        TextView heading= (TextView) findViewById(R.id.events_heading);
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeue-Thin.otf");
+        heading.setTypeface(tf);
 
     }
 

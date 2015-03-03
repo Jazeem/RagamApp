@@ -10,7 +10,14 @@
     <dimen name="logo_marginTop">25dp</dimen>
     <dimen name="logo_marginBottom">55dp</dimen>
     <dimen name="textview_marginTop">5dp</dimen>
-    <dimen name="line_thickness">2dp</dimen>
-    <dimen name="events_padding">6dp</dimen>
+    <dimen name="line_thickness">1dp</dimen>
+    <dimen name="events_padding_right">6dp</dimen>
     <dimen name="events_font_size">25dp</dimen>
+    <dimen name="events_heading_font_size">30dp</dimen>
+    <dimen name="events_events_list_margin_top">35dp</dimen>
+    <dimen name="events_heading_margin_top">100dp</dimen>
+    <dimen name="events_line_padding_top">3dp</dimen>
+    <dimen name="events_line_width">165dp</dimen>
+    <dimen name="events_categories_margin_top">173.5dp</dimen>
+
 </resources>

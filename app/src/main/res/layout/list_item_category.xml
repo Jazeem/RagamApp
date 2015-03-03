@@ -3,7 +3,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/list_item_category"
-        android:paddingLeft="@dimen/events_padding"
+        android:paddingLeft="@dimen/events_padding_right"
         android:textColor="@color/events_color"
         android:textSize="@dimen/events_font_size"
         android:gravity="start" />
