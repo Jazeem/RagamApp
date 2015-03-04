@@ -1,22 +1,30 @@
 package com.clusterdev.ragam;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,6 +43,9 @@ public class Events extends ActionBarActivity {
     AlphaAnimation fadeOut;
     String category = null;
     TextView heading;
+    View rightForeground;
+    AdapterView.OnItemClickListener categoryClickListner;
+    AdapterView.OnItemClickListener eventClickListner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,31 +54,55 @@ public class Events extends ActionBarActivity {
 
         eventsList = (ListView) findViewById(R.id.events);
         categoriesList = (ListView) findViewById(R.id.categories);
+        rightForeground = findViewById(R.id.right_foreground);
 
-        categoriesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        eventClickListner = new AdapterView.OnItemClickListener() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+// previously invisible view
+                TextView textView= (TextView) view;
+                for(int i=0;i<parent.getChildCount();i++)
+                    setSelectedDesign(textView,true);
+                setSelected(textView, true);
+
+// get the center for the clipping circle
+
+                AlphaAnimation fadeOut = new AlphaAnimation(1.0f, 0.0f);
+                fadeOut.setDuration(500);
+                fadeOut.setFillAfter(true);
+
+                Animation scaleAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);
+                categoriesList.setOnItemClickListener(null);
+                eventsList.setOnItemClickListener(null);
+                scaleAnim.setDuration(1200);
+                rightForeground.startAnimation(scaleAnim);
+                eventsList.startAnimation(fadeOut);
+// make the view visible and start the animation
+                rightForeground.setVisibility(View.VISIBLE);
+                //anim.start();
+
+
+            }
+        };
+
+        categoryClickListner = new AdapterView.OnItemClickListener() {
 
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView textView = (TextView) view;
-                String selected = ((TextView) view).getText().toString();
-                if (category == null) {
-                    category = selected;
-                    fadeIn();
 
-                    return;
-                } else if (selected.equals(category)) {
-                    return;
-                }
-
-                category = selected;
 
                 for (int j = 0; j < parent.getChildCount(); j++)
                     setSelected((TextView) parent.getChildAt(j), false);
 
                 setSelected(textView, true);
             }
-        });
+
+        };
+        eventsList.setOnItemClickListener(eventClickListner);
+        categoriesList.setOnItemClickListener(categoryClickListner);
 
 
         db = new DataBaseHelper(this);
@@ -124,19 +159,69 @@ public class Events extends ActionBarActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    public void backPressed(View view) {
+        Animation shrinkAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shrink);
+        categoriesList.setOnItemClickListener(null);
+        shrinkAnim.setDuration(1200);
+        AlphaAnimation fadeIn;
+        fadeIn = new AlphaAnimation(0.0f, 1.0f);
+        fadeIn.setDuration(500);
+        fadeIn.setFillAfter(true);
+        eventsList.startAnimation(fadeIn);
 
-        categoriesList.getAdapter().getView(1, null, null).performClick();
+
+        rightForeground.startAnimation(shrinkAnim);
+        shrinkAnim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                eventsList.setOnItemClickListener(eventClickListner);
+                categoriesList.setOnItemClickListener(categoryClickListner);
+                rightForeground.setVisibility(View.INVISIBLE);
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        rightForeground.setVisibility(View.VISIBLE);
 
     }
 
     private void setSelected(TextView view, boolean selected) {
-
-
         if (selected) {
-            eventsList.startAnimation(fadeOut);
+            String selectedCategory = view.getText().toString();
+            if (category == null) {
+                category = selectedCategory;
+                setSelectedDesign(view, selected);
+                fadeIn();
+                return;
+            } else if (selectedCategory.equals(category)) {
+                return;
+            } else {
+                category = selectedCategory;
+                setSelectedDesign(view, selected);
+                eventsList.startAnimation(fadeOut);
+                return;
+            }
+        } else {
+
+            setSelectedDesign(view, selected);
+
+            return;
+        }
+
+
+    }
+
+    private void setSelectedDesign(TextView view, boolean selected) {
+        if (selected) {
             view.setBackgroundColor(getResources().getColor(R.color.events_color));
             view.setTextColor(getResources().getColor(R.color.white));
         } else {
@@ -145,11 +230,13 @@ public class Events extends ActionBarActivity {
         }
     }
 
+
     private void fadeIn() {
 
         eventsCursor = db.getEventsByGenre(category);
         eventsAdapter.swapCursor(eventsCursor);
         eventsList.startAnimation(fadeIn);
+
     }
 
     public class CustomCursorAdapter extends CursorAdapter {
