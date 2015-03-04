@@ -4,6 +4,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/list_item_event"
         android:paddingRight="@dimen/events_padding_right"
+        android:paddingLeft="@dimen/events_padding_right"
+        android:lineSpacingExtra="@dimen/events_list_item_line_spacing"
         android:textColor="@color/white"
         android:textSize="@dimen/events_font_size"
+        android:paddingBottom="@dimen/events_list_item_padding_bottom"
         android:gravity="end" />

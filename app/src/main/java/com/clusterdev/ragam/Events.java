@@ -59,8 +59,8 @@ public class Events extends ActionBarActivity {
         }
        db.openDataBase();
        categoryCursor = db.getGenres("COMPETITIONS");
-       eventsCursor= db.getEvents("COMPETITIONS");
-       eventsAdapter = new CustomCursorAdapter(this,eventsCursor,true);
+
+       eventsAdapter = new CustomCursorAdapter(this,null,true);
        categoriesAdapter = new CustomCursorAdapter(this,categoryCursor,false);
 
 
@@ -69,9 +69,18 @@ public class Events extends ActionBarActivity {
 
         eventsList.setAdapter(eventsAdapter);
         categoriesList.setAdapter(categoriesAdapter);
+
         TextView heading = (TextView) findViewById(R.id.events_heading);
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        categoriesList.getAdapter().getView(1, null, null).performClick();
 
     }
 

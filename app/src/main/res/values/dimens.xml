@@ -22,5 +22,7 @@
     <dimen name="events_circle_diameter">100dp</dimen>
     <dimen name="events_circle_margin_bottom">30dp</dimen>
     <dimen name="events_inner_circle_diameter">95dp</dimen>
+    <dimen name="events_list_item_padding_bottom">3dp</dimen>
+    <dimen name="events_list_item_line_spacing">-10dp</dimen>
 
 </resources>
