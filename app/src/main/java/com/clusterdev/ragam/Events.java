@@ -6,9 +6,12 @@ import android.graphics.Typeface;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
@@ -28,6 +31,11 @@ public class Events extends ActionBarActivity {
     Cursor categoryCursor;
     CustomCursorAdapter eventsAdapter;
     CustomCursorAdapter categoriesAdapter;
+    AlphaAnimation fadeIn;
+    AlphaAnimation fadeOut;
+    String category = null;
+    TextView heading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +50,27 @@ public class Events extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView textView = (TextView) view;
+                String selected = ((TextView) view).getText().toString();
+                if (category == null) {
+                    category = selected;
+                    fadeIn();
+
+                    return;
+                } else if (selected.equals(category)) {
+                    return;
+                }
+
+                category = selected;
+
                 for (int j = 0; j < parent.getChildCount(); j++)
                     setSelected((TextView) parent.getChildAt(j), false);
+
                 setSelected(textView, true);
             }
         });
 
 
-       db = new DataBaseHelper(this);
+        db = new DataBaseHelper(this);
 
         try {
             db.createDataBase();
@@ -57,22 +78,49 @@ public class Events extends ActionBarActivity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-       db.openDataBase();
-       categoryCursor = db.getGenres("COMPETITIONS");
+        db.openDataBase();
+        categoryCursor = db.getGenres("COMPETITIONS");
 
-       eventsAdapter = new CustomCursorAdapter(this,null,true);
-       categoriesAdapter = new CustomCursorAdapter(this,categoryCursor,false);
-
-
-
+        eventsAdapter = new CustomCursorAdapter(this, null, true);
+        categoriesAdapter = new CustomCursorAdapter(this, categoryCursor, false);
 
 
         eventsList.setAdapter(eventsAdapter);
         categoriesList.setAdapter(categoriesAdapter);
 
-        TextView heading = (TextView) findViewById(R.id.events_heading);
+        heading = (TextView) findViewById(R.id.events_heading);
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
+
+        fadeIn = new AlphaAnimation(0.0f, 1.0f);
+        fadeIn.setDuration(500);
+        fadeIn.setFillAfter(true);
+
+        fadeOut = new AlphaAnimation(1.0f, 0.0f);
+        fadeOut.setDuration(500);
+        fadeOut.setFillAfter(true);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                Log.d("Animation", "Fade Out stopped");
+                fadeIn();
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+//        heading.startAnimation(fadeIn);
+//        heading.setVisibility(View.VISIBLE);
+
 
     }
 
@@ -85,17 +133,23 @@ public class Events extends ActionBarActivity {
     }
 
     private void setSelected(TextView view, boolean selected) {
-        String category=view.getText().toString();
-        eventsCursor=db.getEventsByGenre(category);
-        eventsAdapter.swapCursor(eventsCursor);
+
 
         if (selected) {
+            eventsList.startAnimation(fadeOut);
             view.setBackgroundColor(getResources().getColor(R.color.events_color));
             view.setTextColor(getResources().getColor(R.color.white));
         } else {
             view.setBackgroundColor(getResources().getColor(R.color.white));
             view.setTextColor(getResources().getColor(R.color.events_color));
         }
+    }
+
+    private void fadeIn() {
+
+        eventsCursor = db.getEventsByGenre(category);
+        eventsAdapter.swapCursor(eventsCursor);
+        eventsList.startAnimation(fadeIn);
     }
 
     public class CustomCursorAdapter extends CursorAdapter {
