@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal">
@@ -62,3 +66,23 @@
             android:divider="#00000000" />
     </LinearLayout>
 </LinearLayout>
+
+   <FrameLayout
+       android:layout_width="wrap_content"
+       android:layout_gravity="bottom|center_horizontal"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="@dimen/events_circle_margin_bottom">
+
+    <View
+        android:layout_width="@dimen/events_circle_diameter"
+        android:layout_height="@dimen/events_circle_diameter"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:background="@drawable/circle" />
+    <View
+        android:layout_width="@dimen/events_inner_circle_diameter"
+        android:layout_height="@dimen/events_inner_circle_diameter"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:background="@drawable/inner_circle" />
+   </FrameLayout>
+
+</FrameLayout>
