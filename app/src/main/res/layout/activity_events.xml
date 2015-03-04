@@ -34,17 +34,24 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="@dimen/events_line_padding_top"
                 android:background="@android:color/white" />
-
+          <LinearLayout
+              android:id="@+id/events_layout"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@color/events_color">
 
             <ListView
                 android:id="@+id/events"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/events_events_list_margin_top"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
-                android:layout_marginTop="@dimen/events_events_list_margin_top"
+
                 android:background="@color/events_color"
                 android:divider="#00000000" />
+          </LinearLayout>
 
         </LinearLayout>
 

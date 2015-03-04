@@ -39,13 +39,14 @@ public class Events extends ActionBarActivity {
     Cursor categoryCursor;
     CustomCursorAdapter eventsAdapter;
     CustomCursorAdapter categoriesAdapter;
-    AlphaAnimation fadeIn;
-    AlphaAnimation fadeOut;
+    AlphaAnimation customFadeIn;
+    AlphaAnimation customFadeOut;
     String category = null;
     TextView heading;
     View rightForeground;
     AdapterView.OnItemClickListener categoryClickListner;
     AdapterView.OnItemClickListener eventClickListner;
+    View events_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class Events extends ActionBarActivity {
         eventsList = (ListView) findViewById(R.id.events);
         categoriesList = (ListView) findViewById(R.id.categories);
         rightForeground = findViewById(R.id.right_foreground);
-
+        events_layout= findViewById(R.id.events_layout);
         eventClickListner = new AdapterView.OnItemClickListener() {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -63,12 +64,29 @@ public class Events extends ActionBarActivity {
 // previously invisible view
                 TextView textView= (TextView) view;
                 for(int i=0;i<parent.getChildCount();i++)
-                    setSelectedDesign(textView,true);
-                setSelected(textView, true);
+                    setSelectedDesign((TextView) parent.getChildAt(i),true);
+                setSelectedDesign(textView, false);
 
 // get the center for the clipping circle
 
                 AlphaAnimation fadeOut = new AlphaAnimation(1.0f, 0.0f);
+                fadeOut.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
                 fadeOut.setDuration(500);
                 fadeOut.setFillAfter(true);
 
@@ -77,7 +95,7 @@ public class Events extends ActionBarActivity {
                 eventsList.setOnItemClickListener(null);
                 scaleAnim.setDuration(1200);
                 rightForeground.startAnimation(scaleAnim);
-                eventsList.startAnimation(fadeOut);
+                events_layout.startAnimation(fadeOut);
 // make the view visible and start the animation
                 rightForeground.setVisibility(View.VISIBLE);
                 //anim.start();
@@ -89,9 +107,15 @@ public class Events extends ActionBarActivity {
         categoryClickListner = new AdapterView.OnItemClickListener() {
 
 
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView textView = (TextView) view;
+
+                if(category!=null && category.equals(textView.getText().toString())){
+                    return;
+                }
+
 
 
                 for (int j = 0; j < parent.getChildCount(); j++)
@@ -127,31 +151,7 @@ public class Events extends ActionBarActivity {
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
 
-        fadeIn = new AlphaAnimation(0.0f, 1.0f);
-        fadeIn.setDuration(500);
-        fadeIn.setFillAfter(true);
 
-        fadeOut = new AlphaAnimation(1.0f, 0.0f);
-        fadeOut.setDuration(500);
-        fadeOut.setFillAfter(true);
-        fadeOut.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                Log.d("Animation", "Fade Out stopped");
-                fadeIn();
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
 
 //        heading.startAnimation(fadeIn);
 //        heading.setVisibility(View.VISIBLE);
@@ -167,7 +167,7 @@ public class Events extends ActionBarActivity {
         fadeIn = new AlphaAnimation(0.0f, 1.0f);
         fadeIn.setDuration(500);
         fadeIn.setFillAfter(true);
-        eventsList.startAnimation(fadeIn);
+        events_layout.startAnimation(fadeIn);
 
 
         rightForeground.startAnimation(shrinkAnim);
@@ -196,7 +196,9 @@ public class Events extends ActionBarActivity {
 
     private void setSelected(TextView view, boolean selected) {
         if (selected) {
+
             String selectedCategory = view.getText().toString();
+            Log.d("Selected ",selectedCategory);
             if (category == null) {
                 category = selectedCategory;
                 setSelectedDesign(view, selected);
@@ -207,7 +209,30 @@ public class Events extends ActionBarActivity {
             } else {
                 category = selectedCategory;
                 setSelectedDesign(view, selected);
-                eventsList.startAnimation(fadeOut);
+
+                customFadeOut = new AlphaAnimation(1.0f, 0.0f);
+                customFadeOut.setDuration(500);
+                customFadeOut.setFillAfter(true);
+                customFadeOut.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        events_layout.setVisibility(View.GONE);
+
+                        fadeIn();
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                events_layout.startAnimation(customFadeOut);
                 return;
             }
         } else {
@@ -221,6 +246,7 @@ public class Events extends ActionBarActivity {
     }
 
     private void setSelectedDesign(TextView view, boolean selected) {
+
         if (selected) {
             view.setBackgroundColor(getResources().getColor(R.color.events_color));
             view.setTextColor(getResources().getColor(R.color.white));
@@ -234,8 +260,13 @@ public class Events extends ActionBarActivity {
     private void fadeIn() {
 
         eventsCursor = db.getEventsByGenre(category);
-        eventsAdapter.swapCursor(eventsCursor);
-        eventsList.startAnimation(fadeIn);
+        eventsAdapter=new CustomCursorAdapter(this, eventsCursor,true);
+        eventsList.setAdapter(eventsAdapter);
+        customFadeIn = new AlphaAnimation(0.0f, 1.0f);
+        customFadeIn.setDuration(500);
+        customFadeIn.setFillAfter(true);
+        events_layout.setVisibility(View.VISIBLE);
+        events_layout.startAnimation(customFadeIn);
 
     }
 
