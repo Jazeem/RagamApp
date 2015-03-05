@@ -11,7 +11,11 @@
         <activity
             android:name=".Workshop"
             android:label="workshop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
@@ -22,11 +26,7 @@
         <activity
             android:name=".Gallery"
             android:label="gallery">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
     </application>

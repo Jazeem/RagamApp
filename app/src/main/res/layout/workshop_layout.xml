@@ -62,7 +62,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/logo_white_marginBottom"
-            android:src="@drawable/logo_white" />
+            android:src="@drawable/logo_white_no_border" />
     </RelativeLayout>
 
     <SlidingDrawer
@@ -75,10 +75,12 @@
         <ListView
             android:id="@+id/listview"
             android:layout_width="fill_parent"
-            android:layout_height="200dip"
+            android:layout_height="150dp"
             android:layout_alignParentTop="true"
             android:layout_gravity="fill_vertical"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical"
+            android:divider="@android:color/transparent"
+            />
 
         <View
             android:id="@+id/handle"

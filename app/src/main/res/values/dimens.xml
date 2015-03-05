@@ -35,14 +35,16 @@
     <dimen name="workshop_row_text_margin_left">24dp</dimen>
     <dimen name="clock_width">16dp</dimen>
     <dimen name="clock_height">16dp</dimen>
-    <dimen name="clock_margin_left">37dp</dimen>
+    <dimen name="clock_margin_left">30dp</dimen>
     <dimen name="clock_margin_top">4dp</dimen>
-    <dimen name="workshop_row_text_time_margin_left">31dp</dimen>
+    <dimen name="workshop_row_text_time_margin_left">27dp</dimen>
     <dimen name="workshop_image_width">65dp</dimen>
     <dimen name="workshop_image_height">65dp</dimen>
     <dimen name="workshop_image_margin_left">10dp</dimen>
     <dimen name="workshop_heading_margin_left">10dp</dimen>
     <dimen name="workshop_heading_font">18dp</dimen>
     <dimen name="workshop_desc_height">50dp</dimen>
-    <dimen name="workshop_image_margin_top">5dp</dimen>
+    <dimen name="workshop_image_margin_top">0dp</dimen>
+    <dimen name="workshop_content_font">10dp</dimen>
+    <dimen name="workshop_row_text_margin_top">5dp</dimen>
 </resources>
