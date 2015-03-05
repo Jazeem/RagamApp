@@ -10,6 +10,6 @@ public class Gallery extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.gallery_layout);
+        setContentView(R.layout.gallery_layout_copy);
     }
 }
