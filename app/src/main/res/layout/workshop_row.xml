@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@color/workshop_row_odd"
+    android:paddingBottom="@dimen/workshop_row_text_margin_left"
+    android:paddingTop="@dimen/workshop_row_text_margin_left">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_date"
+        android:text="27 mar"
+        android:textColor="@color/workshop_row_text"
+        android:layout_marginLeft="@dimen/workshop_row_text_margin_left"/>
+    <ImageView
+        android:layout_width="@dimen/clock_width"
+        android:layout_height="@dimen/clock_height"
+        android:id="@+id/clock_img"
+        android:src="@drawable/clock"
+        android:layout_below="@id/tv_date"
+        android:layout_marginLeft="@dimen/clock_margin_left"
+        android:layout_marginTop="@dimen/clock_margin_top"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9:00\n am"
+        android:textColor="@color/workshop_row_text"
+        android:layout_below="@id/clock_img"
+        android:layout_marginLeft="@dimen/workshop_row_text_time_margin_left"
+        android:layout_marginTop="@dimen/clock_margin_top"/>
+    <ImageView
+        android:layout_width="@dimen/workshop_image_width"
+        android:layout_height="@dimen/workshop_image_height"
+        android:id="@+id/image"
+        android:src="@drawable/head"
+        android:layout_toRightOf="@id/tv_date"
+        android:layout_marginLeft="@dimen/workshop_image_margin_left"
+        android:layout_marginTop="@dimen/workshop_image_margin_top"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_heading"
+        android:text="Lion"
+        android:layout_toRightOf="@id/image"
+        android:textColor="@color/workshop_row_text"
+        android:layout_marginLeft="@dimen/workshop_heading_margin_left"
+        android:textSize="@dimen/workshop_heading_font"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/workshop_desc_height"
+        android:textColor="@color/workshop_row_text"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel lectus nec nisi sodales congue et at justo. In pharetra ligula eget nisi convallis efficitur. Aliquam purus erat, fringilla vulputate eros faucibus, pharetra egestas nisl. Pellentesque at hendrerit nibh. Cras arcu sapien, iaculis quis tellus ac, maximus scelerisque libero. Suspendisse bibendum purus nisl, id faucibus justo sollicitudin in. Donec id lectus sed lacus vestibulum condimentum nec non felis."
+        android:layout_below="@id/tv_heading"
+        android:layout_alignLeft="@id/tv_heading"/>
+
+</RelativeLayout>

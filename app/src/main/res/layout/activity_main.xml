@@ -1,48 +1,184 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/bg_app">
+    android:background="@drawable/bg"
+    tools:context=".MainActivity">
 
-
+    <!--
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="@dimen/logo_width"
         android:layout_height="@dimen/logo_heigth"
-        android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/logo_marginTop"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo" />
 
     <View
         android:id="@+id/line"
         android:layout_width="@dimen/textview_width"
         android:layout_height="@dimen/line_thickness"
-        android:background="@android:color/white"
         android:layout_below="@id/imageView"
-        android:layout_marginTop="@dimen/logo_marginBottom"
-        android:layout_centerHorizontal="true"/>
-    <TextView
-        android:layout_marginTop="@dimen/textview_marginTop"
-        android:layout_width="@dimen/textview_width"
-        android:layout_height="@dimen/textview_height"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum dui, gravida ac metus eu, rutrum rutrum est. Curabitur non lorem mauris. Donec sodales imperdiet ante, in efficitur augue"
-        android:id="@+id/textView"
-        android:textColor="#ffffff"
-        android:gravity="center_horizontal"
-        android:layout_below="@+id/line"
         android:layout_centerHorizontal="true"
-         />
+        android:layout_marginTop="@dimen/logo_marginBottom"
+        android:background="@android:color/white" />
 
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="@dimen/textview_width"
+        android:layout_height="@dimen/textview_height"
+        android:layout_below="@+id/line"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/textview_marginTop"
+        android:gravity="center_horizontal"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum dui, gravida ac metus eu, rutrum rutrum est. Curabitur non lorem mauris. Donec sodales imperdiet ante, in efficitur augue"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2015"
-        android:textSize="25dp"
-        android:layout_marginBottom="@dimen/logo_marginTop"
-        android:textColor="@android:color/white"
-        android:id="@+id/textView2"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/logo_marginTop"
+        android:text="2015"
+        android:textColor="@android:color/white"
+        android:textSize="25dp" />
+        -->
+
+    <SlidingDrawer
+        android:id="@+id/slidingDrawer"
+        android:layout_width="@dimen/content_width"
+        android:layout_height="wrap_content"
+
+        android:content="@+id/content"
+        android:handle="@+id/handle"
+        android:orientation="horizontal"
+        android:rotation="180">
+
+        <LinearLayout
+            android:id="@+id/handle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/handle_clickarea_width"
+                android:layout_height="@dimen/handle_clickarea_height" />
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="@dimen/handle_width"
+                    android:layout_height="@dimen/handle_height"
+                    android:background="@drawable/exhibition_handle_shape" />
+
+                <View
+                    android:layout_width="@dimen/handle_width"
+                    android:layout_height="@dimen/handle_height"
+
+                    android:background="@drawable/proshow_handle_shape" />
+
+                <View
+                    android:layout_width="@dimen/handle_width"
+                    android:layout_height="@dimen/handle_height"
+
+                    android:background="@drawable/workshop_handle_shape" />
+
+                <View
+                    android:layout_width="@dimen/handle_width"
+                    android:layout_height="@dimen/handle_height"
+
+                    android:background="@drawable/event_handle_shape" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="@dimen/content_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:rotation="180">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="@dimen/content_width"
+                    android:layout_height="@dimen/handle_height"
+                    android:background="@drawable/event_content_shape" />
+                <TextView
+                    android:id="@+id/event_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EVENTS"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="@android:color/white"
+                    android:paddingRight="@dimen/handle_width"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/workshop_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WORKSHOPS"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="@android:color/white"
+                    android:paddingRight="@dimen/handle_width"/>
+                <View
+                    android:layout_width="@dimen/content_width"
+                    android:layout_height="@dimen/handle_height"
+                    android:background="@drawable/workshop_content_shape" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/proshow_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PROSHOWS"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="@android:color/white"
+                    android:paddingRight="@dimen/handle_width"/>
+                <View
+                    android:layout_width="@dimen/content_width"
+                    android:layout_height="@dimen/handle_height"
+                    android:background="@drawable/proshow_content_shape" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/exhibition_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EXHIBITIONS"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="@android:color/white"
+                    android:paddingRight="@dimen/handle_width"/>
+                <View
+                    android:layout_width="@dimen/content_width"
+                    android:layout_height="@dimen/handle_height"
+                    android:background="@drawable/exhibition_content_shape" />
+            </FrameLayout>
+        </LinearLayout>
+    </SlidingDrawer>
+
 
 </RelativeLayout>

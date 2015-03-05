@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg_app">#2d2d2d</color>
+    <color name="event_color">#189995</color>
+    <color name="exhibition_color">#fef7c4</color>
+    <color name="proshow_color">#9ad7d5</color>
+    <color name="workshop_color">#0e344d</color>
+    <color name="event_color_dim">#2f189995</color>
+    <color name="exhibition_color_dim">#2ffef7c4</color>
+    <color name="proshow_color_dim">#2f9ad7d5</color>
+    <color name="workshop_color_dim">#2f0e344d</color>
+    <color name="gallery_bg">#1b1b1b</color>
+    <color name="gallery_heading">#7c7c7c</color>
+    <color name="workshop_row_odd">#dee4e5</color>
+    <color name="workshop_row_text">#1a465f</color>
 </resources>

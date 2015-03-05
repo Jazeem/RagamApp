@@ -6,23 +6,42 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.SlidingDrawer;
 import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    private TextView tv1,tv2;
+    private TextView tv1,tv2,event,exhibition,proshow,workshop;
+    private SlidingDrawer drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        tv1= (TextView) findViewById(R.id.textView);
-        tv2= (TextView) findViewById(R.id.textView2);
+        //tv1= (TextView) findViewById(R.id.textView);
+        //tv2= (TextView) findViewById(R.id.textView2);
+        event= (TextView) findViewById(R.id.event_textview);
+        exhibition= (TextView) findViewById(R.id.exhibition_textview);
+        proshow= (TextView) findViewById(R.id.proshow_textview);
+        workshop= (TextView) findViewById(R.id.workshop_textview);
+        drawer= (SlidingDrawer) findViewById(R.id.slidingDrawer);
         Typeface tf=Typeface.createFromAsset(getAssets(),"fonts/HelveticaNeue-Thin.otf");
-        tv1.setTypeface(tf);
-        tv2.setTypeface(tf);
+        //tv1.setTypeface(tf);
+        //tv2.setTypeface(tf);
+        event.setTypeface(tf);
+        exhibition.setTypeface(tf);
+        proshow.setTypeface(tf);
+        workshop.setTypeface(tf);
+
+
+        drawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
+            @Override
+            public void onDrawerOpened() {
+
+            }
+        });
     }
 
 
