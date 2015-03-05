@@ -1,0 +1,12 @@
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_item_category"
+        android:paddingLeft="@dimen/heading_margin_right"
+        android:paddingRight="@dimen/heading_margin_right"
+        android:lineSpacingExtra="@dimen/events_list_item_line_spacing"
+        android:textColor="@color/events_color"
+        android:paddingBottom="@dimen/events_list_item_padding_bottom"
+        android:textSize="@dimen/events_font_size"
+        android:gravity="start" />

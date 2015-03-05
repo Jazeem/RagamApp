@@ -44,7 +44,6 @@ public class Workshop extends Activity {
         words.add("Android");
         words.add("iPhone");
         words.add("Apple");
-        list.setBackgroundColor(R.color.event_color);
         list.setAdapter(new WorkshopAdapter(Workshop.this,words));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -100,6 +99,7 @@ public class Workshop extends Activity {
                 heading.startAnimation(out);
                 description.startAnimation(out);
                 description.setTypeface(tf);
+
             }
         });
         slidingDrawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {

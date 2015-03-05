@@ -5,48 +5,6 @@
     android:background="@drawable/bg"
     tools:context=".MainActivity">
 
-    <!--
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/logo_width"
-        android:layout_height="@dimen/logo_heigth"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/logo_marginTop"
-        android:src="@drawable/logo" />
-
-    <View
-        android:id="@+id/line"
-        android:layout_width="@dimen/textview_width"
-        android:layout_height="@dimen/line_thickness"
-        android:layout_below="@id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/logo_marginBottom"
-        android:background="@android:color/white" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="@dimen/textview_width"
-        android:layout_height="@dimen/textview_height"
-        android:layout_below="@+id/line"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/textview_marginTop"
-        android:gravity="center_horizontal"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum dui, gravida ac metus eu, rutrum rutrum est. Curabitur non lorem mauris. Donec sodales imperdiet ante, in efficitur augue"
-        android:textColor="#ffffff" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/logo_marginTop"
-        android:text="2015"
-        android:textColor="@android:color/white"
-        android:textSize="25dp" />
-        -->
-
     <SlidingDrawer
         android:id="@+id/slidingDrawer"
         android:layout_width="@dimen/content_width"
@@ -110,6 +68,8 @@
             android:rotation="180">
 
             <FrameLayout
+                android:onClick="pageSelected"
+                android:id="@+id/events"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -127,6 +87,8 @@
                     android:paddingRight="@dimen/handle_width"/>
             </FrameLayout>
             <FrameLayout
+                android:onClick="pageSelected"
+                android:id="@+id/workshops"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >
@@ -144,6 +106,8 @@
                     android:background="@drawable/workshop_content_shape" />
             </FrameLayout>
             <FrameLayout
+                android:onClick="pageSelected"
+                android:id="@+id/proshows"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >
@@ -161,6 +125,8 @@
                     android:background="@drawable/proshow_content_shape" />
             </FrameLayout>
             <FrameLayout
+                android:onClick="pageSelected"
+                android:id="@+id/exhibitions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >

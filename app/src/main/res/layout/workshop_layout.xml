@@ -22,6 +22,7 @@
 
                 <TextView
                     android:id="@+id/workshop_heading"
+                    android:layout_marginRight="@dimen/heading_margin_right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

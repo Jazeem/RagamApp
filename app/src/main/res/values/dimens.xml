@@ -1,6 +1,7 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
+
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="logo_width">175dp</dimen>
     <dimen name="logo_heigth">275dp</dimen>
@@ -21,7 +22,7 @@
     <dimen name="logo_white_width">100dp</dimen>
     <dimen name="logo_white_height">100dp</dimen>
     <dimen name="logo_white_marginBottom">25dp</dimen>
-    <dimen name="description_margin_top">50dp</dimen>
+    <dimen name="description_margin_top">35dp</dimen>
     <dimen name="description_margin_left">25dp</dimen>
     <dimen name="description_margin_right">50dp</dimen>
     <dimen name="hex_width">150dp</dimen>
@@ -47,4 +48,12 @@
     <dimen name="workshop_image_margin_top">0dp</dimen>
     <dimen name="workshop_content_font">10dp</dimen>
     <dimen name="workshop_row_text_margin_top">5dp</dimen>
+    <dimen name="heading_margin_right">6dp</dimen>
+    <dimen name="events_font_size">22dp</dimen>
+    <dimen name="events_heading_margin_bottom">-130dp</dimen>
+    <dimen name="line_margin_top">133dp</dimen>
+    <dimen name="events_categories_margin_top">173.5dp</dimen>
+    <dimen name="events_list_item_padding_bottom">3dp</dimen>
+    <dimen name="events_list_item_line_spacing">-10dp</dimen>
+
 </resources>

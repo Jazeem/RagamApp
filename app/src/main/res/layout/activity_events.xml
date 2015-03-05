@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            android:layout_weight="1.0"
+            android:background="@color/events_color"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/events_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_thickness"
+                    android:layout_marginLeft="@dimen/description_margin_left"
+                    android:layout_marginTop="@dimen/line_margin_top"
+                    android:background="@android:color/white" />
+
+
+
+                <TextView
+                    android:id="@+id/events_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-130dp"
+                    android:layout_marginLeft="@dimen/description_margin_left"
+                    android:layout_marginRight="@dimen/heading_margin_right"
+                    android:layout_above="@+id/events_line"
+                    android:gravity="end"
+                    android:text="events"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/heading_font_size" />
+
+
+                <LinearLayout
+                android:id="@+id/events_layout"
+                android:layout_below="@+id/events_line"
+                android:layout_marginTop="@dimen/description_margin_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/events_color"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/events"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:background="@color/events_color"
+                    android:divider="#00000000" />
+            </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0">
+
+
+            <LinearLayout
+                android:id="@+id/right_view"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/categories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="@dimen/events_categories_margin_top"
+                    android:background="@color/white"
+                    android:divider="#00000000" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/right_foreground"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:background="@color/events_color"
+                android:visibility="invisible"></View>
+
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/logo_white_marginBottom">
+
+        <View
+            android:layout_width="@dimen/logo_white_width"
+            android:layout_height="@dimen/logo_white_height"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:background="@drawable/circle"
+            android:onClick="backPressed" />
+
+        <ImageView
+            android:layout_width="@dimen/logo_white_width"
+            android:layout_height="@dimen/logo_white_height"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/logo_white" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/description_margin_left"
+        android:layout_marginRight="@dimen/description_margin_right"
+        android:layout_marginTop="@dimen/events_categories_margin_top"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        android:textColor="@color/white"
+        android:visibility="invisible" />
+
+
+</FrameLayout>

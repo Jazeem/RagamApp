@@ -1,10 +1,12 @@
 package com.clusterdev.ragam;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
@@ -45,6 +47,29 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+
+    public void pageSelected(View view){
+        Intent intent;
+        switch(view.getId()){
+
+            case R.id.events :
+                intent=new Intent(MainActivity.this,Events.class);
+                startActivity(intent);
+                break;
+            case R.id.workshops :
+                intent=new Intent(MainActivity.this,Workshop.class);
+                startActivity(intent);
+                break;
+            case R.id.proshows :
+                intent=new Intent(MainActivity.this,Gallery.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+
+
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
