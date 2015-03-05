@@ -47,6 +47,8 @@ public class Events extends ActionBarActivity {
     AdapterView.OnItemClickListener categoryClickListner;
     AdapterView.OnItemClickListener eventClickListner;
     View events_layout;
+    TextView description;
+    String selectedEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,18 +59,22 @@ public class Events extends ActionBarActivity {
         categoriesList = (ListView) findViewById(R.id.categories);
         rightForeground = findViewById(R.id.right_foreground);
         events_layout= findViewById(R.id.events_layout);
+
+        description= (TextView) findViewById(R.id.description);
         eventClickListner = new AdapterView.OnItemClickListener() {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 // previously invisible view
                 TextView textView= (TextView) view;
+
                 for(int i=0;i<parent.getChildCount();i++)
                     setSelectedDesign((TextView) parent.getChildAt(i),true);
                 setSelectedDesign(textView, false);
 
 // get the center for the clipping circle
-
+                selectedEvent=textView.getText().toString();
+                heading.setText(selectedEvent);
                 AlphaAnimation fadeOut = new AlphaAnimation(1.0f, 0.0f);
                 fadeOut.setAnimationListener(new Animation.AnimationListener() {
                     @Override
@@ -94,10 +100,37 @@ public class Events extends ActionBarActivity {
                 categoriesList.setOnItemClickListener(null);
                 eventsList.setOnItemClickListener(null);
                 scaleAnim.setDuration(1200);
+                scaleAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        Log.d("Scale","Stopped");
+                        AlphaAnimation newfadeIn;
+                        newfadeIn = new AlphaAnimation(0.0f, 1.0f);
+                        newfadeIn.setDuration(500);
+                        newfadeIn.setFillAfter(true);
+
+                        description.setVisibility(View.VISIBLE);
+                        description.startAnimation(newfadeIn);
+                        Log.d("Fade In description","Started");
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
                 rightForeground.startAnimation(scaleAnim);
                 events_layout.startAnimation(fadeOut);
 // make the view visible and start the animation
                 rightForeground.setVisibility(View.VISIBLE);
+
                 //anim.start();
 
 
@@ -150,7 +183,7 @@ public class Events extends ActionBarActivity {
         heading = (TextView) findViewById(R.id.events_heading);
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
-
+        description.setTypeface(tf);
 
 
 //        heading.startAnimation(fadeIn);
@@ -160,18 +193,19 @@ public class Events extends ActionBarActivity {
     }
 
     public void backPressed(View view) {
-        Animation shrinkAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shrink);
+        final Animation shrinkAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shrink);
         categoriesList.setOnItemClickListener(null);
         shrinkAnim.setDuration(1200);
-        AlphaAnimation fadeIn;
+        final AlphaAnimation fadeIn;
         fadeIn = new AlphaAnimation(0.0f, 1.0f);
         fadeIn.setDuration(500);
         fadeIn.setFillAfter(true);
-        events_layout.startAnimation(fadeIn);
-
-
-        rightForeground.startAnimation(shrinkAnim);
-        shrinkAnim.setAnimationListener(new Animation.AnimationListener() {
+        AlphaAnimation fadeOut;
+        fadeOut = new AlphaAnimation(1.0f,0.0f);
+        fadeOut.setDuration(500);
+        heading.setText("events");
+       // fadeOut.setFillAfter(true);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
 
@@ -179,10 +213,31 @@ public class Events extends ActionBarActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                eventsList.setOnItemClickListener(eventClickListner);
-                categoriesList.setOnItemClickListener(categoryClickListner);
-                rightForeground.setVisibility(View.INVISIBLE);
+                description.setVisibility(View.GONE);
+                events_layout.startAnimation(fadeIn);
 
+
+                rightForeground.startAnimation(shrinkAnim);
+                shrinkAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        eventsList.setOnItemClickListener(eventClickListner);
+                        categoriesList.setOnItemClickListener(categoryClickListner);
+                        rightForeground.setVisibility(View.INVISIBLE);
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                rightForeground.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -190,7 +245,9 @@ public class Events extends ActionBarActivity {
 
             }
         });
-        rightForeground.setVisibility(View.VISIBLE);
+     description.startAnimation(fadeOut);
+
+
 
     }
 
