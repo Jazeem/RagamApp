@@ -17,6 +17,10 @@ import android.view.ViewGroup;
 import android.os.Build;
 
 import com.clusterdev.ragam.R;
+import com.viewpagerindicator.CirclePageIndicator;
+import com.viewpagerindicator.IconPageIndicator;
+import com.viewpagerindicator.LinePageIndicator;
+import com.viewpagerindicator.UnderlinePageIndicator;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -52,6 +56,8 @@ public class Contents extends FragmentActivity {
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(intent.getIntExtra("FRAGMENT",0));
+       LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.titles);
+        indicator.setViewPager(mPager);
     }
 
     @Override
