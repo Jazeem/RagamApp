@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +31,7 @@ import java.util.ArrayList;
  */
 public class WorkshopFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+
     private TextView heading,description;
     private ListView list;
     private ArrayList<String> words;
@@ -39,8 +39,8 @@ public class WorkshopFragment extends Fragment {
     private Typeface tf;
     private boolean openingForFirstTime;
 
-    public static WorkshopFragment newInstance(String param1, String param2) {
-        WorkshopFragment fragment = new WorkshopFragment();
+    public static Fragment newInstance() {
+        Fragment fragment = new WorkshopFragment();
 
         return fragment;
     }
@@ -174,26 +174,19 @@ public class WorkshopFragment extends Fragment {
 
 
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+
     }
 
     /**

@@ -30,6 +30,7 @@
         <activity
             android:name=".Contents"
             android:label="@string/title_activity_contents" >
+
         </activity>
     </application>
 

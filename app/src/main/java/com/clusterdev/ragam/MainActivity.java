@@ -53,15 +53,18 @@ public class MainActivity extends ActionBarActivity {
         switch(view.getId()){
 
             case R.id.events :
-                intent=new Intent(MainActivity.this,Events.class);
+                intent=new Intent(MainActivity.this,Contents.class);
+                intent.putExtra("FRAGMENT",0);
                 startActivity(intent);
                 break;
             case R.id.workshops :
-                intent=new Intent(MainActivity.this,Workshop.class);
+                intent=new Intent(MainActivity.this,Contents.class);
+                intent.putExtra("FRAGMENT",1);
                 startActivity(intent);
                 break;
             case R.id.proshows :
-                intent=new Intent(MainActivity.this,Gallery.class);
+                intent=new Intent(MainActivity.this,Contents.class);
+                intent.putExtra("FRAGMENT",2);
                 startActivity(intent);
                 break;
             default:

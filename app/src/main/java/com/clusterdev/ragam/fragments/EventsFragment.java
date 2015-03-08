@@ -17,6 +17,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -56,13 +57,13 @@ public class EventsFragment extends Fragment {
     View events_layout;
     TextView description;
     String selectedEvent;
-
+    View backButton;
+    boolean isEventSelected=false;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
 
 
     public static Fragment newInstance() {
@@ -83,6 +84,7 @@ public class EventsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 // previously invisible view
+
                 TextView textView= (TextView) view;
 
                 for(int i=0;i<parent.getChildCount();i++)
@@ -134,6 +136,7 @@ public class EventsFragment extends Fragment {
                         description.setVisibility(View.VISIBLE);
                         description.startAnimation(newfadeIn);
                         Log.d("Fade In description","Started");
+                        isEventSelected=true;
 
                     }
 
@@ -201,7 +204,13 @@ public class EventsFragment extends Fragment {
         categoriesList = (ListView) v.findViewById(R.id.categories);
         rightForeground = v.findViewById(R.id.right_foreground);
         events_layout= v.findViewById(R.id.events_layout);
-
+        backButton=v.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backPressed();
+            }
+        });
         description= (TextView) v.findViewById(R.id.description);
         eventsList.setOnItemClickListener(eventClickListner);
         categoriesList.setOnItemClickListener(categoryClickListner);
@@ -227,26 +236,19 @@ public class EventsFragment extends Fragment {
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+
     }
 
     /**
@@ -314,6 +316,68 @@ public class EventsFragment extends Fragment {
 
 
     }
+    public void backPressed() {
+        if(!isEventSelected)
+            return;
+        isEventSelected=false;
+        final Animation shrinkAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.shrink);
+        categoriesList.setOnItemClickListener(null);
+        shrinkAnim.setDuration(1200);
+        final AlphaAnimation fadeIn;
+        fadeIn = new AlphaAnimation(0.0f, 1.0f);
+        fadeIn.setDuration(500);
+        fadeIn.setFillAfter(true);
+        AlphaAnimation fadeOut;
+        fadeOut = new AlphaAnimation(1.0f,0.0f);
+        fadeOut.setDuration(500);
+        heading.setText("events");
+        // fadeOut.setFillAfter(true);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                description.setVisibility(View.GONE);
+                events_layout.startAnimation(fadeIn);
+
+
+                rightForeground.startAnimation(shrinkAnim);
+                shrinkAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        eventsList.setOnItemClickListener(eventClickListner);
+                        categoriesList.setOnItemClickListener(categoryClickListner);
+                        rightForeground.setVisibility(View.INVISIBLE);
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                rightForeground.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        description.startAnimation(fadeOut);
+
+
+
+    }
+
 
     private void setSelectedDesign(TextView view, boolean selected) {
 

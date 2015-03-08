@@ -112,11 +112,12 @@
         android:layout_marginBottom="@dimen/logo_white_marginBottom">
 
         <View
+            android:id="@+id/back_button"
             android:layout_width="@dimen/logo_white_width"
             android:layout_height="@dimen/logo_white_height"
             android:layout_gravity="center_horizontal|center_vertical"
             android:background="@drawable/circle"
-            android:onClick="backPressed" />
+        />
 
         <ImageView
             android:layout_width="@dimen/logo_white_width"
