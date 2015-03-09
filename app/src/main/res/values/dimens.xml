@@ -54,6 +54,6 @@
     <dimen name="line_margin_top">133dp</dimen>
     <dimen name="events_categories_margin_top">173.5dp</dimen>
     <dimen name="events_list_item_padding_bottom">3dp</dimen>
-    <dimen name="events_list_item_line_spacing">-10dp</dimen>
+    <dimen name="events_list_item_line_spacing">0dp</dimen>
 
 </resources>

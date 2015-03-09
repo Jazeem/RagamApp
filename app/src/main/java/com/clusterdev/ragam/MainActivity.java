@@ -4,18 +4,28 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
+
+import com.nvanbenschoten.motion.ParallaxImageView;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private TextView tv1,tv2,event,exhibition,proshow,workshop;
     private SlidingDrawer drawer;
+    private ParallaxImageView background,logo;
+    private Button slideDown;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +34,51 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         //tv1= (TextView) findViewById(R.id.textView);
         //tv2= (TextView) findViewById(R.id.textView2);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics ();
+        display.getMetrics(outMetrics);
+
+        float density  = getResources().getDisplayMetrics().density;
+        final float dpHeight = outMetrics.heightPixels / density;
+
+
+
+        background= (ParallaxImageView) findViewById(R.id.main_bg);
+        logo= (ParallaxImageView) findViewById(R.id.logo);
         event= (TextView) findViewById(R.id.event_textview);
         exhibition= (TextView) findViewById(R.id.exhibition_textview);
         proshow= (TextView) findViewById(R.id.proshow_textview);
         workshop= (TextView) findViewById(R.id.workshop_textview);
         drawer= (SlidingDrawer) findViewById(R.id.slidingDrawer);
+        //slideDown= (Button) findViewById(R.id.slide_down);
+        /*slideDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("test","inside button");
+                TranslateAnimation translateAnimation = new TranslateAnimation(0,0, Animation.RELATIVE_TO_SELF,dpHeight+logo.getHeight());
+                translateAnimation.setDuration(1000);
+                translateAnimation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        logo.unregisterSensorManager();
+                        logo.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                logo.startAnimation(translateAnimation);
+            }
+        });*/
+        //drawer.setVisibility(View.GONE);
         Typeface tf=Typeface.createFromAsset(getAssets(),"fonts/HelveticaNeue-Thin.otf");
         //tv1.setTypeface(tf);
         //tv2.setTypeface(tf);
@@ -36,7 +86,9 @@ public class MainActivity extends ActionBarActivity {
         exhibition.setTypeface(tf);
         proshow.setTypeface(tf);
         workshop.setTypeface(tf);
-
+        background.registerSensorManager();
+        logo.registerSensorManager();
+        logo.setParallaxIntensity((float)1.1);
 
         drawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
             @Override
