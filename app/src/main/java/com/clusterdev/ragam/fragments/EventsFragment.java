@@ -1,38 +1,45 @@
-package com.clusterdev.ragam;
+package com.clusterdev.ragam.fragments;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Context;
+import android.app.Activity;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
-import android.provider.ContactsContract;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CursorAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.clusterdev.ragam.CustomCursorAdapter;
+import com.clusterdev.ragam.DataBaseHelper;
+import com.clusterdev.ragam.R;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-
-public class Events extends ActionBarActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link EventsFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link EventsFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class EventsFragment extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
     ListView eventsList;
     ListView categoriesList;
     DataBaseHelper db;
@@ -50,25 +57,34 @@ public class Events extends ActionBarActivity {
     View events_layout;
     TextView description;
     String selectedEvent;
+    View backButton;
+    boolean isEventSelected=false;
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+
+
+    public static Fragment newInstance() {
+        Fragment fragment = new EventsFragment();
+        return fragment;
+    }
+
+    public EventsFragment() {
+        // Required empty public constructor
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_events);
 
-        eventsList = (ListView) findViewById(R.id.events);
-        categoriesList = (ListView) findViewById(R.id.categories);
-        rightForeground = findViewById(R.id.right_foreground);
-        events_layout= findViewById(R.id.events_layout);
-
-        description= (TextView) findViewById(R.id.description);
         eventClickListner = new AdapterView.OnItemClickListener() {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 // previously invisible view
+
                 TextView textView= (TextView) view;
 
                 for(int i=0;i<parent.getChildCount();i++)
@@ -99,7 +115,7 @@ public class Events extends ActionBarActivity {
                 fadeOut.setDuration(500);
                 fadeOut.setFillAfter(true);
 
-                Animation scaleAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);
+                Animation scaleAnim = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.scale);
                 categoriesList.setOnItemClickListener(null);
                 eventsList.setOnItemClickListener(null);
                 scaleAnim.setDuration(1200);
@@ -111,7 +127,7 @@ public class Events extends ActionBarActivity {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        Log.d("Scale","Stopped");
+                        Log.d("Scale", "Stopped");
                         AlphaAnimation newfadeIn;
                         newfadeIn = new AlphaAnimation(0.0f, 1.0f);
                         newfadeIn.setDuration(500);
@@ -120,6 +136,7 @@ public class Events extends ActionBarActivity {
                         description.setVisibility(View.VISIBLE);
                         description.startAnimation(newfadeIn);
                         Log.d("Fade In description","Started");
+                        isEventSelected=true;
 
                     }
 
@@ -161,11 +178,8 @@ public class Events extends ActionBarActivity {
             }
 
         };
-        eventsList.setOnItemClickListener(eventClickListner);
-        categoriesList.setOnItemClickListener(categoryClickListner);
 
-
-        db = new DataBaseHelper(this);
+        db = new DataBaseHelper(getActivity());
 
         try {
             db.createDataBase();
@@ -176,15 +190,39 @@ public class Events extends ActionBarActivity {
         db.openDataBase();
         categoryCursor = db.getGenres("COMPETITIONS");
 
-        eventsAdapter = new CustomCursorAdapter(this, null, true);
-        categoriesAdapter = new CustomCursorAdapter(this, categoryCursor, false);
+        eventsAdapter = new CustomCursorAdapter(getActivity(), null, true);
+        categoriesAdapter = new CustomCursorAdapter(getActivity(), categoryCursor, false);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v=inflater.inflate(R.layout.fragment_events, container, false);
+        eventsList = (ListView) v.findViewById(R.id.events);
+        categoriesList = (ListView) v.findViewById(R.id.categories);
+        rightForeground = v.findViewById(R.id.right_foreground);
+        events_layout= v.findViewById(R.id.events_layout);
+        backButton=v.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backPressed();
+            }
+        });
+        description= (TextView) v.findViewById(R.id.description);
+        eventsList.setOnItemClickListener(eventClickListner);
+        categoriesList.setOnItemClickListener(categoryClickListner);
+
+
 
 
         eventsList.setAdapter(eventsAdapter);
         categoriesList.setAdapter(categoriesAdapter);
 
-        heading = (TextView) findViewById(R.id.events_heading);
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeue-Thin.otf");
+        heading = (TextView) v.findViewById(R.id.events_heading);
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
         description.setTypeface(tf);
 
@@ -193,65 +231,39 @@ public class Events extends ActionBarActivity {
 //        heading.setVisibility(View.VISIBLE);
 
 
+        return v;
     }
 
-    public void backPressed(View view) {
-        final Animation shrinkAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shrink);
-        categoriesList.setOnItemClickListener(null);
-        shrinkAnim.setDuration(1200);
-        final AlphaAnimation fadeIn;
-        fadeIn = new AlphaAnimation(0.0f, 1.0f);
-        fadeIn.setDuration(500);
-        fadeIn.setFillAfter(true);
-        AlphaAnimation fadeOut;
-        fadeOut = new AlphaAnimation(1.0f,0.0f);
-        fadeOut.setDuration(500);
-        heading.setText("events");
-       // fadeOut.setFillAfter(true);
-        fadeOut.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
 
-            }
+    }
 
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                description.setVisibility(View.GONE);
-                events_layout.startAnimation(fadeIn);
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
 
+    }
 
-                rightForeground.startAnimation(shrinkAnim);
-                shrinkAnim.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
+    @Override
+    public void onDetach() {
+        super.onDetach();
 
-                    }
+    }
 
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        eventsList.setOnItemClickListener(eventClickListner);
-                        categoriesList.setOnItemClickListener(categoryClickListner);
-                        rightForeground.setVisibility(View.INVISIBLE);
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-                rightForeground.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-     description.startAnimation(fadeOut);
-
-
-
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p/>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        public void onFragmentInteraction(Uri uri);
     }
 
     private void setSelected(TextView view, boolean selected) {
@@ -304,6 +316,68 @@ public class Events extends ActionBarActivity {
 
 
     }
+    public void backPressed() {
+        if(!isEventSelected)
+            return;
+        isEventSelected=false;
+        final Animation shrinkAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.shrink);
+        categoriesList.setOnItemClickListener(null);
+        shrinkAnim.setDuration(1200);
+        final AlphaAnimation fadeIn;
+        fadeIn = new AlphaAnimation(0.0f, 1.0f);
+        fadeIn.setDuration(500);
+        fadeIn.setFillAfter(true);
+        AlphaAnimation fadeOut;
+        fadeOut = new AlphaAnimation(1.0f,0.0f);
+        fadeOut.setDuration(500);
+        heading.setText("events");
+        // fadeOut.setFillAfter(true);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                description.setVisibility(View.GONE);
+                events_layout.startAnimation(fadeIn);
+
+
+                rightForeground.startAnimation(shrinkAnim);
+                shrinkAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        eventsList.setOnItemClickListener(eventClickListner);
+                        categoriesList.setOnItemClickListener(categoryClickListner);
+                        rightForeground.setVisibility(View.INVISIBLE);
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                rightForeground.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        description.startAnimation(fadeOut);
+
+
+
+    }
+
 
     private void setSelectedDesign(TextView view, boolean selected) {
 
@@ -320,7 +394,7 @@ public class Events extends ActionBarActivity {
     private void fadeIn() {
 
         eventsCursor = db.getEventsByGenre(category);
-        eventsAdapter=new CustomCursorAdapter(this, eventsCursor,true);
+        eventsAdapter=new CustomCursorAdapter(getActivity(), eventsCursor,true);
         eventsList.setAdapter(eventsAdapter);
         customFadeIn = new AlphaAnimation(0.0f, 1.0f);
         customFadeIn.setDuration(500);
@@ -330,6 +404,4 @@ public class Events extends ActionBarActivity {
 
     }
 
-
 }
-

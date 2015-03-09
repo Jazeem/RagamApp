@@ -24,4 +24,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile project(':libs:parallax')
     compile 'com.nvanbenschoten.motion:library:1.0.2'
+    compile 'com.viewpagerindicator:library:2.4.1@aar'
 }
