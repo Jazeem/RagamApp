@@ -61,5 +61,23 @@
     <dimen name="dropdown_seperator_width">250dp</dimen>
     <dimen name="dropdown_seperator_height">2dp</dimen>
     <dimen name="slidingdrawer_height">437dp</dimen>
+    <dimen name="pro_show_name_width">150dp</dimen>
+    <dimen name="pro_show_name_height">30dp</dimen>
+    <dimen name="pro_show_title_size">15dp</dimen>
+    <dimen name="pro_show_head_dimension">150dp</dimen>
+    <dimen name="pro_show_text_size_1">60dp</dimen>
+    <dimen name="pro_show_margin_1">50dp</dimen>
+    <dimen name="pro_show_margin_2">75dp</dimen>
+    <dimen name="pro_show_name_size">30dp</dimen>
+    <dimen name="pro_show_name_margin">20dp</dimen>
+    <dimen name="pro_show_margin_3">100dp</dimen>
+    <dimen name="pro_show_margin_4">30dp</dimen>
+    <dimen name="pro_show_margin_5">60dp</dimen>
+    <dimen name="pro_show_text_size_2">28dp</dimen>
+    <dimen name="pro_show_margin_6">6dp</dimen>
+    <dimen name="pro_show_text_size_3">12dp</dimen>
+    <dimen name="pro_show_desc_1">200dp</dimen>
+    <dimen name="pro_show_desc_padding">25dp</dimen>
+
 
 </resources>

@@ -8,11 +8,12 @@ import com.clusterdev.ragam.fragments.CelebrityTalkFragment;
 import com.clusterdev.ragam.fragments.EventsFragment;
 import com.clusterdev.ragam.fragments.ExhibitionFragment;
 import com.clusterdev.ragam.fragments.GalleryFragment;
+import com.clusterdev.ragam.fragments.ProShowFragment;
 import com.clusterdev.ragam.fragments.WorkshopFragment;
 
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-    private int NUM_PAGES = 5;
+    private int NUM_PAGES = 6;
 
     public ScreenSlidePagerAdapter(FragmentManager fm) {
         super(fm);
@@ -32,10 +33,10 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
             case 3:
                 return CelebrityTalkFragment.newInstance();
 
-            /*case 4:
-                return ProShow.newInstance();*/
-
             case 4:
+                return ProShowFragment.newInstance();
+
+            case 5:
                 return GalleryFragment.newInstance();
 
             default:

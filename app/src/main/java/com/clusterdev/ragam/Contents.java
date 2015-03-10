@@ -58,6 +58,7 @@ public class Contents extends FragmentActivity {
         mPager.setCurrentItem(intent.getIntExtra("FRAGMENT",0));
        LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.titles);
         indicator.setViewPager(mPager);
+        indicator.setCurrentItem(intent.getIntExtra("FRAGMENT",0));
     }
 
     @Override

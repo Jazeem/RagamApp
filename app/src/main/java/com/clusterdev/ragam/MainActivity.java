@@ -149,9 +149,15 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
                 break;
 
-            case R.id.dropdown_tv6 :
+            case R.id.dropdown_tv5 :
                 intent=new Intent(MainActivity.this,Contents.class);
                 intent.putExtra("FRAGMENT",4);
+                startActivity(intent);
+                break;
+
+            case R.id.dropdown_tv6 :
+                intent=new Intent(MainActivity.this,Contents.class);
+                intent.putExtra("FRAGMENT",5);
                 startActivity(intent);
                 break;
             default:
