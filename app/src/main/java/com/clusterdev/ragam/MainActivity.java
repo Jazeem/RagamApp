@@ -22,7 +22,7 @@ import com.nvanbenschoten.motion.ParallaxImageView;
 
 public class MainActivity extends ActionBarActivity {
 
-    private TextView tv1,tv2,event,exhibition,proshow,workshop;
+    private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,event,exhibition,proshow,workshop;
     private SlidingDrawer drawer;
     private ParallaxImageView background,logo;
     private Button slideDown;
@@ -32,8 +32,13 @@ public class MainActivity extends ActionBarActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        //tv1= (TextView) findViewById(R.id.textView);
-        //tv2= (TextView) findViewById(R.id.textView2);
+        tv1= (TextView) findViewById(R.id.dropdown_tv1);
+        tv2= (TextView) findViewById(R.id.dropdown_tv2);
+        tv3= (TextView) findViewById(R.id.dropdown_tv3);
+        tv4= (TextView) findViewById(R.id.dropdown_tv4);
+        tv5= (TextView) findViewById(R.id.dropdown_tv5);
+        tv6= (TextView) findViewById(R.id.dropdown_tv6);
+        tv7= (TextView) findViewById(R.id.dropdown_tv7);
 
         Display display = getWindowManager().getDefaultDisplay();
         DisplayMetrics outMetrics = new DisplayMetrics ();
@@ -46,10 +51,7 @@ public class MainActivity extends ActionBarActivity {
 
         background= (ParallaxImageView) findViewById(R.id.main_bg);
         logo= (ParallaxImageView) findViewById(R.id.logo);
-        event= (TextView) findViewById(R.id.event_textview);
-        exhibition= (TextView) findViewById(R.id.exhibition_textview);
-        proshow= (TextView) findViewById(R.id.proshow_textview);
-        workshop= (TextView) findViewById(R.id.workshop_textview);
+
         drawer= (SlidingDrawer) findViewById(R.id.slidingDrawer);
         //slideDown= (Button) findViewById(R.id.slide_down);
         /*slideDown.setOnClickListener(new View.OnClickListener() {
@@ -80,43 +82,76 @@ public class MainActivity extends ActionBarActivity {
         });*/
         //drawer.setVisibility(View.GONE);
         Typeface tf=Typeface.createFromAsset(getAssets(),"fonts/HelveticaNeue-Thin.otf");
-        //tv1.setTypeface(tf);
-        //tv2.setTypeface(tf);
-        event.setTypeface(tf);
-        exhibition.setTypeface(tf);
-        proshow.setTypeface(tf);
-        workshop.setTypeface(tf);
+        tv1.setTypeface(tf);
+        tv2.setTypeface(tf);
+        tv3.setTypeface(tf);
+        tv4.setTypeface(tf);
+        tv5.setTypeface(tf);
+        tv6.setTypeface(tf);
+        tv7.setTypeface(tf);
+
         background.registerSensorManager();
         logo.registerSensorManager();
-        logo.setParallaxIntensity((float)1.1);
+        logo.setParallaxIntensity((float)1.05);
 
         drawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
             @Override
             public void onDrawerOpened() {
+                findViewById(R.id.pullup_button).setRotation(180);
+            }
 
+        });
+        drawer.setOnDrawerCloseListener(new SlidingDrawer.OnDrawerCloseListener() {
+            @Override
+            public void onDrawerClosed() {
+                findViewById(R.id.pullup_button).setRotation(0);
             }
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        logo.registerSensorManager();
+        background.registerSensorManager();
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        logo.unregisterSensorManager();
+        background.unregisterSensorManager();
+    }
 
     public void pageSelected(View view){
+        Log.v("test","im here");
         Intent intent;
         switch(view.getId()){
 
-            case R.id.events :
+            case R.id.dropdown_tv1 :
                 intent=new Intent(MainActivity.this,Contents.class);
                 intent.putExtra("FRAGMENT",0);
                 startActivity(intent);
                 break;
-            case R.id.workshops :
+            case R.id.dropdown_tv2 :
                 intent=new Intent(MainActivity.this,Contents.class);
                 intent.putExtra("FRAGMENT",1);
                 startActivity(intent);
                 break;
-            case R.id.proshows :
+            case R.id.dropdown_tv3 :
                 intent=new Intent(MainActivity.this,Contents.class);
                 intent.putExtra("FRAGMENT",2);
+                startActivity(intent);
+                break;
+            case R.id.dropdown_tv4 :
+                intent=new Intent(MainActivity.this,Contents.class);
+                intent.putExtra("FRAGMENT",3);
+                startActivity(intent);
+                break;
+
+            case R.id.dropdown_tv6 :
+                intent=new Intent(MainActivity.this,Contents.class);
+                intent.putExtra("FRAGMENT",4);
                 startActivity(intent);
                 break;
             default:

@@ -41,7 +41,7 @@
                     android:layout_marginRight="@dimen/heading_margin_right"
                     android:layout_above="@+id/events_line"
                     android:gravity="end"
-                    android:text="events"
+                    android:text="competitions"
                     android:textColor="@color/white"
                     android:textSize="@dimen/heading_font_size" />
 

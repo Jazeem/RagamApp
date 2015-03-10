@@ -24,29 +24,32 @@
 
     <SlidingDrawer
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/slidingdrawer_height"
+        android:id="@+id/slidingDrawer"
         android:content="@+id/content2"
         android:handle="@+id/handle2"
         android:orientation="vertical"
         android:rotation="180">
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dropdown_item_width"
+            android:layout_height="@dimen/dropdown_item_height"
+            android:background="@color/dropdown_bg"
             android:id="@+id/handle2">
-            <Button
-                android:layout_width="25dp"
-                android:layout_height="15dp"
-                android:background="@drawable/down_arrow"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="15dp"
-                android:rotation="180"
-                />
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="15dp"
+                    android:id="@+id/pullup_button"
+                    android:background="@drawable/pullup"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp"
+
+                    />
             </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/content2"
             android:rotation="180"
             >
@@ -54,194 +57,117 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
                 >
+                <View
+                    android:layout_width="@dimen/dropdown_item_width"
+                    android:layout_height="@dimen/dropdown_item_start"
+                    android:background="@color/dropdown_bg"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="COMPETITIONS"
+                    android:layout_width="@dimen/dropdown_item_width"
+                    android:layout_height="@dimen/dropdown_item_height"
+                    android:id="@+id/dropdown_tv1"
+                    android:background="@color/dropdown_bg"
+                    android:text="competitions"
                     android:textSize="30dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:onClick="pageSelected"
+                    android:clickable="true"
+                    android:gravity="center_horizontal|center_vertical"/>
+                <View
+                    android:layout_width="@dimen/dropdown_seperator_width"
+                    android:layout_height="@dimen/dropdown_seperator_height"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/dropdown_seperator"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="WORKSHOPS"
+                    android:layout_width="@dimen/dropdown_item_width"
+                    android:layout_height="@dimen/dropdown_item_height"
+                    android:background="@color/dropdown_bg"
+                    android:id="@+id/dropdown_tv2"
+                    android:text="workshops"
                     android:textSize="30dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:clickable="true"
+                    android:onClick="pageSelected"
+                    android:gravity="center_horizontal|center_vertical"/>
+                <View
+                    android:layout_width="@dimen/dropdown_seperator_width"
+                    android:layout_height="@dimen/dropdown_seperator_height"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/dropdown_seperator"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EXHIBITIONS"
+                    android:layout_width="@dimen/dropdown_item_width"
+                    android:layout_height="@dimen/dropdown_item_height"
+                    android:background="@color/dropdown_bg"
+                    android:id="@+id/dropdown_tv3"
+                    android:text="exhibitions"
                     android:textSize="30dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:clickable="true"
+                    android:onClick="pageSelected"
+                    android:gravity="center_horizontal|center_vertical"/>
+                <View
+                    android:layout_width="@dimen/dropdown_seperator_width"
+                    android:layout_height="@dimen/dropdown_seperator_height"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/dropdown_seperator"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CELEBRITY TALKS"
+                    android:layout_width="@dimen/dropdown_item_width"
+                    android:layout_height="@dimen/dropdown_item_height"
+                    android:background="@color/dropdown_bg"
+                    android:id="@+id/dropdown_tv4"
+                    android:text="celebrity talks"
                     android:textSize="30dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:clickable="true"
+                    android:onClick="pageSelected"
+                    android:gravity="center_horizontal|center_vertical"/>
+                <View
+                    android:layout_width="@dimen/dropdown_seperator_width"
+                    android:layout_height="@dimen/dropdown_seperator_height"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/dropdown_seperator"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PRO SHOWS"
+                    android:layout_width="@dimen/dropdown_item_width"
+                    android:layout_height="@dimen/dropdown_item_height"
+                    android:background="@color/dropdown_bg"
+                    android:id="@+id/dropdown_tv5"
+                    android:text="pro shows"
                     android:textSize="30dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:clickable="true"
+                    android:onClick="pageSelected"
+                    android:gravity="center_horizontal|center_vertical"/>
+                <View
+                    android:layout_width="@dimen/dropdown_seperator_width"
+                    android:layout_height="@dimen/dropdown_seperator_height"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/dropdown_seperator"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="GALLERY"
+                    android:layout_width="@dimen/dropdown_item_width"
+                    android:layout_height="@dimen/dropdown_item_height"
+                    android:background="@color/dropdown_bg"
+                    android:id="@+id/dropdown_tv6"
+                    android:text="gallery"
                     android:textSize="30dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:clickable="true"
+                    android:onClick="pageSelected"
+                    android:gravity="center_horizontal|center_vertical"/>
+                <View
+                    android:layout_width="@dimen/dropdown_seperator_width"
+                    android:layout_height="@dimen/dropdown_seperator_height"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/dropdown_seperator"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ABOUT"
+                    android:layout_width="@dimen/dropdown_item_width"
+                    android:layout_height="@dimen/dropdown_item_height"
+                    android:background="@color/dropdown_bg"
+                    android:id="@+id/dropdown_tv7"
+                    android:text="about us"
                     android:textSize="30dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:clickable="true"
+                    android:onClick="pageSelected"
+                    android:gravity="center_horizontal"/>
                 </LinearLayout>
         </RelativeLayout>
         </SlidingDrawer>
 
-    <SlidingDrawer
-        android:id="@+id/slidingDrawer"
-        android:layout_width="@dimen/content_width"
-        android:layout_height="wrap_content"
 
-        android:content="@+id/content"
-        android:handle="@+id/handle"
-        android:orientation="horizontal"
-        android:rotation="180">
-
-        <LinearLayout
-            android:id="@+id/handle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="@dimen/handle_clickarea_width"
-                android:layout_height="@dimen/handle_clickarea_height" />
-
-            <LinearLayout
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="@dimen/handle_width"
-                    android:layout_height="@dimen/handle_height"
-                    android:background="@drawable/exhibition_handle_shape" />
-
-                <View
-                    android:layout_width="@dimen/handle_width"
-                    android:layout_height="@dimen/handle_height"
-
-                    android:background="@drawable/proshow_handle_shape" />
-
-                <View
-                    android:layout_width="@dimen/handle_width"
-                    android:layout_height="@dimen/handle_height"
-
-                    android:background="@drawable/workshop_handle_shape" />
-
-                <View
-                    android:layout_width="@dimen/handle_width"
-                    android:layout_height="@dimen/handle_height"
-
-                    android:background="@drawable/event_handle_shape" />
-
-
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/content"
-            android:layout_width="@dimen/content_width"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:rotation="180">
-
-            <FrameLayout
-                android:onClick="pageSelected"
-                android:id="@+id/events"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <View
-                    android:layout_width="@dimen/content_width"
-                    android:layout_height="@dimen/handle_height"
-                    android:background="@drawable/event_content_shape" />
-                <TextView
-                    android:id="@+id/event_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EVENTS"
-                    android:layout_gravity="center_vertical|right"
-                    android:textColor="@android:color/white"
-                    android:paddingRight="@dimen/handle_width"/>
-            </FrameLayout>
-            <FrameLayout
-                android:onClick="pageSelected"
-                android:id="@+id/workshops"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:id="@+id/workshop_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="WORKSHOPS"
-                    android:layout_gravity="center_vertical|right"
-                    android:textColor="@android:color/white"
-                    android:paddingRight="@dimen/handle_width"/>
-                <View
-                    android:layout_width="@dimen/content_width"
-                    android:layout_height="@dimen/handle_height"
-                    android:background="@drawable/workshop_content_shape" />
-            </FrameLayout>
-            <FrameLayout
-                android:onClick="pageSelected"
-                android:id="@+id/proshows"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:id="@+id/proshow_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PROSHOWS"
-                    android:layout_gravity="center_vertical|right"
-                    android:textColor="@android:color/white"
-                    android:paddingRight="@dimen/handle_width"/>
-                <View
-                    android:layout_width="@dimen/content_width"
-                    android:layout_height="@dimen/handle_height"
-                    android:background="@drawable/proshow_content_shape" />
-            </FrameLayout>
-            <FrameLayout
-                android:onClick="pageSelected"
-                android:id="@+id/exhibitions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:id="@+id/exhibition_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EXHIBITIONS"
-                    android:layout_gravity="center_vertical|right"
-                    android:textColor="@android:color/white"
-                    android:paddingRight="@dimen/handle_width"/>
-                <View
-                    android:layout_width="@dimen/content_width"
-                    android:layout_height="@dimen/handle_height"
-                    android:background="@drawable/exhibition_content_shape" />
-            </FrameLayout>
-        </LinearLayout>
-    </SlidingDrawer>
 
 
 </RelativeLayout>

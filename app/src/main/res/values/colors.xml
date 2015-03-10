@@ -3,7 +3,7 @@
     <color name="bg_app">#2d2d2d</color>
     <color name="events_color">#4a52b5</color>
     <color name="white">#ffffff</color>
-    <color name="exhibition_color">#fef7c4</color>
+    <color name="exhibition_color">#80CEB9</color>
     <color name="proshow_color">#9ad7d5</color>
     <color name="workshop_color">#0e344d</color>
     <color name="event_color_dim">#2f189995</color>
@@ -15,5 +15,8 @@
     <color name="workshop_row_odd">#dee4e5</color>
     <color name="workshop_row_text">#1a465f</color>
     <color name="workshop_row_even">#e7ebec</color>
+    <color name="dropdown_bg">#a6f7f7f7</color>
+    <color name="dropdown_seperator">#76c0c0bd</color>
+    <color name="celebrity_talk_color">#BDB69C</color>
 
 </resources>
