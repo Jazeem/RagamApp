@@ -4,7 +4,10 @@
     <color name="events_color">#4a52b5</color>
     <color name="white">#ffffff</color>
     <color name="exhibition_color">#80CEB9</color>
-    <color name="proshow_color">#c6c6c6</color>
+    <color name="proshow_color">#cbcbcb</color>
+    <color name="proshow_color1">#398fb7</color>
+    <color name="proshow_color2">#39b79e</color>
+    <color name="proshow_color3">#e07070</color>
     <color name="workshop_color">#0e344d</color>
     <color name="event_color_dim">#2f189995</color>
     <color name="exhibition_color_dim">#2ffef7c4</color>
@@ -20,5 +23,6 @@
     <color name="celebrity_talk_color">#BDB69C</color>
 
     <color name="hex_border">#0c0c0c</color>
+    <color name="proshow_color_top">#282822</color>
 
 </resources>

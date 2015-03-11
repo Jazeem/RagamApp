@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             android:src="@drawable/proshow_bg" />
         <couk.jenxsol.parallaxscrollview.views.ObservableScrollView
             android:layout_width="match_parent"
@@ -25,10 +25,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/observable_scroll"
                 android:orientation="vertical" >
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/pro_show_margin_1"
-                    android:background="@android:color/white"/>
+                    android:background="@color/proshow_color_top"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -38,12 +39,12 @@
                     android:textColor="@color/proshow_color"
                     android:gravity="center_horizontal"
                     android:layout_gravity="center_horizontal"
-                    android:background="@android:color/white"
+                    android:background="@color/proshow_color_top"
                     />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/pro_show_margin_2"
-                    android:background="@android:color/white"/>
+                    android:background="@color/proshow_color_top"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,7 +70,7 @@
                     <View
                         android:layout_width="@dimen/pro_show_margin_5"
                         android:layout_height="@dimen/pro_show_margin_5"
-                        android:background="@drawable/circle_grey"
+                        android:background="@drawable/circle_red"
                         android:layout_gravity="center_horizontal"
                         />
                     <LinearLayout
@@ -141,7 +142,7 @@
                     <View
                         android:layout_width="@dimen/pro_show_margin_5"
                         android:layout_height="@dimen/pro_show_margin_5"
-                        android:background="@drawable/circle_grey"
+                        android:background="@drawable/circle_blue"
                         android:layout_gravity="center_horizontal"
                         />
                     <LinearLayout
@@ -213,7 +214,7 @@
                     <View
                         android:layout_width="@dimen/pro_show_margin_5"
                         android:layout_height="@dimen/pro_show_margin_5"
-                        android:background="@drawable/circle_grey"
+                        android:background="@drawable/circle_green"
                         android:layout_gravity="center_horizontal"
                         />
                     <LinearLayout
