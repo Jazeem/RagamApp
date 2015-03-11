@@ -7,7 +7,7 @@
     <couk.jenxsol.parallaxscrollview.views.ParallaxScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:parallexOffset="0.35">
+        app:parallexOffset="0.8">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
