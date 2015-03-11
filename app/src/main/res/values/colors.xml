@@ -19,4 +19,6 @@
     <color name="dropdown_seperator">#76c0c0bd</color>
     <color name="celebrity_talk_color">#BDB69C</color>
 
+    <color name="hex_border">#0c0c0c</color>
+
 </resources>
