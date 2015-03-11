@@ -13,15 +13,17 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:scaleType="centerCrop"
-            android:src="@drawable/scale_bg" />
+            android:src="@drawable/proshow_bg" />
         <couk.jenxsol.parallaxscrollview.views.ObservableScrollView
             android:layout_width="match_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            >
 
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/observable_scroll"
                 android:orientation="vertical" >
                 <View
                     android:layout_width="match_parent"
@@ -47,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_name_1"
                     android:textSize="@dimen/pro_show_name_size"
-                    android:text="ankit tiwari"
+                    android:text="eluveitie"
                     android:textColor="@android:color/white"
                     android:layout_marginTop="@dimen/pro_show_name_margin"
                     android:layout_marginLeft="@dimen/pro_show_name_height"/>
@@ -119,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_name_2"
                     android:textSize="@dimen/pro_show_name_size"
-                    android:text="eluveitie"
+                    android:text="ankit tiwari"
                     android:textColor="@android:color/white"
                     android:layout_marginTop="@dimen/pro_show_name_margin"
                     android:layout_marginLeft="@dimen/pro_show_name_height"/>

@@ -43,6 +43,8 @@ public class Contents extends FragmentActivity {
      */
     private PagerAdapter mPagerAdapter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

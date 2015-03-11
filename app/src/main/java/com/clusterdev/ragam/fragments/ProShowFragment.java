@@ -6,12 +6,16 @@ import android.support.v4.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.clusterdev.ragam.R;
+
+import couk.jenxsol.parallaxscrollview.views.ObservableScrollView;
 
 /**
  * Created by Jazeem on 10/03/15.
@@ -19,6 +23,7 @@ import com.clusterdev.ragam.R;
 public class ProShowFragment extends Fragment {
     private TextView heading,name1,day1,month1,desc1,name2,day2,month2,desc2,name3,day3,month3,desc3;
     private Typeface tf;
+    private LinearLayout observableScroll;
     public static Fragment newInstance() {
         Fragment fragment = new ProShowFragment();
 
@@ -36,9 +41,13 @@ public class ProShowFragment extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_pro_show, container, false);
+
+        observableScroll= (LinearLayout) v.findViewById(R.id.observable_scroll);
+        Log.v("scrollviewhight",observableScroll.getMeasuredHeight()+"");
         heading= (TextView) v.findViewById(R.id.pro_heading);
         name1= (TextView) v.findViewById(R.id.tv_name_1);
         day1= (TextView) v.findViewById(R.id.tv_day_1);
