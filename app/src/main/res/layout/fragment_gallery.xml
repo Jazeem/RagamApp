@@ -36,113 +36,94 @@
                     android:textSize="@dimen/gallery_font"
                     android:layout_marginTop="@dimen/gallery_margin_top"/>-->
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
 
                     android:id="@+id/img1"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_marginLeft="@dimen/hex_margin_left"
                     android:layout_marginTop="@dimen/hex_margin_start"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
+                    android:src="@drawable/hex1"
                      />
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
                     android:id="@+id/img2"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_below="@id/img1"
                     android:layout_marginTop="@dimen/hex_margin_top"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
                     android:src="@drawable/hex2" />
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
                     android:id="@+id/img3"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_alignLeft="@id/img1"
                     android:layout_below="@id/img1"
                     android:layout_marginTop="@dimen/hex_margin_between"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
                     android:src="@drawable/hex3" />
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
                     android:id="@+id/img4"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_alignLeft="@id/img2"
                     android:layout_below="@id/img2"
                     android:layout_marginTop="@dimen/hex_margin_between"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
                     android:src="@drawable/hex4" />
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
                     android:id="@+id/img_cam"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_alignLeft="@id/img3"
                     android:layout_below="@id/img3"
                     android:layout_marginTop="@dimen/hex_margin_between"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
                     android:src="@drawable/hex01" />
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
                     android:id="@+id/img5"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_alignLeft="@id/img4"
                     android:layout_below="@id/img4"
                     android:layout_marginTop="@dimen/hex_margin_between"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
                     android:src="@drawable/hex2" />
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
                     android:id="@+id/img6"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_alignLeft="@id/img_cam"
                     android:layout_below="@id/img_cam"
                     android:layout_marginTop="@dimen/hex_margin_between"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
                     android:src="@drawable/hex3" />
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
                     android:id="@+id/img7"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_alignLeft="@id/img5"
                     android:layout_below="@id/img5"
                     android:layout_marginTop="@dimen/hex_margin_between"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
                     android:src="@drawable/hex4" />
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
                     android:id="@+id/img8"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_alignLeft="@id/img6"
                     android:layout_below="@id/img6"
                     android:layout_marginTop="@dimen/hex_margin_between"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
                     android:src="@drawable/hex1" />
 
-                <com.github.siyamed.shapeimageview.HexagonImageView
+                <ImageView
                     android:id="@+id/img9"
                     android:layout_width="@dimen/hex_width"
                     android:layout_height="@dimen/hex_height"
                     android:layout_alignLeft="@id/img7"
                     android:layout_below="@id/img7"
                     android:layout_marginTop="@dimen/hex_margin_between"
-                    app:siBorderWidth="@dimen/hex_border_width"
-                    app:siBorderColor="@color/hex_border"
                     android:src="@drawable/hex2" />
             </RelativeLayout>
         </couk.jenxsol.parallaxscrollview.views.ObservableScrollView>
