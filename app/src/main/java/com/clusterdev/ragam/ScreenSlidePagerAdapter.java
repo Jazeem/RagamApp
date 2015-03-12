@@ -3,6 +3,7 @@ package com.clusterdev.ragam;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 import com.clusterdev.ragam.fragments.CelebrityTalkFragment;
 import com.clusterdev.ragam.fragments.EventsFragment;
@@ -10,13 +11,16 @@ import com.clusterdev.ragam.fragments.ExhibitionFragment;
 import com.clusterdev.ragam.fragments.GalleryFragment;
 import com.clusterdev.ragam.fragments.ProShowFragment;
 import com.clusterdev.ragam.fragments.WorkshopFragment;
+import com.jfeinstein.jazzyviewpager.JazzyViewPager;
 
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     private int NUM_PAGES = 6;
+    private JazzyViewPager mJazzy;
 
-    public ScreenSlidePagerAdapter(FragmentManager fm) {
+    public ScreenSlidePagerAdapter(FragmentManager fm,JazzyViewPager mJazzy) {
         super(fm);
+        this.mJazzy=mJazzy;
     }
 
     public Fragment getItem(int position) {
@@ -45,6 +49,13 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         }
 
 
+    }
+
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        Object obj = super.instantiateItem(container, position);
+        mJazzy.setObjectForPosition(obj, position);
+        return obj;
     }
 
     @Override

@@ -1,3 +1,4 @@
 include ':app'
 include ':libs:parallax'
 include ':libs:com.nvanbenschoten.motion-1.0.1'
+include ':libs:jazzyviewpager'

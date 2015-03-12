@@ -117,6 +117,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        logo.unregisterSensorManager();
+        background.unregisterSensorManager();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         logo.unregisterSensorManager();

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 
 import com.clusterdev.ragam.R;
+import com.jfeinstein.jazzyviewpager.JazzyViewPager;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.IconPageIndicator;
 import com.viewpagerindicator.LinePageIndicator;
@@ -36,7 +37,7 @@ public class Contents extends FragmentActivity {
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
      */
-    private ViewPager mPager;
+    private JazzyViewPager mPager;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
@@ -54,9 +55,10 @@ public class Contents extends FragmentActivity {
         Intent intent=getIntent();
 
         // Instantiate a ViewPager and a PagerAdapter.
-        mPager = (ViewPager) findViewById(R.id.pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        mPager = (JazzyViewPager) findViewById(R.id.pager);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(),mPager);
         mPager.setAdapter(mPagerAdapter);
+        mPager.setTransitionEffect(JazzyViewPager.TransitionEffect.RotateDown);
         mPager.setCurrentItem(intent.getIntExtra("FRAGMENT",0));
        LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.titles);
         indicator.setViewPager(mPager);
