@@ -79,6 +79,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		} else {
 
 			editor.putInt("firsttime",1);
+
 			editor.commit();
 			
 			// By calling this method and empty database will be created into
@@ -196,10 +197,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	}
 
 	public Cursor getEvents(String type) {
-		String[] n = { "rowid _id", "name" };
+		String[] n = { "rowid _id", "name","description" };
 		String[] a = { type };
 
-		return myDataBase.rawQuery("SELECT rowid _id,name FROM events WHERE type=? ORDER BY name COLLATE NOCASE",a);
+		return myDataBase.rawQuery("SELECT rowid _id,name,description FROM events WHERE type=? ORDER BY name COLLATE NOCASE",a);
 
 	}
 
@@ -228,22 +229,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	public Cursor getEventDetails(String name) {
 		String[] a = { name };
-		String[] n = { "code", "name","type", "description", "day1", "day2", "day3",
-				"building", "room", "contactname", "contactnumber", "status","results" };
+		String[] n = { "code", "name","contact_name", "contact_number","fulldescription" };
 
 		return myDataBase.query("events", n, "name=?", a, null, null, null);
 
 	}
 	
 	
-	
-	public Cursor getResult(String code) {
-		String[] a = { code };
-		String[] n = { "results" };
 
-		return myDataBase.query("events", n, "code=?", a, null, null, null);
-
-	}
 
 	public int updateEvent(JSONObject json) throws JSONException {
 		ContentValues newValues = new ContentValues();

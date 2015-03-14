@@ -125,13 +125,19 @@
             android:background="@drawable/logo_white" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/description"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/description_margin_left"
         android:layout_marginRight="@dimen/description_margin_right"
-        android:layout_marginTop="@dimen/events_categories_margin_top"
+        android:layout_marginTop="@dimen/events_categories_margin_top">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -140,6 +146,8 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         android:textColor="@color/white"
         android:visibility="invisible" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </FrameLayout>

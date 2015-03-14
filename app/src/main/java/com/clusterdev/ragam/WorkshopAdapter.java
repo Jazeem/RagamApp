@@ -2,11 +2,13 @@ package com.clusterdev.ragam;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,58 +16,51 @@ import java.util.ArrayList;
 /**
  * Created by Jazeem on 05/03/15.
  */
-public class WorkshopAdapter extends BaseAdapter {
-    private ArrayList<String> workshops;
-    private Activity activity;
+public class WorkshopAdapter extends CursorAdapter {
+    private Context context;
     private LayoutInflater inflater;
     private Typeface tf;
-    public WorkshopAdapter(Activity activity, ArrayList<String> workshops){
-        this.activity=activity;
-        this.workshops=workshops;
-        this.tf=Typeface.createFromAsset(activity.getAssets(),"fonts/HelveticaNeue-Thin.otf");
-    }
-    @Override
-    public int getCount() {
-        return workshops.size();
+
+    public WorkshopAdapter(Context context, Cursor cursor) {
+        super(context, cursor);
+        this.context = context;
+        this.tf = Typeface.createFromAsset(context.getAssets(), "fonts/HelveticaNeue-Thin.otf");
     }
 
-    @Override
-    public Object getItem(int position) {
-        return workshops.get(position);
-    }
 
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (inflater == null)
-            inflater = (LayoutInflater) activity
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (convertView == null) {
-            if (position % 2 == 0)
-                convertView = inflater.inflate(R.layout.workshop_row_odd, null);
-            else
-                convertView = inflater.inflate(R.layout.workshop_row_even,null);
-        }
-
-        TextView title = (TextView) convertView.findViewById(R.id.workshop_tv_heading);
-        TextView date = (TextView) convertView.findViewById(R.id.workshop_tv_date);
-        TextView time = (TextView) convertView.findViewById(R.id.workshop_tv_time);
-        TextView desc = (TextView) convertView.findViewById(R.id.workshop_tv_desc);
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        Typeface tf = Typeface.createFromAsset(context.getAssets(), "fonts/HelveticaNeue-Thin.otf");
+        int position=cursor.getPosition();
+        View rowView = inflater.inflate(R.layout.workshop_row_odd, null);
+        TextView title = (TextView) rowView.findViewById(R.id.workshop_tv_heading);
+        TextView date = (TextView) rowView.findViewById(R.id.workshop_tv_date);
+        TextView time = (TextView) rowView.findViewById(R.id.workshop_tv_time);
+        TextView desc = (TextView) rowView.findViewById(R.id.workshop_tv_desc);
         title.setTypeface(tf);
         date.setTypeface(tf);
         time.setTypeface(tf);
         desc.setTypeface(tf);
-        String s = workshops.get(position);
+        return rowView;
+    }
 
+    @Override
+    public void bindView(View view, Context context, Cursor cursor) {
+        int position=cursor.getPosition();
+        View rowView;
+        if (position % 2 == 0)
+            view.setBackgroundColor(context.getResources().getColor(R.color.workshop_row_even));
+        else
+            view.setBackgroundColor(context.getResources().getColor(R.color.workshop_row_odd));
 
-        title.setText(s);
+        TextView title = (TextView) view.findViewById(R.id.workshop_tv_heading);
+        TextView date = (TextView) view.findViewById(R.id.workshop_tv_date);
+        TextView time = (TextView) view.findViewById(R.id.workshop_tv_time);
+        TextView desc = (TextView) view.findViewById(R.id.workshop_tv_desc);
+        title.setText(cursor.getString(cursor.getColumnIndex("name")));
+        desc.setText(cursor.getString(cursor.getColumnIndex("description")));
 
-
-
-        return convertView;
     }
 }
