@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +57,7 @@ public class EventsFragment extends Fragment {
     AdapterView.OnItemClickListener eventClickListner;
     View events_layout;
     TextView description;
+    View descriptionView;
     String selectedEvent;
     View backButton;
     boolean isEventSelected=false;
@@ -80,18 +82,19 @@ public class EventsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         eventClickListner = new AdapterView.OnItemClickListener() {
-            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 // previously invisible view
 
-                TextView textView= (TextView) view;
+                final TextView textView= (TextView) view;
 
                 for(int i=0;i<parent.getChildCount();i++)
                     setSelectedDesign((TextView) parent.getChildAt(i),true);
                 setSelectedDesign(textView, false);
 
 // get the center for the clipping circle
+                isEventSelected=true;
                 selectedEvent=textView.getText().toString();
                 heading.setText(selectedEvent);
                 AlphaAnimation fadeOut = new AlphaAnimation(1.0f, 0.0f);
@@ -132,11 +135,15 @@ public class EventsFragment extends Fragment {
                         newfadeIn = new AlphaAnimation(0.0f, 1.0f);
                         newfadeIn.setDuration(500);
                         newfadeIn.setFillAfter(true);
-
-                        description.setVisibility(View.VISIBLE);
+                        Log.d("Selected :",textView.getText().toString());
+                        Cursor cursor=db.getEventDetails(textView.getText().toString());
+                        cursor.moveToFirst();
+                        String fullDescription=cursor.getString(cursor.getColumnIndex("fulldescription"));
+                        description.setText(Html.fromHtml(fullDescription));
+                        descriptionView.setVisibility(View.VISIBLE);
                         description.startAnimation(newfadeIn);
                         Log.d("Fade In description","Started");
-                        isEventSelected=true;
+
 
                     }
 
@@ -212,6 +219,7 @@ public class EventsFragment extends Fragment {
             }
         });
         description= (TextView) v.findViewById(R.id.description);
+        descriptionView= v.findViewById(R.id.description_view);
         eventsList.setOnItemClickListener(eventClickListner);
         categoriesList.setOnItemClickListener(categoryClickListner);
 
@@ -225,6 +233,7 @@ public class EventsFragment extends Fragment {
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
         description.setTypeface(tf);
+
 
 
 //        heading.startAnimation(fadeIn);
@@ -340,7 +349,7 @@ public class EventsFragment extends Fragment {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                description.setVisibility(View.GONE);
+                descriptionView.setVisibility(View.GONE);
                 events_layout.startAnimation(fadeIn);
 
 

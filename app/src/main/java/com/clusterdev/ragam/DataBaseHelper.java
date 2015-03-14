@@ -228,8 +228,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	public Cursor getEventDetails(String name) {
 		String[] a = { name };
-		String[] n = { "code", "name","type", "description", "day1", "day2", "day3",
-				"building", "room", "contactname", "contactnumber", "status","results" };
+		String[] n = { "code", "name","contactname", "contactnumber","fulldescription" };
 
 		return myDataBase.query("events", n, "name=?", a, null, null, null);
 
