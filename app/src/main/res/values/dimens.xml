@@ -85,7 +85,7 @@
     <dimen name="about_text_1">35dp</dimen>
     <dimen name="about_margin_2">40dp</dimen>
     <dimen name="about_margin_3">10dp</dimen>
-
+    <dimen name="map_width">200dp</dimen>
 
 
 </resources>

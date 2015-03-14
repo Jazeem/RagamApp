@@ -27,4 +27,5 @@ dependencies {
     compile 'com.viewpagerindicator:library:2.4.1@aar'
     compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile project(':libs:jazzyviewpager')
+    compile 'com.google.android.gms:play-services:6.5.87'
 }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/scrollview">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
@@ -48,6 +50,25 @@
                 android:paddingRight="@dimen/about_margin_2"
                 android:paddingLeft="@dimen/about_margin_2"
                 android:layout_marginTop="@dimen/about_margin_3"/>
+
+            <fragment
+                android:id="@+id/map"
+                android:layout_below="@id/tv_about_reach_desc"
+                android:layout_width="@dimen/map_width"
+                android:layout_height="@dimen/map_width"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:layout_marginTop="@dimen/about_margin_3"
+                android:layout_marginBottom="@dimen/about_margin_3"
+                android:layout_centerHorizontal="true"/>
+            <ImageView
+                android:layout_below="@id/tv_about_reach_desc"
+                android:id="@+id/map_mask"
+                android:layout_marginTop="@dimen/about_margin_3"
+                android:layout_marginBottom="@dimen/about_margin_3"
+                android:src="@drawable/maskcircle"
+                android:layout_width="@dimen/map_width"
+                android:layout_height="@dimen/map_width"
+                android:layout_centerHorizontal="true"/>
 
         </RelativeLayout>
 
