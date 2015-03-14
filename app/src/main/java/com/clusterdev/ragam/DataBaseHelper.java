@@ -196,10 +196,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	}
 
 	public Cursor getEvents(String type) {
-		String[] n = { "rowid _id", "name" };
+		String[] n = { "rowid _id", "name","description" };
 		String[] a = { type };
 
-		return myDataBase.rawQuery("SELECT rowid _id,name FROM events WHERE type=? ORDER BY name COLLATE NOCASE",a);
+		return myDataBase.rawQuery("SELECT rowid _id,name,description FROM events WHERE type=? ORDER BY name COLLATE NOCASE",a);
 
 	}
 

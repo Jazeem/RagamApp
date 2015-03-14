@@ -1,10 +1,12 @@
 package com.clusterdev.ragam.fragments;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +18,11 @@ import android.widget.ListView;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
 
+import com.clusterdev.ragam.DataBaseHelper;
 import com.clusterdev.ragam.R;
 import com.clusterdev.ragam.WorkshopAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -38,6 +42,7 @@ public class WorkshopFragment extends Fragment {
     private SlidingDrawer slidingDrawer;
     private Typeface tf;
     private boolean openingForFirstTime;
+    private DataBaseHelper db;
 
     public static Fragment newInstance() {
         Fragment fragment = new WorkshopFragment();
@@ -52,7 +57,15 @@ public class WorkshopFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = new DataBaseHelper(getActivity());
 
+        try {
+            db.createDataBase();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        db.openDataBase();
     }
 
     @Override
@@ -74,11 +87,12 @@ public class WorkshopFragment extends Fragment {
         words.add("Android");
         words.add("iPhone");
         words.add("Apple");
-        list.setAdapter(new WorkshopAdapter(getActivity(),words));
+
+        list.setAdapter(new WorkshopAdapter(getActivity(),db.getEvents("COMPETITIONS")));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2,long arg3)
+            public void onItemClick(AdapterView<?> arg0, final View arg1, final int arg2,long arg3)
             {
                 //args2 is the listViews Selected index
                 TranslateAnimation SliderAnimationDown = new TranslateAnimation(0, 0, Animation.RELATIVE_TO_SELF, slidingDrawer.getHeight());
@@ -115,8 +129,12 @@ public class WorkshopFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        heading.setText(words.get(arg2));
-                        description.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel lectus nec nisi sodales congue et at justo. In pharetra ligula eget nisi convallis efficitur. Aliquam purus erat, fringilla vulputate eros faucibus, pharetra egestas nisl. Pellentesque at hendrerit nibh. Cras arcu sapien, iaculis quis tellus ac, maximus scelerisque libero. Suspendisse bibendum purus nisl, id faucibus justo sollicitudin in. Donec id lectus sed lacus vestibulum condimentum nec non felis.");
+                        TextView textView= (TextView) arg1.findViewById(R.id.workshop_tv_heading);
+                        heading.setText(textView.getText().toString());
+                        Cursor cursor=db.getEventDetails(textView.getText().toString());
+                        cursor.moveToFirst();
+                        String fullDescription=cursor.getString(cursor.getColumnIndex("fulldescription"));
+                        description.setText(Html.fromHtml(fullDescription));
                         heading.startAnimation(in);
                         description.startAnimation(in);
                     }
