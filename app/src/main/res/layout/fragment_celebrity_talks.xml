@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="@dimen/event_page_top_margin"
-                    android:text="celebrity talks"
+                    android:text="prodezza"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/heading_font_size" />
 

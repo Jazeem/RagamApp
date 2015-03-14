@@ -16,7 +16,7 @@ import com.jfeinstein.jazzyviewpager.JazzyViewPager;
 
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-    private int NUM_PAGES = 7;
+    private int NUM_PAGES = 6;
     private JazzyViewPager mJazzy;
 
     public ScreenSlidePagerAdapter(FragmentManager fm,JazzyViewPager mJazzy) {
@@ -41,9 +41,8 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
             case 4:
                 return ProShowFragment.newInstance();
 
+
             case 5:
-                return GalleryFragment.newInstance();
-            case 6:
                 return AboutFragment.newInstance();
             default:
                 return null;

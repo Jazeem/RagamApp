@@ -69,8 +69,34 @@
                 android:layout_width="@dimen/map_width"
                 android:layout_height="@dimen/map_width"
                 android:layout_centerHorizontal="true"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/map_mask"
+                android:src="@drawable/contacts"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="-350dp"/>
+           <!-- <SlidingDrawer
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:handle="@+id/handle"
+                android:content="@+id/content"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/event_page_top_margin_full"
+                    android:id="@+id/handle"
+                    android:background="@color/developer"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/event_page_top_margin_full"
+                    android:id="@+id/content"
+                    android:background="@color/developer_content"/>
 
+
+            </SlidingDrawer>-->
         </RelativeLayout>
+
 
     </ScrollView>
 

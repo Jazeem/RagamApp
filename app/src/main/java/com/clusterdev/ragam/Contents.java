@@ -1,6 +1,10 @@
 package com.clusterdev.ragam;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -26,6 +30,8 @@ import com.viewpagerindicator.UnderlinePageIndicator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 public class Contents extends FragmentActivity {
     /**
@@ -43,17 +49,39 @@ public class Contents extends FragmentActivity {
      * The pager adapter, which provides the pages to the view pager widget.
      */
     private PagerAdapter mPagerAdapter;
-
-
-
+    private boolean prompterDismissed;
+    private Button prompterButton;
+    private RelativeLayout prompter;
+    private SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_contents);
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
+        prompterDismissed =sharedPreferences.getBoolean("prompterDismissed",false);
+
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_contents);
+
         Intent intent=getIntent();
 
+        editor=sharedPreferences.edit();
+        prompter= (RelativeLayout) findViewById(R.id.prompter);
+        prompterButton= (Button) findViewById(R.id.prompter_button);
+        prompterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prompter.setVisibility(View.GONE);
+                editor.putBoolean("prompterDismissed",true);
+                editor.commit();
+                prompterDismissed=true;
+            }
+        });
+
+        if (prompterDismissed)
+            prompter.setVisibility(View.GONE);
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (JazzyViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(),mPager);

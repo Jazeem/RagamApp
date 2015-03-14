@@ -86,6 +86,8 @@
     <dimen name="about_margin_2">40dp</dimen>
     <dimen name="about_margin_3">10dp</dimen>
     <dimen name="map_width">200dp</dimen>
+    <dimen name="swipe_width">300dp</dimen>
+    <dimen name="swipe_margin_top">150dp</dimen>
 
 
 </resources>

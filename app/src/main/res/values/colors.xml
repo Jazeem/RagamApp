@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg_app">#2d2d2d</color>
-    <color name="events_color">#4a52b5</color>
+    <color name="events_color">#4c4d4f</color>
     <color name="white">#ffffff</color>
-    <color name="exhibition_color">#80CEB9</color>
+    <color name="exhibition_color">#3b5152</color>
     <color name="proshow_color">#cbcbcb</color>
     <color name="proshow_color1">#398fb7</color>
     <color name="proshow_color2">#39b79e</color>
@@ -20,11 +20,14 @@
     <color name="workshop_row_even">#e7ebec</color>
     <color name="dropdown_bg">#a6f7f7f7</color>
     <color name="dropdown_seperator">#76c0c0bd</color>
-    <color name="celebrity_talk_color">#BDB69C</color>
+    <color name="celebrity_talk_color">#499195</color>
 
     <color name="hex_border">#0c0c0c</color>
     <color name="proshow_color_top">#282822</color>
     <color name="about">#6587a2</color>
     <color name="about_2">#505050</color>
+    <color name="developer">#c77c69</color>
+    <color name="developer_content">#5daa8d</color>
+    <color name="swipe_button">#773631</color>
 
 </resources>
