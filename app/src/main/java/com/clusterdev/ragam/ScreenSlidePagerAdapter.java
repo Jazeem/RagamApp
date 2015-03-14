@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
+import com.clusterdev.ragam.fragments.AboutFragment;
 import com.clusterdev.ragam.fragments.CelebrityTalkFragment;
 import com.clusterdev.ragam.fragments.EventsFragment;
 import com.clusterdev.ragam.fragments.ExhibitionFragment;
@@ -15,7 +16,7 @@ import com.jfeinstein.jazzyviewpager.JazzyViewPager;
 
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-    private int NUM_PAGES = 6;
+    private int NUM_PAGES = 7;
     private JazzyViewPager mJazzy;
 
     public ScreenSlidePagerAdapter(FragmentManager fm,JazzyViewPager mJazzy) {
@@ -42,7 +43,8 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
             case 5:
                 return GalleryFragment.newInstance();
-
+            case 6:
+                return AboutFragment.newInstance();
             default:
                 return null;
 

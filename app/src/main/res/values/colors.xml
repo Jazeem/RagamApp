@@ -24,5 +24,7 @@
 
     <color name="hex_border">#0c0c0c</color>
     <color name="proshow_color_top">#282822</color>
+    <color name="about">#6587a2</color>
+    <color name="about_2">#505050</color>
 
 </resources>
