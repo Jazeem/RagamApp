@@ -46,10 +46,11 @@ public class AboutFragment extends Fragment {
     private GoogleMap map;
     private SupportMapFragment mapFragment;
     private ScrollView scrollView;
-    private ImageView mapMask;
+
     private boolean mapAnimated;
     private MapView mapView;
     private Bundle mBundle;
+    private ImageView mapMask;
     // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
         Fragment fragment = new AboutFragment();
@@ -83,7 +84,7 @@ public class AboutFragment extends Fragment {
         tv3.setTypeface(tf);
         tv4.setTypeface(tf);
         tv5.setTypeface(tf);
-        mapMask= (ImageView) v.findViewById(R.id.map_mask);
+
 
 
         try {
@@ -93,7 +94,6 @@ public class AboutFragment extends Fragment {
         mapView = (MapView) v.findViewById(R.id.map);
         mapView.onCreate(mBundle);
         setUpMapIfNeeded(v);
-
 
 
 
@@ -109,6 +109,34 @@ public class AboutFragment extends Fragment {
                 return false;
             }
         });
+
+        mapMask = (ImageView) v.findViewById(R.id.map_mask);
+        mapMask.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        scrollView.requestDisallowInterceptTouchEvent(true);
+                        // Disable touch on transparent view
+                        return false;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        scrollView.requestDisallowInterceptTouchEvent(false);
+                        return true;
+
+                    case MotionEvent.ACTION_MOVE:
+                        scrollView.requestDisallowInterceptTouchEvent(true);
+                        return false;
+
+                    default:
+                        return true;
+                }
+            }
+        });
+
 
         return v;
     }
@@ -134,7 +162,7 @@ public class AboutFragment extends Fragment {
     private void checkIfMapVisible() {
         Rect scrollBounds = new Rect();
         scrollView.getHitRect(scrollBounds);
-        if (mapMask.getLocalVisibleRect(scrollBounds)) {
+        if (mapView.getLocalVisibleRect(scrollBounds)) {
             // Any portion of the imageView, even a single pixel, is within the visible window
             mapAnimated=true;
             CameraPosition cameraPosition = new CameraPosition.Builder()
