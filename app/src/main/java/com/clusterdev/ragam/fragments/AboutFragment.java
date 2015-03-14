@@ -18,9 +18,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.clusterdev.ragam.R;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -45,6 +48,8 @@ public class AboutFragment extends Fragment {
     private ScrollView scrollView;
     private ImageView mapMask;
     private boolean mapAnimated;
+    private MapView mapView;
+    private Bundle mBundle;
     // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
         Fragment fragment = new AboutFragment();
@@ -59,7 +64,7 @@ public class AboutFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mBundle=savedInstanceState;
     }
 
     @Override
@@ -79,6 +84,20 @@ public class AboutFragment extends Fragment {
         tv4.setTypeface(tf);
         tv5.setTypeface(tf);
         mapMask= (ImageView) v.findViewById(R.id.map_mask);
+
+
+        try {
+            MapsInitializer.initialize(getActivity());
+        } catch (Exception e){}
+
+        mapView = (MapView) v.findViewById(R.id.map);
+        mapView.onCreate(mBundle);
+        setUpMapIfNeeded(v);
+
+
+
+
+
         mapAnimated=false;
         scrollView= (ScrollView) v.findViewById(R.id.scrollview);
         scrollView.setOnTouchListener(new View.OnTouchListener() {
@@ -94,6 +113,24 @@ public class AboutFragment extends Fragment {
         return v;
     }
 
+
+
+
+    private void setUpMapIfNeeded(View v) {
+        if (map == null) {
+            map = ((MapView) v.findViewById(R.id.map)).getMap();
+            if (map != null) {
+                setUpMap();
+            }
+        }
+    }
+
+    private void setUpMap() {
+        // Move the camera instantly to hamburg with a zoom of 15.
+        map.moveCamera(CameraUpdateFactory.newLatLng(India));
+
+    }
+
     private void checkIfMapVisible() {
         Rect scrollBounds = new Rect();
         scrollView.getHitRect(scrollBounds);
@@ -103,8 +140,8 @@ public class AboutFragment extends Fragment {
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(NIT)      // Sets the center of the map to Mountain View
                     .zoom(14)                   // Sets the zoom
-                    //.bearing(90)                // Sets the orientation of the camera to east
-                    //.tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                            //.bearing(90)                // Sets the orientation of the camera to east
+                            //.tilt(30)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             //map.addMarker(new MarkerOptions().position(NIT));
@@ -114,14 +151,9 @@ public class AboutFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        FragmentManager fm = getChildFragmentManager();
-        mapFragment = (SupportMapFragment) fm.findFragmentById(R.id.map);
-        if (mapFragment == null) {
-            mapFragment = SupportMapFragment.newInstance();
-            fm.beginTransaction().replace(R.id.map, mapFragment).commit();
-        }
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -130,13 +162,15 @@ public class AboutFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if (map == null) {
-            map = mapFragment.getMap();
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
 
-            map.moveCamera(CameraUpdateFactory.newLatLng(India));
-        }
+    @Override
+    public void onDestroyView() {
+        mapView.onDestroy();
+        super.onDestroyView();
     }
 
     @Override
