@@ -81,14 +81,9 @@ public class WorkshopFragment extends Fragment {
         heading.setTypeface(tf);
         list = (ListView) v.findViewById(R.id.listview);
         slidingDrawer= (SlidingDrawer) v.findViewById(R.id.slidingDrawer);
-        words=new ArrayList<String>();
-        words.add("Coderz");
-        words.add("Google");
-        words.add("Android");
-        words.add("iPhone");
-        words.add("Apple");
 
-        list.setAdapter(new WorkshopAdapter(getActivity(),db.getEvents("COMPETITIONS")));
+
+        list.setAdapter(new WorkshopAdapter(getActivity(),db.getEvents("WORKSHOPS")));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
