@@ -2,22 +2,16 @@ import sqlite3
 import httplib
 import json
 conn = httplib.HTTPConnection("www.ragam.org.in")
-
-total=0;
-conn.request("GET", "/2015/cms/api/events")
-r1 = conn.getresponse()
-data1 = r1.read()
-data = json.loads(data1)
-categories= data[0]['sub_categories']
 db = sqlite3.connect('app/src/main/assets/ragam.db')
-for category in categories:
-	events= category['events']
+total=0;
+
+def storeEvents(type,genre,events):
+	global total;
 	url='/2015/cms/api/event/'
 	for event in events:
 		conn.request("GET",url+event['event_code'])
 		event_response = conn.getresponse()
-		event_data = json.loads(event_response.read())
-	
+		event_data = json.loads(event_response.read())	
 		values=[];
 		code=event_data['event_code']
 		name=event_data['name']
@@ -28,11 +22,10 @@ for category in categories:
 			fulldescription+="<b>"+section['title']+"</b><br><br>"
 			fulldescription+=section['text']
 			fulldescription+="<br><br>"
-
-		type='COMPETITIONS'
-		genre=category['name']
-		contact_name=event_data['contacts'][0]['name']
-		contact_phone=event_data['contacts'][0]['phone']
+		contacts=event_data['contacts'];
+		if contacts:
+			contact_name=contacts[0]['name']
+			contact_phone=contacts[0]['phone']
 		db.execute('DELETE FROM "main"."events" WHERE code=?',(code,))
 		db.commit()
 		db.execute('INSERT INTO "main"."events" \
@@ -43,4 +36,22 @@ for category in categories:
 		total=total+1;
 		print str(total)+" : "+event_data['name']+" Updated"
 
+
+
+conn.request("GET", "/2015/cms/api/events")
+r1 = conn.getresponse()
+data = json.loads(r1.read())
+categories= data[0]['sub_categories']
+
+for category in categories:
+	events= category['events']
+	storeEvents("COMPETITIONS",category['name'],events)
+
+workshops=data[1]['events']
+storeEvents('WORKSHOPS','',workshops)
+
+
+
+
 db.close();
+
