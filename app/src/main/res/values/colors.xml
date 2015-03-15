@@ -29,5 +29,6 @@
     <color name="developer">#c77c69</color>
     <color name="developer_content">#5daa8d</color>
     <color name="swipe_button">#773631</color>
+    <color name="contact_row">#38b8bb</color>
 
 </resources>

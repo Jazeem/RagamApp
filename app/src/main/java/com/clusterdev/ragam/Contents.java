@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
@@ -50,7 +51,7 @@ public class Contents extends FragmentActivity {
      */
     private PagerAdapter mPagerAdapter;
     private boolean prompterDismissed;
-    private Button prompterButton;
+
     private RelativeLayout prompter;
     private SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -69,14 +70,16 @@ public class Contents extends FragmentActivity {
 
         editor=sharedPreferences.edit();
         prompter= (RelativeLayout) findViewById(R.id.prompter);
-        prompterButton= (Button) findViewById(R.id.prompter_button);
-        prompterButton.setOnClickListener(new View.OnClickListener() {
+
+
+        prompter.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
                 prompter.setVisibility(View.GONE);
-                editor.putBoolean("prompterDismissed",true);
+                editor.putBoolean("prompterDismissed", true);
                 editor.commit();
-                prompterDismissed=true;
+                prompterDismissed = true;
+                return false;
             }
         });
 

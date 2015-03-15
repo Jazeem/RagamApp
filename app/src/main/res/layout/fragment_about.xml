@@ -69,32 +69,200 @@
                 android:layout_width="@dimen/map_width"
                 android:layout_height="@dimen/map_width"
                 android:layout_centerHorizontal="true"/>
-            <ImageView
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tv_about_contacts"
+
                 android:layout_below="@id/map_mask"
-                android:src="@drawable/contacts"
-                android:scaleType="fitCenter"
-                android:layout_marginTop="-350dp"/>
-           <!-- <SlidingDrawer
+                android:text="contacts"
+                android:textColor="@color/about_2"
+                android:textSize="@dimen/about_text_1"
+                android:layout_marginTop="@dimen/about_margin_3"
+                android:layout_marginBottom="@dimen/about_margin_3"
+                android:layout_centerHorizontal="true"/>
+            <ListView
+                android:id="@+id/listview"
+                android:layout_width="fill_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/tv_about_contacts"
+                android:layout_gravity="fill_vertical"
+                android:dividerHeight="@dimen/contact_row_divider"
+                android:divider="@android:color/transparent"
+                />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/event_page_top_margin"
+                    android:layout_below="@id/listview"
+                    android:layout_marginTop="@dimen/about_margin_3"
+                    android:id="@+id/handle">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/event_page_top_margin"
+
+                        android:background="@color/developer"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/event_page_top_margin"
+                        android:src="@drawable/developer_icon"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_about_dev"
+                        android:text="developers"
+                        android:textSize="@dimen/about_text_1"
+                        android:textColor="@android:color/white"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/about_margin_4"/>
+                </RelativeLayout>
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:handle="@+id/handle"
-                android:content="@+id/content"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/event_page_top_margin_full"
-                    android:id="@+id/handle"
-                    android:background="@color/developer"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/event_page_top_margin_full"
-                    android:id="@+id/content"
-                    android:background="@color/developer_content"/>
+                android:layout_below="@id/handle"
+                android:id="@+id/dev1"
 
+                android:background="@color/developer_content">
 
-            </SlidingDrawer>-->
+                <ImageView
+                    android:layout_width="@dimen/dev_head_size"
+                    android:layout_height="@dimen/dev_head_size"
+                    android:src="@drawable/ajnas"
+                    android:id="@+id/img1"
+                    android:layout_marginTop="@dimen/about_margin_3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ajnas"
+                    android:id="@+id/tv_ajnas"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="@dimen/about_margin_3"
+                    android:textSize="@dimen/about_text_1"
+                    android:layout_toRightOf="@id/img1"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_ajnas"
+                    android:id="@+id/tv_ajnas_mail"
+                    android:text="mailajnaskt@gmail.com"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/about_text_2"
+                    android:layout_toRightOf="@id/img1"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_ajnas_desc"
+                    android:layout_below="@id/tv_ajnas_mail"
+                    android:text="programmer"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/about_text_2"
+                    android:layout_toRightOf="@id/img1"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dev1"
+                android:id="@+id/dev2"
+                android:background="@color/developer_content">
+
+                <ImageView
+                    android:layout_width="@dimen/dev_head_size"
+                    android:layout_height="@dimen/dev_head_size"
+                    android:src="@drawable/arjun"
+                    android:id="@+id/img2"
+                    android:layout_marginTop="@dimen/about_margin_3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="arjun"
+                    android:id="@+id/tv_arjun"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="@dimen/about_margin_3"
+                    android:textSize="@dimen/about_text_1"
+                    android:layout_toRightOf="@id/img2"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_arjun"
+                    android:id="@+id/tv_arjun_mail"
+                    android:text="arjuncm93@gmail.com"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/about_text_2"
+                    android:layout_toRightOf="@id/img2"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_arjun_desc"
+                    android:layout_below="@id/tv_arjun_mail"
+                    android:text="designer"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/about_text_2"
+                    android:layout_toRightOf="@id/img2"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dev2"
+                android:id="@+id/dev3"
+                android:paddingBottom="@dimen/about_margin_3"
+                android:background="@color/developer_content">
+
+                <ImageView
+                    android:layout_width="@dimen/dev_head_size"
+                    android:layout_height="@dimen/dev_head_size"
+                    android:src="@drawable/jazeem"
+                    android:id="@+id/img3"
+                    android:layout_marginTop="@dimen/about_margin_3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="jazeem"
+                    android:id="@+id/tv_jazeem"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="@dimen/about_margin_3"
+                    android:textSize="@dimen/about_text_1"
+                    android:layout_toRightOf="@id/img3"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_jazeem"
+                    android:id="@+id/tv_jazeem_mail"
+                    android:text="jazeem23@gmail.com"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/about_text_2"
+                    android:layout_toRightOf="@id/img3"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_jazeem_desc"
+                    android:layout_below="@id/tv_jazeem_mail"
+                    android:text="programmer"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/about_text_2"
+                    android:layout_toRightOf="@id/img3"
+                    android:layout_marginLeft="@dimen/about_margin_3"/>
+            </RelativeLayout>
+
         </RelativeLayout>
 
 

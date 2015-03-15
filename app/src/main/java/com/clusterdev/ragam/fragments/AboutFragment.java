@@ -14,9 +14,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.clusterdev.ragam.ContactInfo;
+import com.clusterdev.ragam.CustomContactAdapter;
 import com.clusterdev.ragam.R;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,6 +34,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -40,7 +47,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
  */
 public class AboutFragment extends Fragment {
 
-    private TextView tv1,tv2,tv3,tv4,tv5;
+    private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11,tv12,tv13,tv14,tv15,tv16;
     private LatLng NIT= new LatLng(11.3193295,75.93319);
     private LatLng India=new LatLng(10.4754981,79.258464);
     private GoogleMap map;
@@ -51,6 +58,8 @@ public class AboutFragment extends Fragment {
     private MapView mapView;
     private Bundle mBundle;
     private ImageView mapMask;
+    private ListView listView;
+    private Typeface tf;
     // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
         Fragment fragment = new AboutFragment();
@@ -68,6 +77,11 @@ public class AboutFragment extends Fragment {
         mBundle=savedInstanceState;
     }
 
+
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,12 +92,55 @@ public class AboutFragment extends Fragment {
         tv3 = (TextView) v.findViewById(R.id.tv_about_ragam_desc);
         tv4 = (TextView) v.findViewById(R.id.tv_about_reach);
         tv5 = (TextView) v.findViewById(R.id.tv_about_reach_desc);
-        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
+        tv6 = (TextView) v.findViewById(R.id.tv_about_contacts);
+        tv7 = (TextView) v.findViewById(R.id.tv_about_dev);
+        tv8 = (TextView) v.findViewById(R.id.tv_ajnas);
+        tv9 = (TextView) v.findViewById(R.id.tv_ajnas_mail);
+        tv10 = (TextView) v.findViewById(R.id.tv_ajnas_desc);
+        tv11 = (TextView) v.findViewById(R.id.tv_arjun);
+        tv12 = (TextView) v.findViewById(R.id.tv_arjun_mail);
+        tv13 = (TextView) v.findViewById(R.id.tv_arjun_desc);
+        tv14 = (TextView) v.findViewById(R.id.tv_jazeem);
+        tv15 = (TextView) v.findViewById(R.id.tv_jazeem_mail);
+        tv16 = (TextView) v.findViewById(R.id.tv_jazeem_desc);
+
+        tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
         tv1.setTypeface(tf);
         tv2.setTypeface(tf);
         tv3.setTypeface(tf);
         tv4.setTypeface(tf);
         tv5.setTypeface(tf);
+        tv6.setTypeface(tf);
+        tv7.setTypeface(tf);
+        tv8.setTypeface(tf);
+        tv9.setTypeface(tf);
+        tv10.setTypeface(tf);
+        tv11.setTypeface(tf);
+        tv12.setTypeface(tf);
+        tv13.setTypeface(tf);
+        tv14.setTypeface(tf);
+        tv15.setTypeface(tf);
+        tv16.setTypeface(tf);
+
+
+
+        List<ContactInfo> contactInfos = new ArrayList<ContactInfo>();
+        contactInfos.add(new ContactInfo("Dilber Shahul","general secretary","+919567670916"));
+        contactInfos.add(new ContactInfo("Abdul Wasih","convenor","+918547562834"));
+        contactInfos.add(new ContactInfo("Sunil Mathew","faculty in charge","+919349769083"));
+        contactInfos.add(new ContactInfo("Hafiz Muhammed","events co-ordinator","+918089219732"));
+        contactInfos.add(new ContactInfo("Nandagopal R","events co-ordinator","+919567035935"));
+        contactInfos.add(new ContactInfo("Christopher Jacob","marketing co-ordinator","+919846095751"));
+        contactInfos.add(new ContactInfo("Kiran Ananth","public relations","+919947786864"));
+        contactInfos.add(new ContactInfo("Shamil Puthukkot","public relations","919633425202"));
+        contactInfos.add(new ContactInfo("Harikrishnan Subash","registrations","+919400575471"));
+        contactInfos.add(new ContactInfo("Flemill Jose","hospitality","+919497416791"));
+        contactInfos.add(new ContactInfo("Aby Anil John","workshops","+919746479909"));
+
+
+        listView= (ListView) v.findViewById(R.id.listview);
+        listView.setAdapter(new CustomContactAdapter(getActivity(),contactInfos));
+        setListViewHeightBasedOnChildren(listView);
 
 
 
@@ -141,7 +198,30 @@ public class AboutFragment extends Fragment {
         return v;
     }
 
+    /**** Method for Setting the Height of the ListView dynamically.
+     **** Hack to fix the issue of not showing all the items of the ListView
+     **** when placed inside a ScrollView  ****/
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null)
+            return;
 
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+    }
 
 
     private void setUpMapIfNeeded(View v) {

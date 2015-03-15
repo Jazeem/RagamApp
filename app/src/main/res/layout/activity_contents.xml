@@ -34,16 +34,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/swipe_margin_top"
             />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/prompter_button"
-            android:text="Got it"
-            android:textColor="@android:color/white"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/swipe_margin_top"
-            android:background="@drawable/swipe_button"
-            android:layout_alignParentBottom="true"/>
+
 
     </RelativeLayout>
 </FrameLayout>
