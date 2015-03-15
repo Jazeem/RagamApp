@@ -142,6 +142,7 @@ public class EventsFragment extends Fragment {
                         description.setText(Html.fromHtml(fullDescription));
                         descriptionView.setVisibility(View.VISIBLE);
                         description.startAnimation(newfadeIn);
+                        backButton.setEnabled(true);
                         Log.d("Fade In description","Started");
 
 
@@ -329,6 +330,7 @@ public class EventsFragment extends Fragment {
         if(!isEventSelected)
             return;
         isEventSelected=false;
+        backButton.setEnabled(false);
         final Animation shrinkAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.shrink);
         categoriesList.setOnItemClickListener(null);
         shrinkAnim.setDuration(1200);
@@ -365,6 +367,7 @@ public class EventsFragment extends Fragment {
                         eventsList.setOnItemClickListener(eventClickListner);
                         categoriesList.setOnItemClickListener(categoryClickListner);
                         rightForeground.setVisibility(View.INVISIBLE);
+
 
                     }
 

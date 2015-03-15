@@ -152,6 +152,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         <Button
             android:layout_width="@dimen/back_button_width"
             android:layout_height="@dimen/back_button_width"
+            android:enabled="false"
             android:id="@+id/back_button"
             android:background="@drawable/back_button_selector"
             android:layout_marginRight="@dimen/back_button_margin_right"
