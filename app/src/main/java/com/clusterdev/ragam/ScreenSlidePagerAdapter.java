@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import com.clusterdev.ragam.fragments.AboutFragment;
 import com.clusterdev.ragam.fragments.CelebrityTalkFragment;
 import com.clusterdev.ragam.fragments.EventsFragment;
-import com.clusterdev.ragam.fragments.ExhibitionFragment;
 import com.clusterdev.ragam.fragments.GalleryFragment;
 import com.clusterdev.ragam.fragments.ProShowFragment;
 import com.clusterdev.ragam.fragments.WorkshopFragment;
@@ -16,7 +15,7 @@ import com.jfeinstein.jazzyviewpager.JazzyViewPager;
 
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-    private int NUM_PAGES = 6;
+    private int NUM_PAGES = 5;
     private JazzyViewPager mJazzy;
 
     public ScreenSlidePagerAdapter(FragmentManager fm,JazzyViewPager mJazzy) {
@@ -33,16 +32,13 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
                 return WorkshopFragment.newInstance();
 
             case 2:
-                return ExhibitionFragment.newInstance();
-
-            case 3:
                 return CelebrityTalkFragment.newInstance();
 
-            case 4:
+            case 3:
                 return ProShowFragment.newInstance();
 
 
-            case 5:
+            case 4:
                 return AboutFragment.newInstance();
             default:
                 return null;

@@ -99,6 +99,11 @@
     <dimen name="contact_button_width">62.5dp</dimen>
     <dimen name="contact_row_divider">15dp</dimen>
     <dimen name="dev_head_size">100dp</dimen>
+    <dimen name="back_button_margin_right">40dp</dimen>
+    <dimen name="back_button_width">50dp</dimen>
+    <dimen name="back_button_height">30dp</dimen>
+    <dimen name="home_button_margin_left">30dp</dimen>
+    <dimen name="home_button_margin_top">30dp</dimen>
 
 
 </resources>

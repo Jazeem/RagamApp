@@ -76,7 +76,7 @@ public class CelebrityTalkFragment extends Fragment {
 
         View v=inflater.inflate(R.layout.fragment_celebrity_talks, container, false);
         openingForFirstTime=true;
-        heading= (TextView) v.findViewById(R.id.workshop_heading);
+        heading= (TextView) v.findViewById(R.id.cel_heading);
         description= (TextView) v.findViewById(R.id.description_textview);
         tf= Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
@@ -160,7 +160,7 @@ public class CelebrityTalkFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        heading.setText("celebrity talks");
+                        heading.setText("prodezza");
                         description.setText("");
                         heading.startAnimation(in);
 

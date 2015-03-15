@@ -22,7 +22,7 @@ import com.nvanbenschoten.motion.ParallaxImageView;
 
 public class MainActivity extends ActionBarActivity {
 
-    private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,event,exhibition,proshow,workshop;
+    private TextView tv1,tv2,tv3,tv4,tv5,tv6,event,exhibition,proshow,workshop;
     private SlidingDrawer drawer;
     private ParallaxImageView background,logo;
     private Button slideDown;
@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
         tv4= (TextView) findViewById(R.id.dropdown_tv4);
         tv5= (TextView) findViewById(R.id.dropdown_tv5);
         tv6= (TextView) findViewById(R.id.dropdown_tv6);
-        tv7= (TextView) findViewById(R.id.dropdown_tv7);
+
 
         Display display = getWindowManager().getDefaultDisplay();
         DisplayMetrics outMetrics = new DisplayMetrics ();
@@ -88,7 +88,6 @@ public class MainActivity extends ActionBarActivity {
         tv4.setTypeface(tf);
         tv5.setTypeface(tf);
         tv6.setTypeface(tf);
-        tv7.setTypeface(tf);
 
         background.registerSensorManager();
         logo.registerSensorManager();
@@ -165,11 +164,6 @@ public class MainActivity extends ActionBarActivity {
             case R.id.dropdown_tv6 :
                 intent=new Intent(MainActivity.this,Contents.class);
                 intent.putExtra("FRAGMENT",5);
-                startActivity(intent);
-                break;
-            case R.id.dropdown_tv7:
-                intent=new Intent(MainActivity.this,Contents.class);
-                intent.putExtra("FRAGMENT",6);
                 startActivity(intent);
                 break;
             default:
