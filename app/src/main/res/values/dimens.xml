@@ -89,8 +89,10 @@
     <dimen name="swipe_width">300dp</dimen>
     <dimen name="swipe_margin_top">150dp</dimen>
     <dimen name="back_button_margin_right">40dp</dimen>
-    <dimen name="back_button_width">15dp</dimen>
+    <dimen name="back_button_width">50dp</dimen>
     <dimen name="back_button_height">30dp</dimen>
+    <dimen name="home_button_margin_left">30dp</dimen>
+    <dimen name="home_button_margin_top">30dp</dimen>
 
 
 

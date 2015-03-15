@@ -108,7 +108,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             android:layout_gravity="center_vertical|center_horizontal"
             android:background="@drawable/logo_white" />
         <Button
-            android:layout_width="@dimen/back_button_height"
+            android:layout_width="@dimen/back_button_width"
             android:layout_height="@dimen/back_button_width"
             android:id="@+id/back_button"
             android:background="@drawable/up_button_selector"

@@ -54,6 +54,7 @@ public class Contents extends FragmentActivity {
     private RelativeLayout prompter;
     private SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    Button homeButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +62,7 @@ public class Contents extends FragmentActivity {
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
         prompterDismissed =sharedPreferences.getBoolean("prompterDismissed",false);
 
+        homeButton= (Button) findViewById(R.id.home_button);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -96,6 +98,10 @@ public class Contents extends FragmentActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    public void homePressed(View view){
+        onBackPressed();
     }
 }
 
