@@ -33,7 +33,7 @@
     <ImageView
         android:layout_width="@dimen/workshop_image_width"
         android:layout_height="@dimen/workshop_image_height"
-        android:id="@+id/image"
+        android:id="@+id/workshop_tv_image"
         android:src="@drawable/head"
         android:layout_toRightOf="@id/workshop_tv_date"
         android:layout_marginLeft="@dimen/workshop_image_margin_left"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/workshop_tv_heading"
         android:text="Lion"
-        android:layout_toRightOf="@id/image"
+        android:layout_toRightOf="@id/workshop_tv_image"
         android:textColor="@color/workshop_row_text"
         android:layout_marginLeft="@dimen/workshop_heading_margin_left"
         android:textSize="@dimen/workshop_heading_font"/>

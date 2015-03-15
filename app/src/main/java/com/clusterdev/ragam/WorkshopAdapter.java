@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -59,7 +61,16 @@ public class WorkshopAdapter extends CursorAdapter {
         TextView date = (TextView) view.findViewById(R.id.workshop_tv_date);
         TextView time = (TextView) view.findViewById(R.id.workshop_tv_time);
         TextView desc = (TextView) view.findViewById(R.id.workshop_tv_desc);
-        title.setText(cursor.getString(cursor.getColumnIndex("name")));
+        ImageView image= (ImageView) view.findViewById(R.id.workshop_tv_image);
+        String code=cursor.getString(cursor.getColumnIndex("code"));
+        String name=cursor.getString(cursor.getColumnIndex("name"));
+        code=code.toLowerCase();
+        Log.d(name,code);
+
+        int resID = context.getResources().getIdentifier(code, "drawable", context.getPackageName());
+        Log.d("Res Id",Integer.toString(resID));
+        image.setImageResource(resID);
+        title.setText(name);
         desc.setText(cursor.getString(cursor.getColumnIndex("description")));
 
     }
