@@ -160,7 +160,7 @@ public class WorkshopFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        heading.setText("workshops");
+                        heading.setText(R.string.workshops_heading);
                         description.setText("");
                         heading.startAnimation(in);
 

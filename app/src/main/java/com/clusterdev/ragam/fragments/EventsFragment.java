@@ -341,7 +341,7 @@ public class EventsFragment extends Fragment {
         AlphaAnimation fadeOut;
         fadeOut = new AlphaAnimation(1.0f,0.0f);
         fadeOut.setDuration(500);
-        heading.setText("competitions");
+        heading.setText(R.string.competitions_heading);
         // fadeOut.setFillAfter(true);
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
             @Override

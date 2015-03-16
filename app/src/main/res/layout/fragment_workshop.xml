@@ -40,7 +40,7 @@
                     android:layout_marginLeft="@dimen/description_margin_left"
                     android:layout_marginRight="@dimen/heading_margin_right"
                     android:gravity="end"
-                    android:text="workshops"
+                    android:text="@string/workshops_heading"
                     android:textColor="@color/white"
                     android:textSize="@dimen/heading_font_size" />
 

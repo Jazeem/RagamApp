@@ -160,7 +160,7 @@ public class CelebrityTalkFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        heading.setText("prodezza");
+                        heading.setText(R.string.prodezza_heading);
                         description.setText("");
                         heading.startAnimation(in);
 
