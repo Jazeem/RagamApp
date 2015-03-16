@@ -23,6 +23,8 @@ def storeEvents(type,genre,events):
 			fulldescription+=section['text']
 			fulldescription+="<br><br>"
 		contacts=event_data['contacts'];
+		contact_name=''
+		contact_phone=''
 		if contacts:
 			contact_name=contacts[0]['name']
 			contact_phone=contacts[0]['phone']
@@ -49,7 +51,10 @@ for category in categories:
 
 workshops=data[1]['events']
 storeEvents('WORKSHOPS','',workshops)
-
+proshows=data[2]['events']
+storeEvents('PROSHOWS','',proshows)
+lectures=data[3]['events']
+storeEvents('LECTURES','',lectures)
 
 
 

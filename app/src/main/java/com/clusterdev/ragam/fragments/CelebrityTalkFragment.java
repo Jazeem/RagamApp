@@ -82,7 +82,7 @@ public class CelebrityTalkFragment extends Fragment {
         heading.setTypeface(tf);
         list = (ListView) v.findViewById(R.id.listview);
         slidingDrawer= (SlidingDrawer) v.findViewById(R.id.slidingDrawer);
-        list.setAdapter(new WorkshopAdapter(getActivity(),db.getEvents("COMPETITIONS")));
+        list.setAdapter(new WorkshopAdapter(getActivity(),db.getEvents("LECTURES")));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
