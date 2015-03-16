@@ -32,12 +32,12 @@
         android:rotation="180">
         <RelativeLayout
             android:layout_width="@dimen/dropdown_item_width"
-            android:layout_height="@dimen/dropdown_item_height"
-            android:background="@color/dropdown_bg"
+            android:layout_height="@dimen/main_handle_height"
+
             android:id="@+id/handle2">
                 <Button
-                    android:layout_width="25dp"
-                    android:layout_height="15dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:id="@+id/pullup_button"
                     android:background="@drawable/pullup"
                     android:layout_centerHorizontal="true"
@@ -60,16 +60,18 @@
                 android:layout_centerHorizontal="true"
                 >
                 <View
-                    android:layout_width="@dimen/dropdown_item_width"
-                    android:layout_height="@dimen/dropdown_item_start"
-                    android:background="@color/dropdown_bg"/>
+                    android:layout_width="@dimen/dropdown_seperator_width"
+                    android:layout_height="@dimen/dropdown_seperator_height"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/dropdown_seperator"/>
                 <TextView
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
                     android:id="@+id/dropdown_tv1"
-                    android:background="@color/dropdown_bg"
+                    android:background="@drawable/background_dropdown"
                     android:text="competitions"
                     android:textSize="30dp"
+                    android:textColor="@color/dropdown_text"
                     android:onClick="pageSelected"
                     android:clickable="true"
                     android:gravity="center_horizontal|center_vertical"/>
@@ -81,10 +83,11 @@
                 <TextView
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
-                    android:background="@color/dropdown_bg"
+                    android:background="@drawable/background_dropdown"
                     android:id="@+id/dropdown_tv2"
                     android:text="workshops"
                     android:textSize="30dp"
+                    android:textColor="@color/dropdown_text"
                     android:clickable="true"
                     android:onClick="pageSelected"
                     android:gravity="center_horizontal|center_vertical"/>
@@ -97,10 +100,11 @@
                 <TextView
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
-                    android:background="@color/dropdown_bg"
+                    android:background="@drawable/background_dropdown"
                     android:id="@+id/dropdown_tv3"
-                    android:text="celebrity talks"
+                    android:text="prodezza"
                     android:textSize="30dp"
+                    android:textColor="@color/dropdown_text"
                     android:clickable="true"
                     android:onClick="pageSelected"
                     android:gravity="center_horizontal|center_vertical"/>
@@ -112,10 +116,11 @@
                 <TextView
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
-                    android:background="@color/dropdown_bg"
+                    android:background="@drawable/background_dropdown"
                     android:id="@+id/dropdown_tv4"
-                    android:text="pro shows"
+                    android:text="proshows"
                     android:textSize="30dp"
+                    android:textColor="@color/dropdown_text"
                     android:clickable="true"
                     android:onClick="pageSelected"
                     android:gravity="center_horizontal|center_vertical"/>
@@ -124,28 +129,15 @@
                     android:layout_height="@dimen/dropdown_seperator_height"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/dropdown_seperator"/>
+
                 <TextView
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
-                    android:background="@color/dropdown_bg"
-                    android:id="@+id/dropdown_tv5"
-                    android:text="gallery"
-                    android:textSize="30dp"
-                    android:clickable="true"
-                    android:onClick="pageSelected"
-                    android:gravity="center_horizontal|center_vertical"/>
-                <View
-                    android:layout_width="@dimen/dropdown_seperator_width"
-                    android:layout_height="@dimen/dropdown_seperator_height"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@color/dropdown_seperator"/>
-                <TextView
-                    android:layout_width="@dimen/dropdown_item_width"
-                    android:layout_height="@dimen/dropdown_item_height"
-                    android:background="@color/dropdown_bg"
+                    android:background="@drawable/background_dropdown"
                     android:id="@+id/dropdown_tv6"
                     android:text="about us"
                     android:textSize="30dp"
+                    android:textColor="@color/dropdown_text"
                     android:clickable="true"
                     android:onClick="pageSelected"
                     android:gravity="center_horizontal"/>

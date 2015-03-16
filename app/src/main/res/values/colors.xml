@@ -18,8 +18,8 @@
     <color name="workshop_row_odd">#dee4e5</color>
     <color name="workshop_row_text">#1a465f</color>
     <color name="workshop_row_even">#e7ebec</color>
-    <color name="dropdown_bg">#a6f7f7f7</color>
-    <color name="dropdown_seperator">#76c0c0bd</color>
+    <color name="dropdown_bg">#d6d4dedd</color>
+    <color name="dropdown_seperator">#00000000</color>
     <color name="celebrity_talk_color">#499195</color>
 
     <color name="hex_border">#0c0c0c</color>
@@ -30,5 +30,6 @@
     <color name="developer_content">#5daa8d</color>
     <color name="swipe_button">#773631</color>
     <color name="contact_row">#38b8bb</color>
+    <color name="dropdown_text">#114a4d</color>
 
 </resources>

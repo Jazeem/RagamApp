@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
         tv2= (TextView) findViewById(R.id.dropdown_tv2);
         tv3= (TextView) findViewById(R.id.dropdown_tv3);
         tv4= (TextView) findViewById(R.id.dropdown_tv4);
-        tv5= (TextView) findViewById(R.id.dropdown_tv5);
+
         tv6= (TextView) findViewById(R.id.dropdown_tv6);
 
 
@@ -86,7 +86,7 @@ public class MainActivity extends ActionBarActivity {
         tv2.setTypeface(tf);
         tv3.setTypeface(tf);
         tv4.setTypeface(tf);
-        tv5.setTypeface(tf);
+
         tv6.setTypeface(tf);
 
         background.registerSensorManager();
@@ -96,14 +96,14 @@ public class MainActivity extends ActionBarActivity {
         drawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
             @Override
             public void onDrawerOpened() {
-                findViewById(R.id.pullup_button).setRotation(180);
+                findViewById(R.id.pullup_button).setBackgroundResource(R.drawable.pulldown);
             }
 
         });
         drawer.setOnDrawerCloseListener(new SlidingDrawer.OnDrawerCloseListener() {
             @Override
             public void onDrawerClosed() {
-                findViewById(R.id.pullup_button).setRotation(0);
+                findViewById(R.id.pullup_button).setBackgroundResource(R.drawable.pullup);
             }
         });
     }
@@ -155,15 +155,10 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
                 break;
 
-            case R.id.dropdown_tv5 :
-                intent=new Intent(MainActivity.this,Contents.class);
-                intent.putExtra("FRAGMENT",4);
-                startActivity(intent);
-                break;
 
             case R.id.dropdown_tv6 :
                 intent=new Intent(MainActivity.this,Contents.class);
-                intent.putExtra("FRAGMENT",5);
+                intent.putExtra("FRAGMENT",4);
                 startActivity(intent);
                 break;
             default:
