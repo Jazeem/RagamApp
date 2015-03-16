@@ -50,16 +50,22 @@
                 android:paddingRight="@dimen/about_margin_2"
                 android:paddingLeft="@dimen/about_margin_2"
                 android:layout_marginTop="@dimen/about_margin_3"/>
-
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/map"
-                android:layout_below="@id/tv_about_reach_desc"
+            <FrameLayout
                 android:layout_width="@dimen/map_width"
                 android:layout_height="@dimen/map_width"
+                android:layout_below="@id/tv_about_reach_desc"
                 android:layout_marginTop="@dimen/about_margin_3"
                 android:layout_marginBottom="@dimen/about_margin_3"
-                android:layout_centerHorizontal="true"
-            />
+                android:layout_centerHorizontal="true">
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/map"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    />
+            </FrameLayout>
+
             <ImageView
                 android:layout_below="@id/tv_about_reach_desc"
                 android:id="@+id/map_mask"
@@ -144,8 +150,8 @@
                     android:text="ajnas"
                     android:id="@+id/tv_ajnas"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="@dimen/about_margin_3"
-                    android:textSize="@dimen/about_text_1"
+                    android:layout_marginTop="@dimen/about_margin_5"
+                    android:textSize="@dimen/about_text_3"
                     android:layout_toRightOf="@id/img1"
                     android:layout_marginLeft="@dimen/about_margin_3"/>
                 <TextView
@@ -190,8 +196,8 @@
                     android:text="arjun"
                     android:id="@+id/tv_arjun"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="@dimen/about_margin_3"
-                    android:textSize="@dimen/about_text_1"
+                    android:layout_marginTop="@dimen/about_margin_5"
+                    android:textSize="@dimen/about_text_3"
                     android:layout_toRightOf="@id/img2"
                     android:layout_marginLeft="@dimen/about_margin_3"/>
                 <TextView
@@ -237,8 +243,8 @@
                     android:text="jazeem"
                     android:id="@+id/tv_jazeem"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="@dimen/about_margin_3"
-                    android:textSize="@dimen/about_text_1"
+                    android:layout_marginTop="@dimen/about_margin_5"
+                    android:textSize="@dimen/about_text_3"
                     android:layout_toRightOf="@id/img3"
                     android:layout_marginLeft="@dimen/about_margin_3"/>
                 <TextView
