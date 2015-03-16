@@ -135,25 +135,12 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="@dimen/logo_white_marginBottom">
 
-        <View
-
-            android:layout_width="@dimen/logo_white_width"
-            android:layout_height="@dimen/logo_white_height"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:background="@drawable/circle"
-            />
-
-
-        <ImageView
-            android:layout_width="@dimen/logo_white_width"
-            android:layout_height="@dimen/logo_white_height"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:background="@drawable/logo_white" />
         <Button
             android:layout_width="@dimen/back_button_width"
             android:layout_height="@dimen/back_button_width"
             android:enabled="false"
             android:id="@+id/back_button"
+
             android:background="@drawable/back_button_selector"
             android:layout_marginRight="@dimen/back_button_margin_right"
             android:layout_gravity="right|center_vertical"/>
