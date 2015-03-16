@@ -47,7 +47,7 @@ public class ProShowFragment extends Fragment {
         View v=inflater.inflate(R.layout.fragment_pro_show, container, false);
 
         observableScroll= (LinearLayout) v.findViewById(R.id.observable_scroll);
-        Log.v("scrollviewhight",observableScroll.getMeasuredHeight()+"");
+       // Log.v("scrollviewhight",observableScroll.getMeasuredHeight()+"");
         heading= (TextView) v.findViewById(R.id.pro_heading);
         name1= (TextView) v.findViewById(R.id.tv_name_1);
         day1= (TextView) v.findViewById(R.id.tv_day_1);
