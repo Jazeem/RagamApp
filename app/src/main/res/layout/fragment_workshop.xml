@@ -130,6 +130,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             android:layout_gravity="fill_vertical"
             android:scrollbars="vertical"
             android:divider="@android:color/transparent"
+            android:background="@color/workshop_row_odd"
             />
 
         <View
