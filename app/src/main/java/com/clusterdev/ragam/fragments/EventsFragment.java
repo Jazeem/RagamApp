@@ -2,6 +2,7 @@ package com.clusterdev.ragam.fragments;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -61,6 +62,9 @@ public class EventsFragment extends Fragment {
     String selectedEvent;
     View backButton;
     boolean isEventSelected=false;
+    Button callButton;
+    String phoneNum;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -138,12 +142,17 @@ public class EventsFragment extends Fragment {
                         Log.d("Selected :",textView.getText().toString());
                         Cursor cursor=db.getEventDetails(textView.getText().toString());
                         cursor.moveToFirst();
+                        phoneNum=cursor.getString(cursor.getColumnIndex("contact_number"));
+                        if(phoneNum.equals("")){
+                            phoneNum=getResources().getString(R.string.competitions_contact);
+                        }
                         String fullDescription=cursor.getString(cursor.getColumnIndex("fulldescription"));
                         description.setText(Html.fromHtml(fullDescription));
                         descriptionView.setVisibility(View.VISIBLE);
                         description.startAnimation(newfadeIn);
                         backButton.setEnabled(true);
-                        Log.d("Fade In description","Started");
+                        callButton.setVisibility(View.VISIBLE);
+                        Log.d("Fade In description", "Started");
 
 
                     }
@@ -213,6 +222,15 @@ public class EventsFragment extends Fragment {
         rightForeground = v.findViewById(R.id.right_foreground);
         events_layout= v.findViewById(R.id.events_layout);
         backButton=v.findViewById(R.id.back_button);
+        callButton= (Button) v.findViewById(R.id.call_button);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +phoneNum));
+                getActivity().startActivity(intent);
+            }
+        });
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -331,6 +349,7 @@ public class EventsFragment extends Fragment {
             return;
         isEventSelected=false;
         backButton.setEnabled(false);
+        callButton.setVisibility(View.GONE);
         final Animation shrinkAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.shrink);
         categoriesList.setOnItemClickListener(null);
         shrinkAnim.setDuration(1200);

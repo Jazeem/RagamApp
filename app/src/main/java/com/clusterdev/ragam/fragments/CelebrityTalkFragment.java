@@ -1,6 +1,7 @@
 package com.clusterdev.ragam.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
@@ -43,6 +45,8 @@ public class CelebrityTalkFragment extends Fragment {
     private Typeface tf;
     private boolean openingForFirstTime;
     private DataBaseHelper db;
+    private Button callButton,backButton;
+    public String phoneNum;
 
     public static Fragment newInstance() {
         Fragment fragment = new CelebrityTalkFragment();
@@ -78,6 +82,18 @@ public class CelebrityTalkFragment extends Fragment {
         openingForFirstTime=true;
         heading= (TextView) v.findViewById(R.id.cel_heading);
         description= (TextView) v.findViewById(R.id.description_textview);
+        callButton= (Button) v.findViewById(R.id.call_button);
+
+        backButton= (Button) v.findViewById(R.id.back_button);
+        callButton.setVisibility(View.GONE);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +phoneNum));
+                getActivity().startActivity(intent);
+            }
+        });
         tf= Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
         list = (ListView) v.findViewById(R.id.listview);
@@ -115,6 +131,8 @@ public class CelebrityTalkFragment extends Fragment {
                 out.setDuration(500);
                 final Animation in = new AlphaAnimation(0.0f,1.0f);
                 in.setDuration(500);
+                callButton.setVisibility(View.VISIBLE);
+
                 out.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
@@ -123,10 +141,16 @@ public class CelebrityTalkFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
+
                         TextView textView= (TextView) arg1.findViewById(R.id.workshop_tv_heading);
                         heading.setText(textView.getText().toString());
                         Cursor cursor=db.getEventDetails(textView.getText().toString());
                         cursor.moveToFirst();
+
+                        phoneNum=cursor.getString(cursor.getColumnIndex("contact_number"));
+                        if(phoneNum.equals("")){
+                            phoneNum=getResources().getString(R.string.prodezza_contact);
+                        }
                         String fullDescription=cursor.getString(cursor.getColumnIndex("fulldescription"));
                         description.setText(Html.fromHtml(fullDescription));
                         heading.startAnimation(in);
@@ -148,6 +172,7 @@ public class CelebrityTalkFragment extends Fragment {
         slidingDrawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
             @Override
             public void onDrawerOpened() {
+                callButton.setVisibility(View.GONE);
                 final Animation out = new AlphaAnimation(1.0f, 0.0f);
                 out.setDuration(500);
                 final Animation in = new AlphaAnimation(0.0f,1.0f);
