@@ -40,7 +40,7 @@
                     android:layout_marginLeft="@dimen/description_margin_left"
                     android:layout_marginRight="@dimen/heading_margin_right"
                     android:gravity="end"
-                    android:text="workshops"
+                    android:text="@string/workshops_heading"
                     android:textColor="@color/white"
                     android:textSize="@dimen/heading_font_size" />
 
@@ -89,32 +89,28 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             android:textColor="@color/white" />
     </ScrollView>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginBottom="@dimen/logo_white_marginBottom">
-
-        <View
-
-            android:layout_width="@dimen/logo_white_width"
-            android:layout_height="@dimen/logo_white_height"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:background="@drawable/workshop_circle" />
-
-        <ImageView
-            android:layout_width="@dimen/logo_white_width"
-            android:layout_height="@dimen/logo_white_height"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:background="@drawable/logo_white" />
         <Button
             android:layout_width="@dimen/back_button_width"
             android:layout_height="@dimen/back_button_width"
+            android:enabled="false"
             android:id="@+id/back_button"
             android:background="@drawable/up_button_selector"
             android:layout_marginRight="@dimen/back_button_margin_right"
-            android:layout_gravity="right|center_vertical"/>
-    </FrameLayout>
+            android:layout_alignParentRight="true"/>
+        <Button
+            android:id="@+id/call_button"
+            android:layout_width="@dimen/call_button_width"
+            android:layout_height="@dimen/call_button_height"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/call_button_selector"
+            android:layout_toLeftOf="@id/back_button"></Button>
+    </RelativeLayout>
+
     <SlidingDrawer
         android:id="@+id/slidingDrawer"
         android:layout_width="wrap_content"

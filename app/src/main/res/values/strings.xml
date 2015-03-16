@@ -6,5 +6,34 @@
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_contents">Contents</string>
+    <string name="workshops_heading">Workshops</string>
+    <string name="prodezza_heading">Prodezza</string>
+    <string name="competitions_heading">Competitions</string>
+    <string name="competitions_contact">+918089219732</string>
+    <string name="workshops_contact">+918089219732</string>
+    <string name="prodezza_contact">+918089219732</string>
+    <string name="eluveitie_description">This Ragam, we promise you an epic night,
+        an experience like never before. We push new boundaries and bring to you,
+        for the first time in South India, from halfway across the world, Swiss folk metal band,
+        ELUVEITIE. Along with the typical lead, rhythm, base guitars and drums,
+        Eluveitie continues to incorporate an armada of instruments that give their
+        folk metal that really unique Celtic sound. Hurdy-gurdy, bagpipes, tin whistles,
+        flutes, pipes, violin have all made a return through their music.
+        Witness them create magic
+        , as they blend folk death metal and classic Celtic music and transform
+        the Ragam stage to truly international standards.</string>
+    <string name="ankit_description">It is the electrifying crowd,
+        the charge in the atmosphere and the sheer energy as you scream out that makes
+        Ragam a memory worth saving. Create another memory on -th March, as Ragam\'15
+        proudly presents Ankit Tiwari, for the first time, on the largest stage in south India.
+        Immerse yourself in music, as you are regaled by the versatile singer of famous
+        tracks like Galliyan and the evergreen Sun Rahai Tu. The emotions are real,
+        the music magical and the crowd amazing, we promise you a night like none before,
+        an experience to last a lifetime and a memory that will stand the test of time.
+        This is the stuff dreams are made of. A night where promises will come true and dr
+        eams unfold. Follow the trail, for the destination is where your heart truly belongs, Ragam \'15.</string>
+    <string name="third_proshow">Too anxious to know about all the major events?
+Expect a few surprises in the coming days..
+Stay tuned for updates.</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.clusterdev.ragam.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
@@ -43,7 +45,8 @@ public class WorkshopFragment extends Fragment {
     private Typeface tf;
     private boolean openingForFirstTime;
     private DataBaseHelper db;
-
+    private Button callButton,backButton;
+    private String phoneNum;
     public static Fragment newInstance() {
         Fragment fragment = new WorkshopFragment();
 
@@ -80,8 +83,18 @@ public class WorkshopFragment extends Fragment {
         tf= Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
         list = (ListView) v.findViewById(R.id.listview);
-        slidingDrawer= (SlidingDrawer) v.findViewById(R.id.slidingDrawer);
+        callButton= (Button) v.findViewById(R.id.call_button);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +phoneNum));
+                getActivity().startActivity(intent);
+            }
+        });
+        backButton= (Button) v.findViewById(R.id.back_button);
+        slidingDrawer= (SlidingDrawer) v.findViewById(R.id.slidingDrawer);
+        callButton.setVisibility(View.GONE);
 
         list.setAdapter(new WorkshopAdapter(getActivity(),db.getEvents("WORKSHOPS")));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -116,6 +129,7 @@ public class WorkshopFragment extends Fragment {
                 out.setDuration(500);
                 final Animation in = new AlphaAnimation(0.0f,1.0f);
                 in.setDuration(500);
+                callButton.setVisibility(View.VISIBLE);
                 out.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
@@ -128,6 +142,10 @@ public class WorkshopFragment extends Fragment {
                         heading.setText(textView.getText().toString());
                         Cursor cursor=db.getEventDetails(textView.getText().toString());
                         cursor.moveToFirst();
+                        phoneNum=cursor.getString(cursor.getColumnIndex("contact_number"));
+                        if(phoneNum.equals("")){
+                            phoneNum=getResources().getString(R.string.workshops_contact);
+                        }
                         String fullDescription=cursor.getString(cursor.getColumnIndex("fulldescription"));
                         description.setText(Html.fromHtml(fullDescription));
                         heading.startAnimation(in);
@@ -148,6 +166,8 @@ public class WorkshopFragment extends Fragment {
         slidingDrawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
             @Override
             public void onDrawerOpened() {
+
+                callButton.setVisibility(View.GONE);
                 final Animation out = new AlphaAnimation(1.0f, 0.0f);
                 out.setDuration(500);
                 final Animation in = new AlphaAnimation(0.0f,1.0f);
@@ -160,7 +180,7 @@ public class WorkshopFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        heading.setText("workshops");
+                        heading.setText(R.string.workshops_heading);
                         description.setText("");
                         heading.startAnimation(in);
 
