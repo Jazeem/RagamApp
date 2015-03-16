@@ -114,7 +114,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_desc_1"
                             android:textColor="@color/proshow_color"
-                            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel lectus nec nisi sodales congue et at justo. In pharetra ligula eget nisi convallis efficitur. Aliquam purus erat, fringilla vulputate eros faucibus, pharetra egestas nisl. Pellentesque at hendrerit nibh. Cras arcu sapien, iaculis quis tellus ac, maximus scelerisque libero. Suspendisse bibendum purus nisl, id faucibus justo sollicitudin in. Donec id lectus sed lacus vestibulum condimentum nec non felis."/>
+                            android:text="@string/eluveitie_description"></TextView>
                     </ScrollView>
                 </FrameLayout>
                 <TextView
@@ -186,7 +186,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_desc_2"
                             android:textColor="@color/proshow_color"
-                            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel lectus nec nisi sodales congue et at justo. In pharetra ligula eget nisi convallis efficitur. Aliquam purus erat, fringilla vulputate eros faucibus, pharetra egestas nisl. Pellentesque at hendrerit nibh. Cras arcu sapien, iaculis quis tellus ac, maximus scelerisque libero. Suspendisse bibendum purus nisl, id faucibus justo sollicitudin in. Donec id lectus sed lacus vestibulum condimentum nec non felis."/>
+                            android:text="@string/ankit_description"/>
                     </ScrollView>
                 </FrameLayout>
                 <TextView
@@ -258,7 +258,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_desc_3"
                             android:textColor="@color/proshow_color"
-                            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel lectus nec nisi sodales congue et at justo. In pharetra ligula eget nisi convallis efficitur. Aliquam purus erat, fringilla vulputate eros faucibus, pharetra egestas nisl. Pellentesque at hendrerit nibh. Cras arcu sapien, iaculis quis tellus ac, maximus scelerisque libero. Suspendisse bibendum purus nisl, id faucibus justo sollicitudin in. Donec id lectus sed lacus vestibulum condimentum nec non felis."/>
+                            android:text="@string/third_proshow"/>
                     </ScrollView>
                 </FrameLayout>
             </LinearLayout>
