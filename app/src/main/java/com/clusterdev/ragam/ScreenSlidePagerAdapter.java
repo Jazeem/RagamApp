@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import com.clusterdev.ragam.fragments.AboutFragment;
 import com.clusterdev.ragam.fragments.CelebrityTalkFragment;
 import com.clusterdev.ragam.fragments.EventsFragment;
-import com.clusterdev.ragam.fragments.GalleryFragment;
 import com.clusterdev.ragam.fragments.ProShowFragment;
 import com.clusterdev.ragam.fragments.WorkshopFragment;
 import com.jfeinstein.jazzyviewpager.JazzyViewPager;

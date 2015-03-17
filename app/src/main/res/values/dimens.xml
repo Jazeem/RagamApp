@@ -109,6 +109,9 @@
     <dimen name="call_button_width">50dp</dimen>
     <dimen name="call_button_height">50dp</dimen>
     <dimen name="home_button_margin_right">30dp</dimen>
+    <dimen name="ticket_button_width">25dp</dimen>
+    <dimen name="ticket_padding">10dp</dimen>
+    <dimen name="pro_show_text_size_4">20dp</dimen>
 
 
 </resources>

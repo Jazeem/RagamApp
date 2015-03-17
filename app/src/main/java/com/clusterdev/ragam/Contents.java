@@ -1,35 +1,16 @@
 package com.clusterdev.ragam;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-
-import com.clusterdev.ragam.R;
 import com.jfeinstein.jazzyviewpager.JazzyViewPager;
-import com.viewpagerindicator.CirclePageIndicator;
-import com.viewpagerindicator.IconPageIndicator;
 import com.viewpagerindicator.LinePageIndicator;
-import com.viewpagerindicator.UnderlinePageIndicator;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -38,7 +19,7 @@ public class Contents extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous

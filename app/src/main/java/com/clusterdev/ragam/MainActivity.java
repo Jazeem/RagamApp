@@ -15,11 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.SlidingDrawer;
-import android.widget.TextView;
 
 import com.nvanbenschoten.motion.ParallaxImageView;
 
@@ -39,10 +36,10 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
-    private TextView tv1,tv2,tv3,tv4,tv5,tv6,event,exhibition,proshow,workshop;
+    private Button tv1,tv2,tv3,tv4,tv6;
     private SlidingDrawer drawer;
     private ParallaxImageView background,logo;
-    private Button slideDown;
+
     private String baseUrl="http://www.ragam.org.in/2015/";
 
     private class PingMac extends AsyncTask<String, Void, String >{
@@ -81,20 +78,20 @@ public class MainActivity extends ActionBarActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        tv1= (TextView) findViewById(R.id.dropdown_tv1);
-        tv2= (TextView) findViewById(R.id.dropdown_tv2);
-        tv3= (TextView) findViewById(R.id.dropdown_tv3);
-        tv4= (TextView) findViewById(R.id.dropdown_tv4);
+        tv1= (Button) findViewById(R.id.dropdown_tv1);
+        tv2= (Button) findViewById(R.id.dropdown_tv2);
+        tv3= (Button) findViewById(R.id.dropdown_tv3);
+        tv4= (Button) findViewById(R.id.dropdown_tv4);
 
-        tv6= (TextView) findViewById(R.id.dropdown_tv6);
+        tv6= (Button) findViewById(R.id.dropdown_tv6);
 
 
         Display display = getWindowManager().getDefaultDisplay();
         DisplayMetrics outMetrics = new DisplayMetrics ();
         display.getMetrics(outMetrics);
 
-        float density  = getResources().getDisplayMetrics().density;
-        final float dpHeight = outMetrics.heightPixels / density;
+
+
 
 
 
@@ -102,34 +99,7 @@ public class MainActivity extends ActionBarActivity {
         logo= (ParallaxImageView) findViewById(R.id.logo);
 
         drawer= (SlidingDrawer) findViewById(R.id.slidingDrawer);
-        //slideDown= (Button) findViewById(R.id.slide_down);
-        /*slideDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.v("test","inside button");
-                TranslateAnimation translateAnimation = new TranslateAnimation(0,0, Animation.RELATIVE_TO_SELF,dpHeight+logo.getHeight());
-                translateAnimation.setDuration(1000);
-                translateAnimation.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
 
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        logo.unregisterSensorManager();
-                        logo.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-                logo.startAnimation(translateAnimation);
-            }
-        });*/
-        //drawer.setVisibility(View.GONE);
         Typeface tf=Typeface.createFromAsset(getAssets(),"fonts/HelveticaNeue-Thin.otf");
         tv1.setTypeface(tf);
         tv2.setTypeface(tf);
