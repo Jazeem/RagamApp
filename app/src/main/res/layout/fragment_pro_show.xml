@@ -36,7 +36,7 @@
                     android:id="@+id/pro_heading"
                     android:text="proshows"
                     android:textSize="@dimen/pro_show_text_size_1"
-                    android:textColor="@color/about_2"
+                    android:textColor="@android:color/white"
                     android:gravity="center_horizontal"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/proshow_color_top"

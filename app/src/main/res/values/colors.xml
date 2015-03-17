@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg_app">#2d2d2d</color>
-    <color name="events_color">#4c4d4f</color>
+    <color name="events_color">#0e344d</color>
     <color name="white">#ffffff</color>
     <color name="exhibition_color">#3b5152</color>
     <color name="proshow_color">#cbcbcb</color>
@@ -9,7 +9,7 @@
     <color name="proshow_color1">#398fb7</color>
     <color name="proshow_color2">#39b79e</color>
     <color name="proshow_color3">#e07070</color>
-    <color name="workshop_color">#0e344d</color>
+    <color name="workshop_color">#092f25</color>
     <color name="event_color_dim">#2f189995</color>
     <color name="exhibition_color_dim">#2ffef7c4</color>
     <color name="proshow_color_dim">#2f9ad7d5</color>

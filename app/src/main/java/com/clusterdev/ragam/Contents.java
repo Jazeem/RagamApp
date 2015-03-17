@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import com.jfeinstein.jazzyviewpager.JazzyViewPager;
+import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.LinePageIndicator;
 import android.view.WindowManager;
 import android.widget.Button;
