@@ -64,11 +64,11 @@
                     android:layout_height="@dimen/dropdown_seperator_height"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/dropdown_seperator"/>
-                <TextView
+                <Button
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
                     android:id="@+id/dropdown_tv1"
-                    android:background="@drawable/background_dropdown"
+                    android:background="@drawable/menu_dropdown_button"
                     android:text="competitions"
                     android:textSize="30dp"
                     android:textColor="@color/dropdown_text"
@@ -80,10 +80,10 @@
                     android:layout_height="@dimen/dropdown_seperator_height"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/dropdown_seperator"/>
-                <TextView
+                <Button
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
-                    android:background="@drawable/background_dropdown"
+                    android:background="@drawable/menu_dropdown_button"
                     android:id="@+id/dropdown_tv2"
                     android:text="workshops"
                     android:textSize="30dp"
@@ -97,10 +97,10 @@
                     android:layout_gravity="center_horizontal"
                     android:background="@color/dropdown_seperator"/>
 
-                <TextView
+                <Button
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
-                    android:background="@drawable/background_dropdown"
+                    android:background="@drawable/menu_dropdown_button"
                     android:id="@+id/dropdown_tv3"
                     android:text="prodezza"
                     android:textSize="30dp"
@@ -113,10 +113,10 @@
                     android:layout_height="@dimen/dropdown_seperator_height"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/dropdown_seperator"/>
-                <TextView
+                <Button
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
-                    android:background="@drawable/background_dropdown"
+                    android:background="@drawable/menu_dropdown_button"
                     android:id="@+id/dropdown_tv4"
                     android:text="proshows"
                     android:textSize="30dp"
@@ -130,10 +130,10 @@
                     android:layout_gravity="center_horizontal"
                     android:background="@color/dropdown_seperator"/>
 
-                <TextView
+                <Button
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
-                    android:background="@drawable/background_dropdown"
+                    android:background="@drawable/menu_dropdown_button"
                     android:id="@+id/dropdown_tv6"
                     android:text="about us"
                     android:textSize="30dp"

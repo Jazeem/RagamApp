@@ -5,6 +5,7 @@
     <color name="white">#ffffff</color>
     <color name="exhibition_color">#3b5152</color>
     <color name="proshow_color">#cbcbcb</color>
+
     <color name="proshow_color1">#398fb7</color>
     <color name="proshow_color2">#39b79e</color>
     <color name="proshow_color3">#e07070</color>
@@ -19,6 +20,7 @@
     <color name="workshop_row_text">#1a465f</color>
     <color name="workshop_row_even">#e7ebec</color>
     <color name="dropdown_bg">#d6d4dedd</color>
+    <color name="dropdown_bg_pressed">#a6d4dedd</color>
     <color name="dropdown_seperator">#00000000</color>
     <color name="celebrity_talk_color">#499195</color>
 
@@ -31,5 +33,6 @@
     <color name="swipe_button">#773631</color>
     <color name="contact_row">#38b8bb</color>
     <color name="dropdown_text">#114a4d</color>
+    <color name="dropdown_stroke">#5b5b5b</color>
 
 </resources>
