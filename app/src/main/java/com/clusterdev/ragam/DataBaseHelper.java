@@ -17,8 +17,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.preference.PreferenceManager;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
