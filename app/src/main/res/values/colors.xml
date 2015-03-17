@@ -22,7 +22,7 @@
     <color name="dropdown_bg">#d6d4dedd</color>
     <color name="dropdown_bg_pressed">#a6d4dedd</color>
     <color name="dropdown_seperator">#00000000</color>
-    <color name="celebrity_talk_color">#499195</color>
+    <color name="celebrity_talk_color">#00525b</color>
 
     <color name="hex_border">#0c0c0c</color>
     <color name="proshow_color_top">#282822</color>
