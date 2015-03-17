@@ -145,7 +145,7 @@
                     android:textColor="@color/dropdown_text"
                     android:clickable="true"
                     android:onClick="pageSelected"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal|center_vertical"/>
                 </LinearLayout>
         </RelativeLayout>
         </SlidingDrawer>

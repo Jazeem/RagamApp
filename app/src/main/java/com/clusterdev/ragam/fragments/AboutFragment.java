@@ -1,14 +1,12 @@
 package com.clusterdev.ragam.fragments;
 
 import android.app.Activity;
+
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,13 +20,12 @@ import android.widget.TextView;
 import com.clusterdev.ragam.ContactInfo;
 import com.clusterdev.ragam.CustomContactAdapter;
 import com.clusterdev.ragam.R;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -37,21 +34,15 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link GalleryFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link GalleryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class AboutFragment extends Fragment {
 
     private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11,tv12,tv13,tv14,tv15,tv16;
-    private LatLng NIT= new LatLng(11.3193295,75.93319);
+    private LatLng NIT= new LatLng(11.322266, 75.930453);
+    private LatLng NITMarker=new LatLng(11.3193295,75.93319);
     private LatLng India=new LatLng(10.4754981,79.258464);
     private GoogleMap map;
-    private SupportMapFragment mapFragment;
+
     private ScrollView scrollView;
 
     private boolean mapAnimated;
@@ -246,13 +237,22 @@ public class AboutFragment extends Fragment {
             // Any portion of the imageView, even a single pixel, is within the visible window
             mapAnimated=true;
             CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(NIT)      // Sets the center of the map to Mountain View
+                    .target(NITMarker)      // Sets the center of the map to Mountain View
                     .zoom(14)                   // Sets the zoom
                             //.bearing(90)                // Sets the orientation of the camera to east
                             //.tilt(30)                   // Sets the tilt of the camera to 30 degrees
+
                     .build();                   // Creates a CameraPosition from the builder
             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-            //map.addMarker(new MarkerOptions().position(NIT));
+            final Marker nitMarker = map.addMarker(new MarkerOptions()
+                    .position(NITMarker)
+                    .title("Ragam")
+                    .snippet("Don your capes")
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker)));
+
+
+
+
         } else {
             // NONE of the imageView is within the visible window
         }

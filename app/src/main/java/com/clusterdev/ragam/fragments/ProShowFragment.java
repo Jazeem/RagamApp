@@ -1,6 +1,7 @@
 package com.clusterdev.ragam.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -23,10 +25,12 @@ import couk.jenxsol.parallaxscrollview.views.ObservableScrollView;
  * Created by Jazeem on 10/03/15.
  */
 public class ProShowFragment extends Fragment {
-    private TextView heading,name1,day1,month1,desc1,name2,day2,month2,desc2,name3,day3,month3,desc3;
+    private TextView heading,name1,day1,month1,desc1,name2,day2,month2,desc2,name3,day3,month3,desc3,ticket;
     private Typeface tf;
     private LinearLayout observableScroll;
     private ScrollView scrollView1,scrollView2,scrollView3;
+    private Button ticketCall;
+    private String ticketContact="+917736823901";
     public static Fragment newInstance() {
         Fragment fragment = new ProShowFragment();
 
@@ -66,6 +70,8 @@ public class ProShowFragment extends Fragment {
         day3= (TextView) v.findViewById(R.id.tv_day_3);
         month3= (TextView) v.findViewById(R.id.tv_month_3);
         desc3= (TextView) v.findViewById(R.id.tv_desc_3);
+        ticket= (TextView) v.findViewById(R.id.tv_ticket);
+        ticketCall=(Button)v.findViewById(R.id.ticket_call);
         tf= Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
         name1.setTypeface(tf);
@@ -80,9 +86,24 @@ public class ProShowFragment extends Fragment {
         month3.setTypeface(tf);
         day3.setTypeface(tf);
         desc3.setTypeface(tf);
+        ticket.setTypeface(tf);
         scrollView1= (ScrollView) v.findViewById(R.id.scrollview1);
         scrollView2= (ScrollView) v.findViewById(R.id.scrollview2);
         scrollView3= (ScrollView) v.findViewById(R.id.scrollview3);
+        ticket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +ticketContact));
+                getActivity().startActivity(intent);
+            }
+        });
+        ticketCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +ticketContact));
+                getActivity().startActivity(intent);
+            }
+        });
         /*makeMyScrollSmart(scrollView1);
         makeMyScrollSmart(scrollView2);
         makeMyScrollSmart(scrollView3);*/

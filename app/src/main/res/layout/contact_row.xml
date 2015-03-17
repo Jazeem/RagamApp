@@ -20,13 +20,13 @@
         android:layout_below="@id/tv_contact_name"
         android:layout_marginLeft="@dimen/contact_row_margin_left"
         />
-    <ImageButton
-        android:layout_width="@dimen/contact_button_width"
+    <Button
+        android:layout_width="@dimen/contact_row_height"
         android:layout_height="@dimen/contact_row_height"
         android:id="@+id/call_button"
-        android:src="@drawable/call_button"
-        android:scaleType="fitXY"
-        android:background="@null"
+        android:background="@drawable/call_button_selector"
+
+
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/contact_row_margin_left"
         />
