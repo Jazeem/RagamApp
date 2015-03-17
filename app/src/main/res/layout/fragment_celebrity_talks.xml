@@ -88,27 +88,8 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             android:textColor="@color/white" />
     </ScrollView>
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="@dimen/logo_white_marginBottom">
-        <Button
-            android:layout_width="@dimen/back_button_width"
-            android:layout_height="@dimen/back_button_width"
-            android:enabled="false"
-            android:id="@+id/back_button"
-            android:background="@drawable/up_button_selector"
-            android:layout_marginRight="@dimen/back_button_margin_right"
-            android:layout_alignParentRight="true"/>
-        <Button
-            android:id="@+id/call_button"
-            android:layout_width="@dimen/call_button_width"
-            android:layout_height="@dimen/call_button_height"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/call_button_selector"
-            android:layout_toLeftOf="@id/back_button"></Button>
-    </RelativeLayout>
+
+
 
 
     <SlidingDrawer
@@ -132,6 +113,29 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             android:layout_width="wrap_content"
             android:layout_height="@dimen/event_page_top_margin_full" />
     </SlidingDrawer>
+    <RelativeLayout
+        android:id="@+id/event_buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/home_button_margin_left"
+        android:layout_marginRight="@dimen/home_button_margin_right"
+        android:layout_marginBottom="@dimen/home_button_margin_bottom">
+        <Button
+            android:layout_width="@dimen/home_button_width"
+            android:layout_height="@dimen/home_button_width"
+            android:id="@+id/back_button"
+            android:background="@drawable/call_button_selector"
+            android:layout_alignParentRight="true"/>
+        <Button
+            android:id="@+id/call_button"
+            android:layout_width="@dimen/home_button_width"
+            android:layout_height="@dimen/home_button_height"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/up_button_selector"
+            android:layout_alignParentLeft="true"></Button>
 
+    </RelativeLayout>
 
 </FrameLayout>

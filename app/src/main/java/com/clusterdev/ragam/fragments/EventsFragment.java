@@ -64,6 +64,7 @@ public class EventsFragment extends Fragment {
     boolean isEventSelected=false;
     Button callButton;
     String phoneNum;
+    View eventButtons;
 
 
     // TODO: Rename and change types of parameters
@@ -143,6 +144,7 @@ public class EventsFragment extends Fragment {
                         Cursor cursor=db.getEventDetails(textView.getText().toString());
                         cursor.moveToFirst();
                         phoneNum=cursor.getString(cursor.getColumnIndex("contact_number"));
+
                         if(phoneNum.equals("")){
                             phoneNum=getResources().getString(R.string.competitions_contact);
                         }
@@ -150,8 +152,8 @@ public class EventsFragment extends Fragment {
                         description.setText(Html.fromHtml(fullDescription));
                         descriptionView.setVisibility(View.VISIBLE);
                         description.startAnimation(newfadeIn);
-                        backButton.setEnabled(true);
-                        callButton.setVisibility(View.VISIBLE);
+                        eventButtons.setVisibility(View.VISIBLE);
+
                         Log.d("Fade In description", "Started");
 
 
@@ -241,6 +243,8 @@ public class EventsFragment extends Fragment {
         descriptionView= v.findViewById(R.id.description_view);
         eventsList.setOnItemClickListener(eventClickListner);
         categoriesList.setOnItemClickListener(categoryClickListner);
+        eventButtons=v.findViewById(R.id.event_buttons);
+
 
 
 
@@ -348,8 +352,8 @@ public class EventsFragment extends Fragment {
         if(!isEventSelected)
             return;
         isEventSelected=false;
-        backButton.setEnabled(false);
-        callButton.setVisibility(View.GONE);
+
+
         final Animation shrinkAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.shrink);
         categoriesList.setOnItemClickListener(null);
         shrinkAnim.setDuration(1200);
@@ -373,7 +377,7 @@ public class EventsFragment extends Fragment {
                 descriptionView.setVisibility(View.GONE);
                 events_layout.startAnimation(fadeIn);
 
-
+                eventButtons.setVisibility(View.GONE);
                 rightForeground.startAnimation(shrinkAnim);
                 shrinkAnim.setAnimationListener(new Animation.AnimationListener() {
                     @Override

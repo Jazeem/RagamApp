@@ -47,6 +47,7 @@ public class WorkshopFragment extends Fragment {
     private DataBaseHelper db;
     private Button callButton,backButton;
     private String phoneNum;
+    private View eventButton;
     public static Fragment newInstance() {
         Fragment fragment = new WorkshopFragment();
 
@@ -76,7 +77,7 @@ public class WorkshopFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v=inflater.inflate(R.layout.fragment_workshop, container, false);
+        final View v=inflater.inflate(R.layout.fragment_workshop, container, false);
         openingForFirstTime=true;
         heading= (TextView) v.findViewById(R.id.workshop_heading);
         description= (TextView) v.findViewById(R.id.description_textview);
@@ -93,8 +94,15 @@ public class WorkshopFragment extends Fragment {
             }
         });
         backButton= (Button) v.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View handle=v.findViewById(R.id.handle);
+                handle.callOnClick();
+            }
+        });
         slidingDrawer= (SlidingDrawer) v.findViewById(R.id.slidingDrawer);
-        callButton.setVisibility(View.GONE);
+        eventButton=v.findViewById(R.id.event_buttons);
 
         list.setAdapter(new WorkshopAdapter(getActivity(),db.getEvents("WORKSHOPS")));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -129,7 +137,7 @@ public class WorkshopFragment extends Fragment {
                 out.setDuration(500);
                 final Animation in = new AlphaAnimation(0.0f,1.0f);
                 in.setDuration(500);
-                callButton.setVisibility(View.VISIBLE);
+                eventButton.setVisibility(View.VISIBLE);
                 out.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
@@ -138,15 +146,15 @@ public class WorkshopFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        TextView textView= (TextView) arg1.findViewById(R.id.workshop_tv_heading);
+                        TextView textView = (TextView) arg1.findViewById(R.id.workshop_tv_heading);
                         heading.setText(textView.getText().toString());
-                        Cursor cursor=db.getEventDetails(textView.getText().toString());
+                        Cursor cursor = db.getEventDetails(textView.getText().toString());
                         cursor.moveToFirst();
-                        phoneNum=cursor.getString(cursor.getColumnIndex("contact_number"));
-                        if(phoneNum.equals("")){
-                            phoneNum=getResources().getString(R.string.workshops_contact);
+                        phoneNum = cursor.getString(cursor.getColumnIndex("contact_number"));
+                        if (phoneNum.equals("")) {
+                            phoneNum = getResources().getString(R.string.workshops_contact);
                         }
-                        String fullDescription=cursor.getString(cursor.getColumnIndex("fulldescription"));
+                        String fullDescription = cursor.getString(cursor.getColumnIndex("fulldescription"));
                         description.setText(Html.fromHtml(fullDescription));
                         heading.startAnimation(in);
                         description.startAnimation(in);
@@ -167,7 +175,7 @@ public class WorkshopFragment extends Fragment {
             @Override
             public void onDrawerOpened() {
 
-                callButton.setVisibility(View.GONE);
+                eventButton.setVisibility(View.GONE);
                 final Animation out = new AlphaAnimation(1.0f, 0.0f);
                 out.setDuration(500);
                 final Animation in = new AlphaAnimation(0.0f,1.0f);

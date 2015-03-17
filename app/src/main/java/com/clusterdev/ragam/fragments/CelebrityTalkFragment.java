@@ -47,6 +47,7 @@ public class CelebrityTalkFragment extends Fragment {
     private DataBaseHelper db;
     private Button callButton,backButton;
     public String phoneNum;
+    private View eventButton;
 
     public static Fragment newInstance() {
         Fragment fragment = new CelebrityTalkFragment();
@@ -78,14 +79,21 @@ public class CelebrityTalkFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v=inflater.inflate(R.layout.fragment_celebrity_talks, container, false);
+        final View v=inflater.inflate(R.layout.fragment_celebrity_talks, container, false);
         openingForFirstTime=true;
         heading= (TextView) v.findViewById(R.id.cel_heading);
         description= (TextView) v.findViewById(R.id.description_textview);
         callButton= (Button) v.findViewById(R.id.call_button);
 
         backButton= (Button) v.findViewById(R.id.back_button);
-        callButton.setVisibility(View.GONE);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View handle=v.findViewById(R.id.handle);
+                handle.callOnClick();
+            }
+        });
+        eventButton=v.findViewById(R.id.event_buttons);
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +106,7 @@ public class CelebrityTalkFragment extends Fragment {
         heading.setTypeface(tf);
         list = (ListView) v.findViewById(R.id.listview);
         slidingDrawer= (SlidingDrawer) v.findViewById(R.id.slidingDrawer);
+
         list.setAdapter(new WorkshopAdapter(getActivity(),db.getEvents("LECTURES")));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -131,7 +140,7 @@ public class CelebrityTalkFragment extends Fragment {
                 out.setDuration(500);
                 final Animation in = new AlphaAnimation(0.0f,1.0f);
                 in.setDuration(500);
-                callButton.setVisibility(View.VISIBLE);
+                eventButton.setVisibility(View.VISIBLE);
 
                 out.setAnimationListener(new Animation.AnimationListener() {
                     @Override
@@ -172,7 +181,7 @@ public class CelebrityTalkFragment extends Fragment {
         slidingDrawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
             @Override
             public void onDrawerOpened() {
-                callButton.setVisibility(View.GONE);
+                eventButton.setVisibility(View.GONE);
                 final Animation out = new AlphaAnimation(1.0f, 0.0f);
                 out.setDuration(500);
                 final Animation in = new AlphaAnimation(0.0f,1.0f);
