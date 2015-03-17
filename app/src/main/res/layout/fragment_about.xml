@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_about_reach_desc"
                 android:layout_below="@id/tv_about_reach"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel lectus nec nisi sodales congue et at justo. In pharetra ligula eget nisi convallis efficitur. Aliquam purus erat, fringilla vulputate eros faucibus, pharetra egestas nisl. Pellentesque at hendrerit nibh. Cras arcu sapien, iaculis quis tellus ac, maximus scelerisque libero. Suspendisse bibendum purus nisl, id faucibus justo sollicitudin in. Donec id lectus sed lacus vestibulum condimentum nec non felis."
+                android:text="@string/reach_us"
                 android:textColor="@color/about_2"
                 android:paddingRight="@dimen/about_margin_2"
                 android:paddingLeft="@dimen/about_margin_2"

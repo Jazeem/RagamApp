@@ -36,7 +36,7 @@
                     android:id="@+id/pro_heading"
                     android:text="proshows"
                     android:textSize="@dimen/pro_show_text_size_1"
-                    android:textColor="@color/proshow_color"
+                    android:textColor="@color/about_2"
                     android:gravity="center_horizontal"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/proshow_color_top"
@@ -108,12 +108,13 @@
                     <ScrollView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/scrollview1"
                         android:padding="@dimen/pro_show_desc_padding">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_desc_1"
-                            android:textColor="@color/proshow_color"
+                            android:textColor="@color/about_2"
                             android:text="@string/eluveitie_description"></TextView>
                     </ScrollView>
                 </FrameLayout>
@@ -180,12 +181,13 @@
                     <ScrollView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/scrollview2"
                         android:padding="@dimen/pro_show_desc_padding">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_desc_2"
-                            android:textColor="@color/proshow_color"
+                            android:textColor="@color/about_2"
                             android:text="@string/ankit_description"/>
                     </ScrollView>
                 </FrameLayout>
@@ -252,12 +254,13 @@
                     <ScrollView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/scrollview3"
                         android:padding="@dimen/pro_show_desc_padding">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_desc_3"
-                            android:textColor="@color/proshow_color"
+                            android:textColor="@color/about_2"
                             android:text="@string/third_proshow"/>
                     </ScrollView>
                 </FrameLayout>

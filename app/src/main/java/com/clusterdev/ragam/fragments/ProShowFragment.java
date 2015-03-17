@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.clusterdev.ragam.R;
@@ -24,6 +26,7 @@ public class ProShowFragment extends Fragment {
     private TextView heading,name1,day1,month1,desc1,name2,day2,month2,desc2,name3,day3,month3,desc3;
     private Typeface tf;
     private LinearLayout observableScroll;
+    private ScrollView scrollView1,scrollView2,scrollView3;
     public static Fragment newInstance() {
         Fragment fragment = new ProShowFragment();
 
@@ -77,8 +80,44 @@ public class ProShowFragment extends Fragment {
         month3.setTypeface(tf);
         day3.setTypeface(tf);
         desc3.setTypeface(tf);
+        scrollView1= (ScrollView) v.findViewById(R.id.scrollview1);
+        scrollView2= (ScrollView) v.findViewById(R.id.scrollview2);
+        scrollView3= (ScrollView) v.findViewById(R.id.scrollview3);
+        /*makeMyScrollSmart(scrollView1);
+        makeMyScrollSmart(scrollView2);
+        makeMyScrollSmart(scrollView3);*/
+
         return v;
     }
+
+    //to make scrollview inside scrollview work
+    private void makeMyScrollSmart(View myScroll) {
+        myScroll.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View __v, MotionEvent __event) {
+                if (__event.getAction() == MotionEvent.ACTION_DOWN) {
+                    //  Disallow the touch request for parent scroll on touch of child view
+                    requestDisallowParentInterceptTouchEvent(__v, true);
+                } else if (__event.getAction() == MotionEvent.ACTION_UP || __event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    // Re-allows parent events
+                    requestDisallowParentInterceptTouchEvent(__v, false);
+                }
+                return false;
+            }
+        });
+    }
+
+    private void requestDisallowParentInterceptTouchEvent(View __v, Boolean __disallowIntercept) {
+        while (__v.getParent() != null && __v.getParent() instanceof View) {
+            if (__v.getParent() instanceof ScrollView) {
+                __v.getParent().requestDisallowInterceptTouchEvent(__disallowIntercept);
+            }
+            __v = (View) __v.getParent();
+        }
+    }
+
+
+
     public void onButtonPressed(Uri uri) {
 
     }
