@@ -75,7 +75,7 @@ public class Contents extends FragmentActivity {
         mPager.setAdapter(mPagerAdapter);
         mPager.setTransitionEffect(JazzyViewPager.TransitionEffect.RotateDown);
         mPager.setCurrentItem(intent.getIntExtra("FRAGMENT",0));
-        LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.titles);
+        CirclePageIndicator indicator = (CirclePageIndicator) findViewById(R.id.titles);
         indicator.setViewPager(mPager);
         indicator.setCurrentItem(intent.getIntExtra("FRAGMENT",0));
     }

@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/workshop_tv_date"
         android:text="27mar"
+        android:visibility="invisible"
         android:textColor="@color/workshop_row_text"
         android:textSize="@dimen/workshop_content_font"
         android:layout_marginLeft="@dimen/workshop_row_text_margin_left"/>
@@ -16,6 +17,7 @@
         android:layout_width="@dimen/clock_width"
         android:layout_height="@dimen/clock_height"
         android:id="@+id/clock_img"
+        android:visibility="invisible"
         android:src="@drawable/clock"
         android:layout_below="@id/workshop_tv_date"
         android:layout_marginLeft="@dimen/clock_margin_left"
@@ -25,6 +27,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/workshop_tv_time"
         android:text="9:00\n am"
+        android:visibility="invisible"
         android:textColor="@color/workshop_row_text"
         android:textSize="@dimen/workshop_content_font"
         android:layout_below="@id/clock_img"
