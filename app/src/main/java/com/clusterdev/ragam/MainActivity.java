@@ -125,6 +125,7 @@ public class MainActivity extends ActionBarActivity {
                 findViewById(R.id.pullup_button).setBackgroundResource(R.drawable.pullup);
             }
         });
+        new PingMac().execute();
     }
 
     @Override
