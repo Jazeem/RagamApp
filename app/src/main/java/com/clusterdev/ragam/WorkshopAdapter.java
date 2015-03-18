@@ -13,7 +13,10 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Jazeem on 05/03/15.
@@ -62,6 +65,29 @@ public class WorkshopAdapter extends CursorAdapter {
         TextView time = (TextView) view.findViewById(R.id.workshop_tv_time);
         TextView desc = (TextView) view.findViewById(R.id.workshop_tv_desc);
         ImageView image= (ImageView) view.findViewById(R.id.workshop_tv_image);
+        Date timeStamp=null;
+        try {
+             timeStamp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(cursor.getString(cursor.getColumnIndex("time")));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int month=timeStamp.getMonth();
+        int day=timeStamp.getDate();
+        int hour=timeStamp.getHours();
+        int mins=timeStamp.getMinutes();
+        int h=hour%12;
+        String f;
+        if(hour>=12)
+            f=" pm";
+        else
+            f=" am";
+
+        if(h==0)
+            h=12;
+
+        date.setText(Integer.toString(day)+"mar");
+        time.setText(h+":"+String.format("%02d",mins)+"\n"+f);
+
         String code=cursor.getString(cursor.getColumnIndex("code"));
         String name=cursor.getString(cursor.getColumnIndex("name"));
         code=code.toLowerCase();
