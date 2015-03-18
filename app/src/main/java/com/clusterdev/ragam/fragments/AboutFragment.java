@@ -247,7 +247,7 @@ public class AboutFragment extends Fragment {
             final Marker nitMarker = map.addMarker(new MarkerOptions()
                     .position(NITMarker)
                     .title("Ragam")
-                    .snippet("Don your capes")
+                    .snippet("Don Your Capes.")
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker)));
 
 
