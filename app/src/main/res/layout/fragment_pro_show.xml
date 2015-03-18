@@ -226,7 +226,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_name_3"
                     android:textSize="@dimen/pro_show_name_size"
-                    android:text="mike candys"
+                    android:text="DJ Diego Miranda"
                     android:textColor="@android:color/white"
                     android:layout_marginTop="@dimen/pro_show_name_margin"
                     android:layout_marginLeft="@dimen/pro_show_name_height"/>
