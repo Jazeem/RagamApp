@@ -104,6 +104,7 @@ public class CelebrityTalkFragment extends Fragment {
         });
         tf= Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
+        description.setTypeface(tf);
         list = (ListView) v.findViewById(R.id.listview);
         slidingDrawer= (SlidingDrawer) v.findViewById(R.id.slidingDrawer);
 
@@ -195,7 +196,7 @@ public class CelebrityTalkFragment extends Fragment {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         heading.setText(R.string.prodezza_heading);
-                        description.setText("");
+                        description.setText(getResources().getString(R.string.prodezza_writeup));
                         heading.startAnimation(in);
 
                     }

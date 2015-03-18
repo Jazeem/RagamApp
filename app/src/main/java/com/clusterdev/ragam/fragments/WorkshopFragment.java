@@ -83,6 +83,7 @@ public class WorkshopFragment extends Fragment {
         description= (TextView) v.findViewById(R.id.description_textview);
         tf= Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
         heading.setTypeface(tf);
+        description.setTypeface(tf);
         list = (ListView) v.findViewById(R.id.listview);
         callButton= (Button) v.findViewById(R.id.call_button);
         callButton.setOnClickListener(new View.OnClickListener() {
@@ -189,7 +190,7 @@ public class WorkshopFragment extends Fragment {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         heading.setText(R.string.workshops_heading);
-                        description.setText("");
+                        description.setText(getResources().getString(R.string.workshop_writeup));
                         heading.startAnimation(in);
 
                     }
