@@ -34,5 +34,8 @@
     <color name="contact_row">#38b8bb</color>
     <color name="dropdown_text">#114a4d</color>
     <color name="dropdown_stroke">#5b5b5b</color>
+    <color name="sponsor_1">#009688</color>
+    <color name="sponsor_2">#dfdfdf</color>
+    <color name="sponsor_3">#7dc4b1</color>
 
 </resources>

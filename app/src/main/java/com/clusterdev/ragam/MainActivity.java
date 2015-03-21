@@ -82,7 +82,7 @@ public class MainActivity extends ActionBarActivity {
         tv2= (Button) findViewById(R.id.dropdown_tv2);
         tv3= (Button) findViewById(R.id.dropdown_tv3);
         tv4= (Button) findViewById(R.id.dropdown_tv4);
-        tv5= (Button) findViewById(R.id.dropdown_tv4);
+        tv5= (Button) findViewById(R.id.dropdown_tv5);
         tv6= (Button) findViewById(R.id.dropdown_tv6);
 
 

@@ -234,14 +234,7 @@ public class AboutFragment extends Fragment {
     private void checkIfMapVisible() {
         if(map==null) {
             mapMask.setImageResource(R.drawable.maskcircle_with_map);
-            mapMask.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                    Uri.parse("http://maps.google.com/maps?daddr=11.322266,75.930453"));
-                    startActivity(intent);
-                }
-            });
+
             mapAnimated=true;
             return;
         }

@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@color/sponsor_2">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,44 +12,165 @@
             android:layout_height="fill_parent"
             android:orientation="vertical">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_about_ragam"
-                android:text="ragam"
-                android:textColor="@color/about_2"
-                android:textSize="@dimen/about_text_1"
-                android:layout_marginTop="@dimen/about_margin_1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/tv_sponsor_1"
+                android:layout_marginTop="@dimen/sponsors_margin_1"
+                android:background="@color/sponsor_3"
+                android:text="powered by"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:textSize="@dimen/heading_font_size"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/sponsor_1"
+                android:layout_below="@id/tv_sponsor_1"
+                android:background="@android:color/white"
+                android:layout_marginLeft="@dimen/sponsors_margin_2"
+                android:layout_marginRight="@dimen/sponsors_margin_2"
+                android:layout_marginTop="@dimen/sponsors_margin_3"
+                android:layout_marginBottom="@dimen/sponsors_margin_3"/>
+            <ImageView
+                android:layout_width="@dimen/sponsors_image_width"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:src="@drawable/samagra"
+                android:layout_alignBottom="@id/sponsor_1"
+                android:scaleType="fitCenter"
                 android:layout_centerHorizontal="true"/>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_about_ragam_desc"
-                android:layout_below="@id/tv_about_ragam"
-                android:text="@string/ragam"
-                android:textColor="@color/about_2"
-                android:paddingRight="@dimen/about_margin_2"
-                android:paddingLeft="@dimen/about_margin_2"
-                android:layout_marginTop="@dimen/about_margin_3"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_about_reach"
-                android:layout_below="@id/tv_about_ragam_desc"
-                android:text="reach us"
-                android:textColor="@color/about_2"
-                android:textSize="@dimen/about_text_1"
-                android:layout_marginTop="@dimen/about_margin_3"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/tv_sponsor_2"
+                android:layout_below="@id/sponsor_1"
+
+                android:background="@color/sponsor_3"
+                android:text="t-shirt sponsor"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:textSize="@dimen/heading_font_size"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/sponsor_2"
+                android:layout_below="@id/tv_sponsor_2"
+                android:background="@android:color/white"
+                android:layout_marginLeft="@dimen/sponsors_margin_2"
+                android:layout_marginRight="@dimen/sponsors_margin_2"
+                android:layout_marginTop="@dimen/sponsors_margin_3"
+                android:layout_marginBottom="@dimen/sponsors_margin_3"/>
+            <ImageView
+                android:layout_width="@dimen/sponsors_image_width"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:src="@drawable/cafit"
+                android:layout_alignBottom="@id/sponsor_2"
+                android:scaleType="fitCenter"
                 android:layout_centerHorizontal="true"/>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_about_reach_desc"
-                android:layout_below="@id/tv_about_reach"
-                android:text="@string/reach_us"
-                android:textColor="@color/about_2"
-                android:paddingRight="@dimen/about_margin_2"
-                android:paddingLeft="@dimen/about_margin_2"
-                android:layout_marginTop="@dimen/about_margin_3"/>
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/tv_sponsor_3"
+                android:layout_below="@id/sponsor_2"
+
+                android:background="@color/sponsor_3"
+                android:text="event sponsors"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:textSize="@dimen/heading_font_size"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/sponsor_3"
+                android:layout_below="@id/tv_sponsor_3"
+                android:background="@android:color/white"
+                android:layout_marginLeft="@dimen/sponsors_margin_2"
+                android:layout_marginRight="@dimen/sponsors_margin_2"
+                android:layout_marginTop="@dimen/sponsors_margin_3"
+                android:layout_marginBottom="@dimen/sponsors_margin_3"/>
+            <ImageView
+                android:layout_width="@dimen/sponsors_image_width"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:src="@drawable/monad"
+                android:layout_alignBottom="@id/sponsor_3"
+                android:scaleType="fitCenter"
+                android:layout_centerHorizontal="true"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/sponsor_4"
+                android:layout_below="@id/sponsor_3"
+                android:background="@android:color/white"
+                android:layout_marginLeft="@dimen/sponsors_margin_2"
+                android:layout_marginRight="@dimen/sponsors_margin_2"
+                android:layout_marginBottom="@dimen/sponsors_margin_3"/>
+            <ImageView
+                android:layout_width="@dimen/sponsors_image_width"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:src="@drawable/kerala"
+                android:layout_alignBottom="@id/sponsor_4"
+                android:scaleType="fitCenter"
+                android:layout_centerHorizontal="true"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/sponsor_5"
+                android:layout_below="@id/sponsor_4"
+                android:background="@android:color/white"
+                android:layout_marginLeft="@dimen/sponsors_margin_2"
+                android:layout_marginRight="@dimen/sponsors_margin_2"
+                android:layout_marginBottom="@dimen/sponsors_margin_3"/>
+            <ImageView
+                android:layout_width="@dimen/sponsors_image_width"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:src="@drawable/gate"
+                android:layout_alignBottom="@id/sponsor_5"
+                android:scaleType="fitCenter"
+                android:layout_centerHorizontal="true"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/sponsor_6"
+                android:layout_below="@id/sponsor_5"
+                android:background="@android:color/white"
+                android:layout_marginLeft="@dimen/sponsors_margin_2"
+                android:layout_marginRight="@dimen/sponsors_margin_2"
+                android:layout_marginBottom="@dimen/sponsors_margin_3"/>
+            <ImageView
+                android:layout_width="@dimen/sponsors_image_width"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:src="@drawable/hawalker"
+                android:layout_alignBottom="@id/sponsor_6"
+                android:scaleType="fitCenter"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/tv_sponsor_4"
+                android:layout_below="@id/sponsor_6"
+
+                android:background="@color/sponsor_3"
+                android:text="sneharagam title"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:textSize="@dimen/heading_font_size"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:id="@+id/sponsor_7"
+                android:layout_below="@id/tv_sponsor_4"
+                android:background="@android:color/white"
+                android:layout_marginLeft="@dimen/sponsors_margin_2"
+                android:layout_marginRight="@dimen/sponsors_margin_2"
+                android:layout_marginTop="@dimen/sponsors_margin_3"
+                android:layout_marginBottom="@dimen/sponsors_margin_3"/>
+            <ImageView
+                android:layout_width="@dimen/sponsors_image_width"
+                android:layout_height="@dimen/sponsors_subheading_height"
+                android:src="@drawable/uae"
+                android:layout_alignBottom="@id/sponsor_7"
+                android:scaleType="fitCenter"
+                android:layout_centerHorizontal="true"/>
+
         </RelativeLayout>
 
 
@@ -58,12 +179,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/event_page_top_margin_full"
-        android:background="@color/about">
+        android:background="@color/sponsor_1">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_about_heading"
-            android:text="about us"
+            android:id="@+id/tv_sponsor_heading"
+            android:text="sponsors"
             android:textSize="@dimen/heading_font_size"
             android:textColor="@android:color/white"
             android:layout_alignParentRight="true"

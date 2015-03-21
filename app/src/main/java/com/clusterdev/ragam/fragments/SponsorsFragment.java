@@ -37,6 +37,7 @@ import java.util.List;
 public class SponsorsFragment extends Fragment {
 
     private Typeface tf;
+    private TextView tv1,tv2,tv3,tv4,tv5;
     // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
         Fragment fragment = new SponsorsFragment();
@@ -64,20 +65,19 @@ public class SponsorsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_sponsors, container, false);
+        tv1=(TextView)v.findViewById(R.id.tv_sponsor_heading);
+        tv2=(TextView)v.findViewById(R.id.tv_sponsor_1);
+        tv3=(TextView)v.findViewById(R.id.tv_sponsor_2);
+        tv4=(TextView)v.findViewById(R.id.tv_sponsor_3);
+        tv5=(TextView)v.findViewById(R.id.tv_sponsor_4);
 
 
         tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
-
-
-
-
-
-
-
-
-
-
-
+        tv1.setTypeface(tf);
+        tv2.setTypeface(tf);
+        tv3.setTypeface(tf);
+        tv4.setTypeface(tf);
+        tv5.setTypeface(tf);
         return v;
     }
 
