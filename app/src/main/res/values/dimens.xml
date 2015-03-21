@@ -15,7 +15,7 @@
     <dimen name="handle_clickarea_width">40dp</dimen>
     <dimen name="handle_clickarea_height">230dp</dimen>
     <dimen name="content_width">300dp</dimen>
-    <dimen name="heading_font_size">25dp</dimen>
+    <dimen name="heading_font_size">22dp</dimen>
     <dimen name="event_page_top_margin">100dp</dimen>
     <dimen name="event_page_top_margin_full">140dp</dimen>
     <dimen name="logo_white_width">100dp</dimen>
@@ -60,7 +60,7 @@
     <dimen name="dropdown_item_start">25dp</dimen>
     <dimen name="dropdown_seperator_width">250dp</dimen>
     <dimen name="dropdown_seperator_height">10dp</dimen>
-    <dimen name="slidingdrawer_height">380dp</dimen>
+    <dimen name="slidingdrawer_height">440dp</dimen>
     <dimen name="pro_show_name_width">150dp</dimen>
     <dimen name="pro_show_name_height">30dp</dimen>
     <dimen name="pro_show_title_size">15dp</dimen>

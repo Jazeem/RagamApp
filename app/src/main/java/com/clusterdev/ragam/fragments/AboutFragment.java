@@ -2,6 +2,7 @@ package com.clusterdev.ragam.fragments;
 
 import android.app.Activity;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -231,6 +232,20 @@ public class AboutFragment extends Fragment {
     }
 
     private void checkIfMapVisible() {
+        if(map==null) {
+            mapMask.setImageResource(R.drawable.maskcircle_with_map);
+            mapMask.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("http://maps.google.com/maps?daddr=11.322266,75.930453"));
+                    startActivity(intent);
+                }
+            });
+            mapAnimated=true;
+            return;
+        }
+        else{
         Rect scrollBounds = new Rect();
         scrollView.getHitRect(scrollBounds);
         if (mapView.getLocalVisibleRect(scrollBounds)) {
@@ -255,6 +270,7 @@ public class AboutFragment extends Fragment {
 
         } else {
             // NONE of the imageView is within the visible window
+        }
         }
     }
 

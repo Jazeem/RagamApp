@@ -138,6 +138,24 @@
                     android:layout_width="@dimen/dropdown_item_width"
                     android:layout_height="@dimen/dropdown_item_height"
                     android:background="@drawable/menu_dropdown_button"
+                    android:id="@+id/dropdown_tv5"
+                    android:text="sponsors"
+                    android:textAllCaps="false"
+                    android:textSize="30dp"
+                    android:textColor="@color/dropdown_text"
+                    android:clickable="true"
+                    android:onClick="pageSelected"
+                    android:gravity="center_horizontal|center_vertical"/>
+                <View
+                    android:layout_width="@dimen/dropdown_seperator_width"
+                    android:layout_height="@dimen/dropdown_seperator_height"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/dropdown_seperator"/>
+
+                <Button
+                    android:layout_width="@dimen/dropdown_item_width"
+                    android:layout_height="@dimen/dropdown_item_height"
+                    android:background="@drawable/menu_dropdown_button"
                     android:id="@+id/dropdown_tv6"
                     android:text="about us"
                     android:textAllCaps="false"

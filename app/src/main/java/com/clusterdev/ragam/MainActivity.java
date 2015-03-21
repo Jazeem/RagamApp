@@ -36,7 +36,7 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
-    private Button tv1,tv2,tv3,tv4,tv6;
+    private Button tv1,tv2,tv3,tv4,tv5,tv6;
     private SlidingDrawer drawer;
     private ParallaxImageView background,logo;
 
@@ -82,7 +82,7 @@ public class MainActivity extends ActionBarActivity {
         tv2= (Button) findViewById(R.id.dropdown_tv2);
         tv3= (Button) findViewById(R.id.dropdown_tv3);
         tv4= (Button) findViewById(R.id.dropdown_tv4);
-
+        tv5= (Button) findViewById(R.id.dropdown_tv4);
         tv6= (Button) findViewById(R.id.dropdown_tv6);
 
 
@@ -105,7 +105,7 @@ public class MainActivity extends ActionBarActivity {
         tv2.setTypeface(tf);
         tv3.setTypeface(tf);
         tv4.setTypeface(tf);
-
+        tv5.setTypeface(tf);
         tv6.setTypeface(tf);
 
         background.registerSensorManager();
@@ -174,11 +174,16 @@ public class MainActivity extends ActionBarActivity {
                 intent.putExtra("FRAGMENT",3);
                 startActivity(intent);
                 break;
+            case R.id.dropdown_tv5 :
+                intent=new Intent(MainActivity.this,Contents.class);
+                intent.putExtra("FRAGMENT",4);
+                startActivity(intent);
+                break;
 
 
             case R.id.dropdown_tv6 :
                 intent=new Intent(MainActivity.this,Contents.class);
-                intent.putExtra("FRAGMENT",4);
+                intent.putExtra("FRAGMENT",5);
                 startActivity(intent);
                 break;
             default:

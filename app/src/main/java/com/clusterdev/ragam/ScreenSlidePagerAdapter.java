@@ -9,12 +9,13 @@ import com.clusterdev.ragam.fragments.AboutFragment;
 import com.clusterdev.ragam.fragments.CelebrityTalkFragment;
 import com.clusterdev.ragam.fragments.EventsFragment;
 import com.clusterdev.ragam.fragments.ProShowFragment;
+import com.clusterdev.ragam.fragments.SponsorsFragment;
 import com.clusterdev.ragam.fragments.WorkshopFragment;
 import com.jfeinstein.jazzyviewpager.JazzyViewPager;
 
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-    private int NUM_PAGES = 5;
+    private int NUM_PAGES = 6;
     private JazzyViewPager mJazzy;
 
     public ScreenSlidePagerAdapter(FragmentManager fm,JazzyViewPager mJazzy) {
@@ -35,9 +36,11 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
             case 3:
                 return ProShowFragment.newInstance();
-
-
             case 4:
+                return SponsorsFragment.newInstance();
+
+
+            case 5:
                 return AboutFragment.newInstance();
             default:
                 return null;
