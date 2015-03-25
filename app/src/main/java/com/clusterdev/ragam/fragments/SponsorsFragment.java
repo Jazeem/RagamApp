@@ -37,7 +37,7 @@ import java.util.List;
 public class SponsorsFragment extends Fragment {
 
     private Typeface tf;
-    private TextView tv1,tv2,tv3,tv4,tv5;
+    private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11,tv12,tv13,tv14,tv15;
     // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
         Fragment fragment = new SponsorsFragment();
@@ -70,6 +70,16 @@ public class SponsorsFragment extends Fragment {
         tv3=(TextView)v.findViewById(R.id.tv_sponsor_2);
         tv4=(TextView)v.findViewById(R.id.tv_sponsor_3);
         tv5=(TextView)v.findViewById(R.id.tv_sponsor_4);
+        tv6=(TextView)v.findViewById(R.id.tv_sponsor_5);
+        tv7=(TextView)v.findViewById(R.id.tv_sponsor_6);
+        tv8=(TextView)v.findViewById(R.id.tv_sponsor_7);
+        tv9=(TextView)v.findViewById(R.id.tv_sponsor_8);
+        tv10=(TextView)v.findViewById(R.id.tv_sponsor_9);
+        tv11=(TextView)v.findViewById(R.id.tv_sponsor_10);
+        tv12=(TextView)v.findViewById(R.id.tv_sponsor_11);
+        tv13=(TextView)v.findViewById(R.id.tv_sponsor_12);
+        tv14=(TextView)v.findViewById(R.id.tv_sponsor_13);
+        tv15=(TextView)v.findViewById(R.id.tv_sponsor_14);
 
 
         tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/HelveticaNeue-Thin.otf");
@@ -78,6 +88,17 @@ public class SponsorsFragment extends Fragment {
         tv3.setTypeface(tf);
         tv4.setTypeface(tf);
         tv5.setTypeface(tf);
+        tv6.setTypeface(tf);
+        tv7.setTypeface(tf);
+        tv8.setTypeface(tf);
+        tv9.setTypeface(tf);
+        tv10.setTypeface(tf);
+        tv11.setTypeface(tf);
+        tv12.setTypeface(tf);
+        tv13.setTypeface(tf);
+        tv14.setTypeface(tf);
+        tv15.setTypeface(tf);
+
         return v;
     }
 
